@@ -1,0 +1,29 @@
+/* 子页面样式 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh; color: #fff;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+header { margin-bottom: 40px; }
+.back-link {
+    display: inline-block; color: #00d4ff; text-decoration: none;
+    margin-bottom: 20px; font-size: 0.9rem; transition: color 0.3s;
+}
+.back-link:hover { color: #7b2cbf; }
+h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+.subtitle { color: #888; font-size: 1rem; }
+.file-list { display: flex; flex-direction: column; gap: 10px; }
+.file-item {
+    display: flex; align-items: center; gap: 15px; padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.3s;
+}
+.file-item:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #00d4ff; transform: translateX(5px);
+}
+.file-icon { font-size: 1.5rem; }
+.file-name { font-size: 1rem; color: #fff; }
