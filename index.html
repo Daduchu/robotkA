@@ -65,6 +65,7 @@
         .stat-label { font-size: 0.9rem; color: #888; margin-top: 5px; }
         footer { text-align: center; margin-top: 60px; padding: 20px; color: #666; font-size: 0.9rem; }
         footer a { color: #00d4ff; text-decoration: none; }
+        .visitor-counter { margin-top: 15px; color: #888; font-size: 0.85rem; }
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .stats { flex-direction: column; gap: 20px; }
@@ -172,8 +173,13 @@
             <p style="margin-top: 10px;">
                 <a href="https://github.com/Daduchu/robotkA" target="_blank">GitHub 仓库</a>
             </p>
+            <div class="visitor-counter">
+                <span>👥 访客 <span id="busuanzi_value_site_uv"></span></span>
+                <span style="margin-left: 20px;">👁️ 浏览 <span id="busuanzi_value_site_pv"></span></span>
+            </div>
         </footer>
     </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const query = e.target.value.toLowerCase();
