@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器人核心技术详解 | 机器人知识库</title>
+    <meta name="description" content="机器人核心技术全解析：感知技术、决策算法、执行系统三大模块详解。涵盖计算机视觉、SLAM、运动控制、人工智能等关键技术。">
+    <meta name="keywords" content="机器人技术,计算机视觉,SLAM,运动控制,人工智能,机器人感知,机器人决策">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-link">← 返回首页</a>
+            <div class="breadcrumb"><a href="../index.html">🏠 首页</a><span>›</span><a href="index.html">⚙️ 核心技术</a><span>›</span>机器人核心技术详解</div>
+            <h1>⚙️ 核心技术</h1>
+            <p class="subtitle">Core Technologies</p>
+        </header>
+        <div class="md-content">
+<h1>机器人核心技术详解：感知、决策、执行全解析</h1>
+
+<p><strong>更新时间：2026年3月</strong></p>
+<p>机器人是如何"看到"世界、"思考"问题、"行动"起来的？本文从技术底层拆解机器人的三大核心模块：<strong>感知、决策、执行</strong>，带你理解机器人背后的技术原理。</p>
+
+<h2>一、感知系统：机器人的"五官"</h2>
+
+<p>感知系统是机器人获取外界信息的入口，相当于人的眼睛、耳朵、皮肤。没有感知，机器人就是"瞎子""聋子"。</p>
+
+<h3>1.1 视觉感知：计算机视觉</h3>
+
+<p><strong>技术原理：</strong>摄像头捕捉图像 → 图像处理算法提取特征 → 深度学习模型识别物体</p>
+
+<p><strong>核心能力：</strong></p>
+<ul>
+<li><strong>目标检测</strong>：识别图像中的物体（人、车、障碍物）</li>
+<li><strong>语义分割</strong>：理解每个像素属于什么类别（地面、墙壁、天空）</li>
+<li><strong>深度估计</strong>：判断物体距离（单目/双目/结构光）</li>
+<li><strong>姿态估计</strong>：识别人体关节位置（用于人机交互）</li>
+</ul>
+
+<p><strong>代表技术：</strong></p>
+<ul>
+<li><strong>OpenCV</strong>：开源计算机视觉库，工业界标准</li>
+<li><strong>YOLO</strong>：实时目标检测算法，速度快精度高</li>
+<li><strong>ResNet/ViT</strong>：图像分类网络，深度学习基石</li>
+</ul>
+
+<h3>1.2 空间感知：SLAM技术</h3>
+
+<p><strong>SLAM（Simultaneous Localization and Mapping）</strong>同步定位与地图构建，是移动机器人的核心技术。</p>
+
+<p><strong>工作原理：</strong></p>
+<ol>
+<li>机器人通过激光雷达或摄像头扫描周围环境</li>
+<li>提取环境特征（墙角、门框、家具）</li>
+<li>同时完成两件事：确定自己的位置 + 构建环境地图</li>
+</ol>
+
+<p><strong>技术路线：</strong></p>
+<table>
+<tr><th>类型</th><th>传感器</th><th>优点</th><th>缺点</th><th>代表算法</th></tr>
+<tr><td>激光SLAM</td><td>激光雷达</td><td>精度高、稳定</td><td>成本高、无颜色信息</td><td>Cartographer, Gmapping</td></tr>
+<tr><td>视觉SLAM</td><td>摄像头</td><td>成本低、信息丰富</td><td>光照敏感、计算量大</td><td>ORB-SLAM, VINS</td></tr>
+<tr><td>融合SLAM</td><td>激光+视觉+IMU</td><td>鲁棒性强</td><td>系统复杂</td><td>LIO-SAM, FAST-LIO</td></tr>
+</table>
+
+<h3>1.3 触觉感知：力觉传感器</h3>
+
+<p><strong>应用场景：</strong></p>
+<ul>
+<li><strong>精密装配</strong>：感知接触力，避免损坏零件</li>
+<li><strong>协作机器人</strong>：检测与人接触，保证安全</li>
+<li><strong>医疗机器人</strong>：手术中感知组织硬度</li>
+</ul>
+
+<p><strong>技术类型：</strong></p>
+<ul>
+<li><strong>应变片式</strong>：成本低，精度中等</li>
+<li><strong>压电式</strong>：响应快，适合动态测量</li>
+<li><strong>电容式</strong>：精度高，适合微小力测量</li>
+</ul>
+
+<h2>二、决策系统：机器人的"大脑"</h2>
+
+<p>决策系统是机器人的"大脑"，负责理解环境、规划行动、做出决策。</p>
+
+<h3>2.1 路径规划：从A点到B点</h3>
+
+<p><strong>全局路径规划：</strong>在地图中找到从起点到终点的最优路径</p>
+<ul>
+<li><strong>Dijkstra算法</strong>：保证找到最短路径，但计算量大</li>
+<li><strong>A*算法</strong>：加入启发函数，速度更快</li>
+<li><strong>RRT算法</strong>：适合高维空间，机械臂路径规划常用</li>
+</ul>
+
+<p><strong>局部路径规划：</strong>避开动态障碍物</p>
+<ul>
+<li><strong>DWA（动态窗口法）</strong>：考虑机器人运动学约束</li>
+<li><strong>TEB（定时弹性带）</strong>：优化路径形状和时间</li>
+<li><strong>人工势场法</strong>：模拟引力和斥力，简单高效</li>
+</ul>
+
+<h3>2.2 运动控制：精准执行动作</h3>
+
+<p><strong>控制算法：</strong></p>
+<ul>
+<li><strong>PID控制</strong>：最基础的控制算法，应用最广泛</li>
+<li><strong>模型预测控制（MPC）</strong>：考虑未来状态，适合复杂系统</li>
+<li><strong>自适应控制</strong>：自动调整参数，适应环境变化</li>
+</ul>
+
+<p><strong>轨迹规划：</strong></p>
+<ul>
+<li><strong>关节空间规划</strong>：直接控制每个关节的角度</li>
+<li><strong>笛卡尔空间规划</strong>：控制末端执行器的位置和姿态</li>
+<li><strong>样条插值</strong>：生成平滑的运动轨迹</li>
+</ul>
+
+<h3>2.3 人工智能：赋予机器人"智慧"</h3>
+
+<p><strong>机器学习在机器人中的应用：</strong></p>
+
+<table>
+<tr><th>技术</th><th>应用场景</th><th>代表算法</th></tr>
+<tr><td>深度学习</td><td>图像识别、语音识别</td><td>CNN, Transformer</td></tr>
+<tr><td>强化学习</td><td>机器人控制策略学习</td><td>PPO, SAC</td></tr>
+<tr><td>模仿学习</td><td>从人类演示中学习</td><td>Behavior Cloning</td></tr>
+<tr><td>迁移学习</td><td>仿真到现实迁移</td><td>Domain Randomization</td></tr>
+</table>
+
+<p><strong>具身智能（Embodied AI）：</strong></p>
+<p>2024-2025年最热门的方向。将大语言模型（LLM）与机器人结合，让机器人具备：</p>
+<ul>
+<li><strong>自然语言理解</strong>：听懂人类指令</li>
+<li><strong>任务规划</strong>：将复杂任务分解为子任务</li>
+<li><strong>常识推理</strong>：利用世界知识解决问题</li>
+</ul>
+
+<h2>三、执行系统：机器人的"手脚"</h2>
+
+<p>执行系统是机器人的"手脚"，负责实际完成任务。</p>
+
+<h3>3.1 驱动系统：动力来源</h3>
+
+<p><strong>电机驱动：</strong></p>
+<ul>
+<li><strong>伺服电机</strong>：精度高、响应快，工业机器人主流</li>
+<li><strong>步进电机</strong>：成本低、控制简单，适合开环控制</li>
+<li><strong>无刷电机</strong>：效率高、寿命长，无人机常用</li>
+</ul>
+
+<p><strong>液压驱动：</strong></p>
+<ul>
+<li><strong>优点</strong>：力量大、响应快</li>
+<li><strong>缺点</strong>：需要液压站、有泄漏风险</li>
+<li><strong>应用</strong>：波士顿动力Atlas（早期版本）</li>
+</ul>
+
+<p><strong>气压驱动：</strong></p>
+<ul>
+<li><strong>优点</strong>：成本低、安全性高</li>
+<li><strong>缺点</strong>：力量小、控制精度低</li>
+<li><strong>应用</strong>：软体机器人、协作夹爪</li>
+</ul>
+
+<h3>3.2 传动系统：动力传递</h3>
+
+<p><strong>减速器：</strong>降低转速、提高扭矩</p>
+<ul>
+<li><strong>谐波减速器</strong>：精度高、体积小，适合轻负载</li>
+<li><strong>RV减速器</strong>：刚度高、承载大，适合重负载</li>
+<li><strong>行星减速器</strong>：成本低、效率高，应用广泛</li>
+</ul>
+
+<p><strong>国产替代：</strong>绿的谐波、双环传动等国内企业已突破技术壁垒，实现进口替代。</p>
+
+<h3>3.3 末端执行器：机器人的"手"</h3>
+
+<p><strong>夹爪：</strong></p>
+<ul>
+<li><strong>平行夹爪</strong>：简单可靠，适合规则物体</li>
+<li><strong>三指夹爪</strong>：适应性强，可抓取不规则物体</li>
+<li><strong>软体夹爪</strong>：柔性材料，适合易碎物品</li>
+</ul>
+
+<p><strong>工具：</strong></p>
+<ul>
+<li><strong>焊接枪</strong>：汽车制造业必备</li>
+<li><strong>喷涂枪</strong>：表面处理</li>
+<li><strong>打磨头</strong>：抛光去毛刺</li>
+</ul>
+
+<h2>四、系统集成：ROS机器人操作系统</h2>
+
+<p><strong>ROS（Robot Operating System）</strong>是机器人领域的"Android"，提供：</p>
+<ul>
+<li><strong>通信机制</strong>：节点间消息传递</li>
+<li><strong>工具库</strong>：SLAM、导航、运动规划</li>
+<li><strong>仿真环境</strong>：Gazebo虚拟测试</li>
+<li><strong>硬件抽象</strong>：统一接口，方便移植</li>
+</ul>
+
+<p><strong>ROS 2改进：</strong></p>
+<ul>
+<li>支持实时系统</li>
+<li>安全性增强</li>
+<li>分布式架构</li>
+<li>工业级应用</li>
+</ul>
+
+<h2>五、技术发展趋势</h2>
+
+<h3>5.1 感知技术趋势</h3>
+<ul>
+<li><strong>多模态融合</strong>：视觉+激光+IMU+触觉，全方位感知</li>
+<li><strong>边缘计算</strong>：在传感器端完成部分计算，降低延迟</li>
+<li><strong>事件相机</strong>：仿生视觉，高动态范围、低延迟</li>
+</ul>
+
+<h3>5.2 决策技术趋势</h3>
+<ul>
+<li><strong>端到端学习</strong>：从传感器直接到动作，减少人工设计</li>
+<li><strong>世界模型</strong>：机器人学习预测环境变化</li>
+<li><strong>群体智能</strong>：多机器人协同决策</li>
+</ul>
+
+<h3>5.3 执行技术趋势</h3>
+<ul>
+<li><strong>高集成度</strong>：电机+减速器+驱动器一体化</li>
+<li><strong>柔性驱动</strong>：人工肌肉、软体机器人</li>
+<li><strong>能量回收</strong>：行走时回收能量，提高续航</li>
+</ul>
+
+<h2>六、学习路径建议</h2>
+
+<p><strong>入门阶段：</strong></p>
+<ol>
+<li>学习Python编程</li>
+<li>了解ROS基础</li>
+<li>掌握OpenCV图像处理</li>
+<li>学习基础控制理论（PID）</li>
+</ol>
+
+<p><strong>进阶阶段：</strong></p>
+<ol>
+<li>学习SLAM算法（ORB-SLAM2）</li>
+<li>掌握深度学习（PyTorch）</li>
+<li>学习运动规划（MoveIt）</li>
+<li>了解强化学习基础</li>
+</ol>
+
+<p><strong>高级阶段：</strong></p>
+<ol>
+<li>研究具身智能（Embodied AI）</li>
+<li>掌握Sim2Real技术</li>
+<li>参与开源项目（如Isaac Gym）</li>
+<li>阅读顶会论文（ICRA, IROS, RSS）</li>
+</ol>
+
+<h2>七、总结</h2>
+
+<p>机器人技术是<strong>多学科交叉</strong>的领域，涉及：</p>
+<ul>
+<li><strong>计算机科学</strong>：AI、算法、软件工程</li>
+<li><strong>电子工程</strong>：传感器、电路、嵌入式</li>
+<li><strong>机械工程</strong>：结构设计、材料、制造工艺</li>
+<li><strong>控制理论</strong>：数学建模、优化、稳定性分析</li>
+</ul>
+
+<p>随着具身智能的兴起，机器人正在从"自动化设备"进化为"智能体"。掌握这些核心技术，你就能在这个充满机遇的领域找到自己的位置。</p>
+
+<hr>
+<p style="color:#666;font-size:0.9rem;">参考资料：ROS Wiki、OpenCV文档、IEEE论文、各公司技术博客 | 更新时间：2026年3月</p>
+        </div>
+        <div class="page-footer">
+            <p>© 2026 机器人知识库 | Robot Knowledge Base</p>
+        </div>
+    </div>
+</body>
+</html>
