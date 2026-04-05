@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧒 启蒙测评（幼大班·小1-2）| 机器人知识库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00d4ff; text-decoration: none; font-size: 0.95rem; margin-bottom: 30px; }
+        .back-link:hover { opacity: 0.7; }
+        .exam-header { text-align: center; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .exam-header h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .exam-header .meta { color: #888; font-size: 0.9rem; margin-top: 8px; }
+        .exam-header .level { display: inline-block; background: rgba(0,212,255,0.15); color: #00d4ff; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 10px; }
+        .question { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .q-num { display: inline-block; background: #00d4ff; color: #1a1a2e; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 0.85rem; margin-bottom: 12px; }
+        .q-text { font-size: 1.05rem; margin-bottom: 15px; line-height: 1.6; }
+        .q-type { font-size: 0.8rem; color: #7b2cbf; margin-bottom: 12px; font-weight: bold; }
+        .options { list-style: none; }
+        .options li { padding: 10px 15px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: background 0.2s; font-size: 0.95rem; }
+        .options li:hover { background: rgba(0,212,255,0.1); }
+        .options li input { margin-right: 10px; }
+        .answer-block { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 12px; padding: 25px; margin-top: 40px; }
+        .answer-block h3 { color: #00d4ff; margin-bottom: 15px; }
+        .answer-block ul { list-style: none; }
+        .answer-block li { padding: 6px 0; color: #a0a0a0; font-size: 0.9rem; }
+        .answer-block li strong { color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回科普与测评首页</a>
+        <div class="exam-header">
+            <h1>🤖 机器人启蒙测评</h1>
+            <p style="color:#a0a0a0; font-size:1rem;">幼儿园大班 · 小学1-2年级</p>
+            <div class="meta">共 15 题 | 满分 100 分 | 建议用时 20 分钟</div>
+            <span class="level">入门级</span>
+        </div>
+
+        <!-- 第一部分：选择题 -->
+        <div class="question">
+            <div class="q-num">1</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">下面哪个东西最像机器人？</div>
+            <ul class="options">
+                <li>🅐 电视遥控器</li>
+                <li>🅑 能自己动、会做事情的机器</li>
+                <li>🅒 妈妈的手机</li>
+                <li>🅓 家里的小猫</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">2</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人一般有几个"眼睛"？（提示：机器人用来看东西的东西）</div>
+            <ul class="options">
+                <li>🅐 0个（机器人不需要看）</li>
+                <li>🅑 1个</li>
+                <li>🅒 2个（像人一样）</li>
+                <li>🅓 很多个</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">3</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">下面哪种地方最可能有机器人帮忙？</div>
+            <ul class="options">
+                <li>🅐 海底很深很深的地方</li>
+                <li>🅑 厨房里帮妈妈炒菜</li>
+                <li>🅒 鞋子里</li>
+                <li>🅓 天上的云朵里</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">4</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人可以用什么和人类"说话"？</div>
+            <ul class="options">
+                <li>🅐 用手写字</li>
+                <li>🅑 发出声音（说话）、显示文字或者播放音乐</li>
+                <li>🅒 用肚子打鼓</li>
+                <li>🅓 用脚跳舞</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">5</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">下面哪个不是机器人的名字？</div>
+            <ul class="options">
+                <li>🅐 大黄蜂</li>
+                <li>🅑 阿尔法狗（会下棋的电脑）</li>
+                <li>🅒 哆啦A梦</li>
+                <li>🅓 擎天柱（变形金刚）</li>
+            </ul>
+        </div>
+
+        <!-- 第二部分：判断题 -->
+        <div class="question">
+            <div class="q-num">6</div>
+            <div class="q-type">✅ 判断题（对的打✓，错的打✗）</div>
+            <div class="q-text">机器人可以在工厂里帮忙组装汽车。✅ 对还是 ❌ 错？</div>
+            <ul class="options">
+                <li>✅ 对</li>
+                <li>❌ 错</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">7</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">所有机器人都是人形的（长得像人）。✅ 对还是 ❌ 错？</div>
+            <ul class="options">
+                <li>✅ 对</li>
+                <li>❌ 错</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">8</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人需要人们告诉它做什么，它才能工作。✅ 对还是 ❌ 错？</div>
+            <ul class="options">
+                <li>✅ 对</li>
+                <li>❌ 错</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">9</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">扫地机器人可以自己在家走来走去打扫地面。✅ 对还是 ❌ 错？</div>
+            <ul class="options">
+                <li>✅ 对</li>
+                <li>❌ 错</li>
+            </ul>
+        </div>
+
+        <!-- 第三部分：连线题 -->
+        <div class="question">
+            <div class="q-num">10</div>
+            <div class="q-type">🔗 连线题</div>
+            <div class="q-text">把机器人部位和它的作用连起来：</div>
+            <div style="margin-top:10px; font-size:0.95rem; line-height:2;">
+                机器人的"眼睛" → ① 听声音<br>
+                机器人的"耳朵" → ② 看东西<br>
+                机器人的"手" → ③ 抓东西、搬东西<br>
+                机器人的"脚" → ④ 走来走去
+            </div>
+        </div>
+
+        <!-- 第四部分：简答题 -->
+        <div class="question">
+            <div class="q-num">11</div>
+            <div class="q-type">✍️ 简答题</div>
+            <div class="q-text">如果你有一个机器人小助手，你最想让它帮你做什么？（说出一件事即可）</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">12</div>
+            <div class="q-type">✍️ 简答题</div>
+            <div class="q-text">机器人可以帮助人类做哪些危险的事情？（说出一件）</div>
+        </div>
+
+        <!-- 第五部分：涂色/画图题 -->
+        <div class="question">
+            <div class="q-num">13</div>
+            <div class="q-type">🎨 画图题</div>
+            <div class="q-text">发挥你的想象力，画一个你心目中的机器人！它有什么特别的地方吗？</div>
+            <div style="height:150px; border:2px dashed rgba(255,255,255,0.2); border-radius:10px; margin-top:15px; display:flex; align-items:center; justify-content:center; color:#666; font-size:0.9rem;">（请在纸上画出来！）</div>
+        </div>
+
+        <!-- 第六部分：排序/观察题 -->
+        <div class="question">
+            <div class="q-num">14</div>
+            <div class="q-type">🔍 观察题</div>
+            <div class="q-text">看图认机器人：下面哪个是扫地机器人？哪个是工业机器人？哪个是人形机器人？（在横线上写出来）</div>
+            <div style="font-size:0.9rem; color:#888; margin-top:10px; line-height:1.8;">
+                ① 工厂里焊接汽车的机器手臂 → __________<br>
+                ② 圆圆的、会自己扫地的机器 → __________<br>
+                ③ 长得像人、会走路的机器人 → __________
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">15</div>
+            <div class="q-type">🌟 思考题</div>
+            <div class="q-text">机器人有没有和人类不一样的地方？（比如机器人不需要做什么？）说出一件。</div>
+        </div>
+
+        <div class="answer-block">
+            <h3>📋 参考答案</h3>
+            <ul>
+                <li><strong>1.</strong> 🅑 能自己动、会做事情的机器</li>
+                <li><strong>2.</strong> 🅓 很多个（可以有摄像头、传感器等多种感知设备）</li>
+                <li><strong>3.</strong> 🅑 厨房里帮妈妈炒菜</li>
+                <li><strong>4.</strong> 🅑 发出声音（说话）、显示文字或者播放音乐</li>
+                <li><strong>5.</strong> 🅑 阿尔法狗（是电脑程序，不是实物机器人）</li>
+                <li><strong>6.</strong> ✅ 对</li>
+                <li><strong>7.</strong> ❌ 错（机器人形状多样，不一定像人）</li>
+                <li><strong>8.</strong> ✅ 对（需要程序指令）</li>
+                <li><strong>9.</strong> ✅ 对</li>
+                <li><strong>10.</strong> 眼睛→② 耳朵→① 手→③ 脚→④</li>
+                <li><strong>11-15.</strong> 开放性题目，评分建议：想象力、思考深度酌情给分</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

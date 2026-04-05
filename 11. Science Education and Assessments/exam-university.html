@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 专业测评（大学）| 机器人知识库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00d4ff; text-decoration: none; font-size: 0.95rem; margin-bottom: 30px; }
+        .exam-header { text-align: center; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .exam-header h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .exam-header .level { display: inline-block; background: rgba(0,212,255,0.15); color: #00d4ff; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 10px; }
+        .exam-header .meta { color: #888; font-size: 0.9rem; margin-top: 8px; }
+        .question { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .q-num { display: inline-block; background: #00d4ff; color: #1a1a2e; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 0.85rem; margin-bottom: 12px; }
+        .q-type { font-size: 0.8rem; color: #7b2cbf; margin-bottom: 12px; font-weight: bold; }
+        .q-text { font-size: 1.05rem; margin-bottom: 15px; line-height: 1.6; }
+        .options { list-style: none; }
+        .options li { padding: 10px 15px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px; cursor: pointer; font-size: 0.95rem; }
+        .options li:hover { background: rgba(0,212,255,0.1); }
+        .answer-block { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 12px; padding: 25px; margin-top: 40px; }
+        .answer-block h3 { color: #00d4ff; margin-bottom: 15px; }
+        .answer-block ul { list-style: none; }
+        .answer-block li { padding: 6px 0; color: #a0a0a0; font-size: 0.9rem; }
+        .answer-block li strong { color: #fff; }
+        .section-title { font-size: 1.2rem; color: #00d4ff; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,212,255,0.2); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回科普与测评首页</a>
+        <div class="exam-header">
+            <h1>🤖 机器人专业综合测评</h1>
+            <p style="color:#a0a0a0; font-size:1rem;">大学1-4年级</p>
+            <div class="meta">共 25 题 | 满分 100 分 | 建议用时 90 分钟</div>
+            <span class="level">专业级</span>
+        </div>
+
+        <div class="section-title">一、选择题（每题 2 分，共 30 分）</div>
+
+        <div class="question">
+            <div class="q-num">1</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在串联机械臂的动力学建模中，拉格朗日法与牛顿-欧拉法的主要区别在于？</div>
+            <ul class="options">
+                <li>A. 拉格朗日法关注能量，牛顿-欧拉法关注力与力矩</li>
+                <li>B. 两者完全等价，没有区别</li>
+                <li>C. 拉格朗日法计算速度更快</li>
+                <li>D. 牛顿-欧拉法不需要运动学模型</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">2</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">RRT（快速扩展随机树）算法是一种用于什么场景的规划算法？</div>
+            <ul class="options">
+                <li>A. 图像识别</li>
+                <li>B. 机械臂或移动机器人的运动规划</li>
+                <li>C. 自然语言处理</li>
+                <li>D. 数据压缩</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">3</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在 ROS 中，topic 和 service 的主要区别是什么？</div>
+            <ul class="options">
+                <li>A. topic 是单向通信，service 是双向同步通信</li>
+                <li>B. 没有区别</li>
+                <li>C. service 比 topic 更快</li>
+                <li>D. topic 只能传输文本</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">4</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">IMU（惯性测量单元）在机器人定位中通常与什么技术结合使用以获得更准确的位姿估计？</div>
+            <ul class="options">
+                <li>A. GPS</li>
+                <li>B. EKF（扩展卡尔曼滤波）</li>
+                <li>C. PID 控制</li>
+                <li>D. SLAM 仅依赖视觉</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">5</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人操作系统（ROS/ROS2）中的 actionlib/service/topic 三种通信方式，按通信延迟从低到高排序正确的是？</div>
+            <ul class="options">
+                <li>A. topic < service < actionlib</li>
+                <li>B. actionlib < service < topic</li>
+                <li>C. service < topic < actionlib</li>
+                <li>D. topic < actionlib < service</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">6</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">移动机器人中，里程计（Odometry）会产生累积误差的根本原因是？</div>
+            <ul class="options">
+                <li>A. 传感器采样率不够高</li>
+                <li>B. 轮子打滑、地面不平导致的积分误差累积</li>
+                <li>C. 电池电量不足</li>
+                <li>D. 天气原因</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">7</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">深度学习中的卷积神经网络（CNN）为什么特别适合处理图像？</div>
+            <ul class="options">
+                <li>A. CNN 需要的计算量最少</li>
+                <li>B. CNN 的局部连接和权重共享特性能够有效提取图像空间特征</li>
+                <li>C. CNN 只能处理黑白图像</li>
+                <li>D. CNN 不需要训练数据</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">8</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在阻抗控制（Impedance Control）中，机器人对接触力的响应特性由什么决定？</div>
+            <ul class="options">
+                <li>A. 位置增益</li>
+                <li>B. 质量-弹簧-阻尼系统的等效机械阻抗参数</li>
+                <li>C. 关节摩擦系数</li>
+                <li>D. 电池容量</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">9</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪种运动基元（Motion Primitive）方法可以确保机器人在执行动作时的时序一致性？</div>
+            <ul class="options">
+                <li>A. DMP（动态运动基元）</li>
+                <li>B. 随机路径点插值</li>
+                <li>C. 线性插值（LERP）</li>
+                <li>D. 样条曲线插值</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">10</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">人形机器人的零力矩点（ZMP）稳定性判据是由哪位学者提出的？</div>
+            <ul class="options">
+                <li>A. 波士顿动力创始人 Marc Raibert</li>
+                <li>B. 日本学者 Vukobratovic 提出的 ZMP 理论</li>
+                <li>C. Elon Musk</li>
+                <li>D. 李飞飞</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">11</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在机器人视觉中，针孔相机模型中的内参矩阵 K 包含哪些参数？</div>
+            <ul class="options">
+                <li>A. 焦距（fx, fy）和主点（cx, cy）</li>
+                <li>B. 相机的颜色</li>
+                <li>C. 相机的重量</li>
+                <li>D. 相机的工作温度</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">12</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">深度强化学习中，DQN（深度Q网络）引入目标网络（Target Network）的目的是？</div>
+            <ul class="options">
+                <li>A. 减少内存占用</li>
+                <li>B. 提高计算速度</li>
+                <li>C. 打破数据相关性，稳定训练</li>
+                <li>D. 增加网络层数</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">13</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪种末端执行器最适合精细抓取鸡蛋这类脆弱物体？</div>
+            <ul class="options">
+                <li>A. 平行夹爪</li>
+                <li>B. 气动软体夹爪</li>
+                <li>C. 电磁吸盘</li>
+                <li>D. 焊接喷嘴</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">14</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人标定中，手眼标定（Eye-to-Hand Calibration）的主要目标是？</div>
+            <ul class="options">
+                <li>A. 标定相机的内参</li>
+                <li>B. 建立相机坐标系与机器人基坐标系之间的变换关系</li>
+                <li>C. 测量物体重量</li>
+                <li>D. 测试通信延迟</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">15</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在控制理论中，状态观测器（State Observer）的主要作用是？</div>
+            <ul class="options">
+                <li>A. 测量所有状态变量</li>
+                <li>B. 根据可测量的输出估计不可直接测量的内部状态</li>
+                <li>C. 控制机器人的运动速度</li>
+                <li>D. 存储历史数据</li>
+            </ul>
+        </div>
+
+        <div class="section-title">二、判断题（每题 2 分，共 20 分）</div>
+
+        <div class="question">
+            <div class="q-num">16</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">MPC（模型预测控制）在每个控制周期都需要求解一个优化问题，因此计算复杂度较高，但对系统约束处理能力强。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">17</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">ROS2 使用 DDS（数据分发服务）作为其中间件，相比 ROS1 有更好的实时性和可靠性。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">18</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">PointNet 是一种可以直接处理点云数据的深度学习网络，无需将点云转换为体素或图像。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">19</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人的工作空间（Workspace）是机器人末端执行器所能到达的所有位置点的集合，与机器人的自由度数量直接相关。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">20</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">BC（模仿学习）方法在数据充足的情况下，理论上可以无限接近甚至超越人类的操作水平。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="section-title">三、计算与分析题（共 30 分）</div>
+
+        <div class="question">
+            <div class="q-num">21</div>
+            <div class="q-type">🔢 计算题（10分）</div>
+            <div class="q-text">已知一个两自由度（2R）平面机械臂，两臂长度分别为 L1=0.3m，L2=0.2m。请解答：<br>
+            (1) 若关节角度 θ1=45°，θ2=30°，求末端执行器相对于基坐标系的位置 (x, y)（保留4位小数）<br>
+            (2) 若要求末端执行器到达点 (0.4, 0.1)，是否存在逆解？（简述理由）
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">22</div>
+            <div class="q-type">📝 系统设计题（10分）</div>
+            <div class="q-text">某仓库需要部署 AMR（自主移动机器人）进行货物配送。要求机器人在动态变化的环境中自主导航，遇到障碍物时能实时重规划路径。请从以下方面进行系统设计：<br>
+            (1) 感知系统的传感器选型及布局方案<br>
+            (2) 定位方案（融合哪些传感器？采用何种滤波算法？）<br>
+            (3) 全局路径规划与局部路径规划的算法选型<br>
+            (4) 安全机制（如何保证人机混场安全？）
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">23</div>
+            <div class="q-type">🔬 实验设计题（10分）</div>
+            <div class="q-text">假设你正在研究如何让机械臂学习抓取任意形状的新物体（Zero-Shot Grasp）。<br>
+            (1) 你会选择哪些技术路线来实现？（至少提出2种不同思路）<br>
+            (2) 设计一个简化的实验流程来验证你提出方案的有效性，包括评测指标、数据集和实验步骤。
+            </div>
+        </div>
+
+        <div class="section-title">四、论述题（共 20 分）</div>
+
+        <div class="question">
+            <div class="q-num">24</div>
+            <div class="q-type">🌟 综述题（10分）</div>
+            <div class="q-text">近年来，以大模型（LLM/VLM）为代表的通用人工智能技术与机器人具身智能的结合成为研究热点。请综述这一方向的核心技术路线（如 SayCan、RT-2、PaLM-E 等），分析当前面临的关键科学问题，并展望未来 5-10 年的发展趋势。</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">25</div>
+            <div class="q-type">🌟 开放题（10分）</div>
+            <div class="q-text">具身智能机器人在走进千家万户之前，需要解决哪些关键问题？这些问题的解决路径是什么？试从技术、伦理、法律和社会接受度等角度进行综合论述。</div>
+        </div>
+
+        <div class="answer-block">
+            <h3>📋 参考答案</h3>
+            <ul>
+                <li><strong>1.</strong> A. 拉格朗日法关注能量，牛顿-欧拉法关注力与力矩</li>
+                <li><strong>2.</strong> B. 机械臂或移动机器人的运动规划</li>
+                <li><strong>3.</strong> A. topic 是单向通信，service 是双向同步通信</li>
+                <li><strong>4.</strong> B. EKF（扩展卡尔曼滤波）</li>
+                <li><strong>5.</strong> A. topic（异步，延迟低）< service（同步请求/响应）< actionlib（有目标反馈，较慢）</li>
+                <li><strong>6.</strong> B. 轮子打滑、地面不平导致的积分误差累积</li>
+                <li><strong>7.</strong> B. CNN 的局部连接和权重共享特性能够有效提取图像空间特征</li>
+                <li><strong>8.</strong> B. 质量-弹簧-阻尼系统的等效机械阻抗参数</li>
+                <li><strong>9.</strong> A. DMP（动态运动基元）</li>
+                <li><strong>10.</strong> B. 日本学者 Vukobratovic 提出的 ZMP 理论</li>
+                <li><strong>11.</strong> A. 焦距（fx, fy）和主点（cx, cy）</li>
+                <li><strong>12.</strong> C. 打破数据相关性，稳定训练</li>
+                <li><strong>13.</strong> B. 气动软体夹爪</li>
+                <li><strong>14.</strong> B. 建立相机坐标系与机器人基坐标系之间的变换关系</li>
+                <li><strong>15.</strong> B. 根据可测量的输出估计不可直接测量的内部状态</li>
+                <li><strong>16.</strong> ✓ 正确</li>
+                <li><strong>17.</strong> ✓ 正确（ROS2 的主要改进之一）</li>
+                <li><strong>18.</strong> ✓ 正确（PointNet 直接处理原始点云）</li>
+                <li><strong>19.</strong> ✓ 正确</li>
+                <li><strong>20.</strong> ✗ 错误（BC 受限于人类演示数据质量，无法保证超越）</li>
+                <li><strong>21.</strong> (1) x≈0.3967m, y≈0.3131m； (2) 检查可达性，最大距离 L1+L2=0.5m，需判断距离是否在可达范围内</li>
+                <li><strong>22-25.</strong> 开放性综合题，按技术深度、逻辑性、创新性酌情给分</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

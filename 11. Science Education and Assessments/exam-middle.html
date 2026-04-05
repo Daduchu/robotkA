@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📐 进阶测评（初中）| 机器人知识库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00d4ff; text-decoration: none; font-size: 0.95rem; margin-bottom: 30px; }
+        .exam-header { text-align: center; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .exam-header h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .exam-header .level { display: inline-block; background: rgba(0,212,255,0.15); color: #00d4ff; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 10px; }
+        .exam-header .meta { color: #888; font-size: 0.9rem; margin-top: 8px; }
+        .question { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .q-num { display: inline-block; background: #00d4ff; color: #1a1a2e; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 0.85rem; margin-bottom: 12px; }
+        .q-type { font-size: 0.8rem; color: #7b2cbf; margin-bottom: 12px; font-weight: bold; }
+        .q-text { font-size: 1.05rem; margin-bottom: 15px; line-height: 1.6; }
+        .options { list-style: none; }
+        .options li { padding: 10px 15px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px; cursor: pointer; font-size: 0.95rem; }
+        .options li:hover { background: rgba(0,212,255,0.1); }
+        .answer-block { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 12px; padding: 25px; margin-top: 40px; }
+        .answer-block h3 { color: #00d4ff; margin-bottom: 15px; }
+        .answer-block ul { list-style: none; }
+        .answer-block li { padding: 6px 0; color: #a0a0a0; font-size: 0.9rem; }
+        .answer-block li strong { color: #fff; }
+        .section-title { font-size: 1.2rem; color: #00d4ff; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,212,255,0.2); }
+        .formula { background: rgba(0,212,255,0.08); padding: 10px 15px; border-radius: 8px; font-family: monospace; margin-top: 10px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回科普与测评首页</a>
+        <div class="exam-header">
+            <h1>🤖 机器人进阶测评</h1>
+            <p style="color:#a0a0a0; font-size:1rem;">初中1-3年级</p>
+            <div class="meta">共 25 题 | 满分 100 分 | 建议用时 45 分钟</div>
+            <span class="level">进阶级</span>
+        </div>
+
+        <div class="section-title">一、选择题（每题 3 分，共 45 分）</div>
+
+        <div class="question">
+            <div class="q-num">1</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人的"大脑"通常是指哪个部分？</div>
+            <ul class="options">
+                <li>A. 外壳</li>
+                <li>B. 微处理器（CPU/控制器）</li>
+                <li>C. 电池</li>
+                <li>D. 电机</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">2</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人在工厂里进行重复性高的装配工作，主要利用了机器人的什么特点？</div>
+            <ul class="options">
+                <li>A. 情感表达</li>
+                <li>B. 自主思考</li>
+                <li>C. 精确性和可重复性</li>
+                <li>D. 幽默感</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">3</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪种传感器可以检测机器人是否接近了障碍物？</div>
+            <ul class="options">
+                <li>A. 温度传感器</li>
+                <li>B. 湿度传感器</li>
+                <li>C. 超声波传感器</li>
+                <li>D. 光传感器</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">4</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人要想知道自己走了多远，通常需要哪种传感器？</div>
+            <ul class="options">
+                <li>A. 摄像头</li>
+                <li>B. 麦克风</li>
+                <li>C. 编码器（用于测量轮子转动角度）</li>
+                <li>D. 压力传感器</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">5</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">ROS（Robot Operating System）是什么？</div>
+            <ul class="options">
+                <li>A. 机器人的一种硬件</li>
+                <li>B. 机器人的物理操作系统</li>
+                <li>C. 机器人软件开发框架，提供了通信和工具库</li>
+                <li>D. 机器人的电池管理系统</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">6</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">PLC 在工业机器人控制中的作用是什么？</div>
+            <ul class="options">
+                <li>A. 提供电力</li>
+                <li>B. 进行逻辑编程和控制</li>
+                <li>C. 提供机械结构</li>
+                <li>D. 存储数据</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">7</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">SLAM 技术的中文全称是什么？</div>
+            <ul class="options">
+                <li>A. 机器人运动控制系统</li>
+                <li>B. 即时定位与地图构建</li>
+                <li>C. 传感器数据融合算法</li>
+                <li>D. 人工智能神经网络</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">8</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人的步态规划主要用于哪种类型的机器人？</div>
+            <ul class="options">
+                <li>A. 工业机械臂</li>
+                <li>B. 轮式移动机器人</li>
+                <li>C. 双足步行机器人</li>
+                <li>D. 无人机</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">9</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">人形机器人需要具备哪种能力，才能在人类生活环境中自如行动？</div>
+            <ul class="options">
+                <li>A. 爬树</li>
+                <li>B. 游泳</li>
+                <li>C. 具身智能（Embodied AI）</li>
+                <li>D. 飞行</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">10</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">深度学习在机器人领域主要用于什么？</div>
+            <ul class="options">
+                <li>A. 提供电力</li>
+                <li>B. 结构设计</li>
+                <li>C. 图像识别、语音识别和决策</li>
+                <li>D. 电机驱动</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">11</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪个不是机器人的驱动方式？</div>
+            <ul class="options">
+                <li>A. 电机驱动</li>
+                <li>B. 液压驱动</li>
+                <li>C. 气动驱动</li>
+                <li>D. 重力驱动</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">12</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">协作机器人（Cobot）的设计理念是什么？</div>
+            <ul class="options">
+                <li>A. 代替人类做所有工作</li>
+                <li>B. 与人类安全协同工作，不需要隔离围栏</li>
+                <li>C. 完全自主不需要人类参与</li>
+                <li>D. 只在太空使用</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">13</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器视觉中的"目标检测"是指什么？</div>
+            <ul class="options">
+                <li>A. 测量物体重量</li>
+                <li>B. 让机器人看到物体并判断是什么东西</li>
+                <li>C. 给物体称重</li>
+                <li>D. 改变物体颜色</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">14</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">中国工业机器人"新松"隶属于哪个机构？</div>
+            <ul class="options">
+                <li>A. 阿里巴巴</li>
+                <li>B. 中国科学院沈阳自动化研究所</li>
+                <li>C. 清华大学</li>
+                <li>D. 华为公司</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">15</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">如果机器人需要在暗光环境中感知周围物体，以下哪种传感器最合适？</div>
+            <ul class="options">
+                <li>A. 可见光摄像头</li>
+                <li>B. 红外传感器</li>
+                <li>C. 湿度传感器</li>
+                <li>D. GPS</li>
+            </ul>
+        </div>
+
+        <div class="section-title">二、判断题（每题 2 分，共 20 分）</div>
+
+        <div class="question">
+            <div class="q-num">16</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人的控制器只能处理数字信号，不能处理模拟信号。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">17</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">PID 控制是一种常用的机器人运动控制算法。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">18</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人的传感器精度越高，机器人就能越准确地完成任务。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">19</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人的自由度（Degree of Freedom）是指机器人可以独立运动的方向数量。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">20</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">人形机器人不需要双臂就能完成抓取任务。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="section-title">三、计算与分析题（共 35 分）</div>
+
+        <div class="question">
+            <div class="q-num">21</div>
+            <div class="q-type">🔢 计算题（10分）</div>
+            <div class="q-text">某机械臂关节电机转速为 3000 rpm（转/分钟），减速比为 1:10。求减速后输出轴的转速是多少 rpm？</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">22</div>
+            <div class="q-type">📝 分析题（10分）</div>
+            <div class="q-text">请分析工业机器人与服务机器人在应用场景、功能需求和技术挑战方面的主要区别。（至少说出3点不同）</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">23</div>
+            <div class="q-type">🔧 设计题（15分）</div>
+            <div class="q-text">假设你要设计一个在医院中使用的配送机器人，请从硬件（传感器、执行器）和软件（感知、决策）两个层面说明你的设计方案，并说明如何保证机器人与医护人员及患者的安全。</div>
+        </div>
+
+        <div class="answer-block">
+            <h3>📋 参考答案</h3>
+            <ul>
+                <li><strong>1.</strong> B. 微处理器（CPU/控制器）</li>
+                <li><strong>2.</strong> C. 精确性和可重复性</li>
+                <li><strong>3.</strong> C. 超声波传感器</li>
+                <li><strong>4.</strong> C. 编码器（用于测量轮子转动角度）</li>
+                <li><strong>5.</strong> C. 机器人软件开发框架</li>
+                <li><strong>6.</strong> B. 进行逻辑编程和控制</li>
+                <li><strong>7.</strong> B. 即时定位与地图构建</li>
+                <li><strong>8.</strong> C. 双足步行机器人</li>
+                <li><strong>9.</strong> C. 具身智能（Embodied AI）</li>
+                <li><strong>10.</strong> C. 图像识别、语音识别和决策</li>
+                <li><strong>11.</strong> D. 重力驱动（不是主动驱动方式）</li>
+                <li><strong>12.</strong> B. 与人类安全协同工作，不需要隔离围栏</li>
+                <li><strong>13.</strong> B. 让机器人看到物体并判断是什么东西</li>
+                <li><strong>14.</strong> B. 中国科学院沈阳自动化研究所</li>
+                <li><strong>15.</strong> B. 红外传感器</li>
+                <li><strong>16.</strong> ✗ 错误（通过 ADC 可处理模拟信号）</li>
+                <li><strong>17.</strong> ✓ 正确</li>
+                <li><strong>18.</strong> ✓ 正确</li>
+                <li><strong>19.</strong> ✓ 正确</li>
+                <li><strong>20.</strong> ✗ 错误（双臂是常用的抓取方式）</li>
+                <li><strong>21.</strong> 300 rpm（3000÷10=300）</li>
+                <li><strong>22-23.</strong> 开放性题目，按完整性、逻辑性酌情给分</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔬 拓展测评（高中）| 机器人知识库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00d4ff; text-decoration: none; font-size: 0.95rem; margin-bottom: 30px; }
+        .exam-header { text-align: center; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .exam-header h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .exam-header .level { display: inline-block; background: rgba(0,212,255,0.15); color: #00d4ff; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 10px; }
+        .exam-header .meta { color: #888; font-size: 0.9rem; margin-top: 8px; }
+        .question { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .q-num { display: inline-block; background: #00d4ff; color: #1a1a2e; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 0.85rem; margin-bottom: 12px; }
+        .q-type { font-size: 0.8rem; color: #7b2cbf; margin-bottom: 12px; font-weight: bold; }
+        .q-text { font-size: 1.05rem; margin-bottom: 15px; line-height: 1.6; }
+        .options { list-style: none; }
+        .options li { padding: 10px 15px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px; cursor: pointer; font-size: 0.95rem; }
+        .options li:hover { background: rgba(0,212,255,0.1); }
+        .answer-block { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 12px; padding: 25px; margin-top: 40px; }
+        .answer-block h3 { color: #00d4ff; margin-bottom: 15px; }
+        .answer-block ul { list-style: none; }
+        .answer-block li { padding: 6px 0; color: #a0a0a0; font-size: 0.9rem; }
+        .answer-block li strong { color: #fff; }
+        .section-title { font-size: 1.2rem; color: #00d4ff; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,212,255,0.2); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回科普与测评首页</a>
+        <div class="exam-header">
+            <h1>🤖 机器人拓展测评</h1>
+            <p style="color:#a0a0a0; font-size:1rem;">高中1-3年级</p>
+            <div class="meta">共 25 题 | 满分 100 分 | 建议用时 60 分钟</div>
+            <span class="level">拓展级</span>
+        </div>
+
+        <div class="section-title">一、选择题（每题 3 分，共 45 分）</div>
+
+        <div class="question">
+            <div class="q-num">1</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪项不属于机器人控制系统的基本构成要素？</div>
+            <ul class="options">
+                <li>A. 传感器</li>
+                <li>B. 控制器</li>
+                <li>C. 执行器</li>
+                <li>D. 发电机</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">2</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">PID 控制中的 "I" 代表什么？</div>
+            <ul class="options">
+                <li>A. Input（输入）</li>
+                <li>B. Integral（积分）</li>
+                <li>C. Intelligence（智能）</li>
+                <li>D. Increment（增量）</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">3</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在机器人的运动学中，正向运动学（Forward Kinematics）是用来解决什么问题的？</div>
+            <ul class="options">
+                <li>A. 已知各关节角度，求末端执行器的位置和姿态</li>
+                <li>B. 已知末端执行器位置，求各关节角度</li>
+                <li>C. 计算机器人的动力学参数</li>
+                <li>D. 规划机器人的运动轨迹</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">4</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">强化学习在机器人领域的核心思想是什么？</div>
+            <ul class="options">
+                <li>A. 通过大量标注数据训练模型</li>
+                <li>B. 机器人通过与环境交互，根据奖励信号学习最优策略</li>
+                <li>C. 人工编写所有运动规则</li>
+                <li>D. 使用规则引擎做决策</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">5</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">大语言模型（LLM）与机器人结合的主要挑战是什么？</div>
+            <ul class="options">
+                <li>A. LLM 推理速度太慢</li>
+                <li>B. 将语言指令转化为可执行的物理动作序列</li>
+                <li>C. LLM 成本太高</li>
+                <li>D. LLM 无法处理中文</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">6</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在视觉SLAM中，回环检测（Loop Closure）的作用是什么？</div>
+            <ul class="options">
+                <li>A. 检测机器人是否在旋转</li>
+                <li>B. 识别机器人是否回到了之前到过的位置，用于消除累计误差</li>
+                <li>C. 测量物体距离</li>
+                <li>D. 检测障碍物</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">7</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">仿生机器人设计灵感通常来自哪些生物？（多选）</div>
+            <ul class="options">
+                <li>A. 人类</li>
+                <li>B. 蛇</li>
+                <li>C. 蜘蛛</li>
+                <li>D. 鱼类</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">8</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">具身智能（Embodied AI）与传统人工智能的主要区别在于？</div>
+            <ul class="options">
+                <li>A. 具身智能有物理身体，能与物理世界交互</li>
+                <li>B. 具身智能使用更大的模型</li>
+                <li>C. 具身智能成本更低</li>
+                <li>D. 具身智能不需要算力</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">9</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">在机器人坐标系变换中，齐次变换矩阵的主要优点是什么？</div>
+            <ul class="options">
+                <li>A. 计算更快</li>
+                <li>B. 可以同时表示旋转和平移，且便于矩阵运算</li>
+                <li>C. 占用内存更少</li>
+                <li>D. 精度更高</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">10</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪种控制方法适用于处理机器人动力学中的非线性特性？</div>
+            <ul class="options">
+                <li>A. PID 控制</li>
+                <li>B. 自适应控制</li>
+                <li>C. 滑模控制（SMC）</li>
+                <li>D. 以上都不对</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">11</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">力控机器人与位置控机器人的核心区别是什么？</div>
+            <ul class="options">
+                <li>A. 力控机器人用电机，位置控机器人用液压</li>
+                <li>B. 力控机器人控制力/力矩输出，位置控机器人控制位置</li>
+                <li>C. 力控机器人更便宜</li>
+                <li>D. 两者没有本质区别</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">12</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">Transformer 架构最初是在哪个领域提出的？</div>
+            <ul class="options">
+                <li>A. 机器人控制</li>
+                <li>B. 自然语言处理（NLP）</li>
+                <li>C. 计算机图形学</li>
+                <li>D. 量子计算</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">13</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">多机器人协同系统中，一致性（Consensus）算法的目标是什么？</div>
+            <ul class="options">
+                <li>A. 让所有机器人执行相同动作</li>
+                <li>B. 通过局部信息交互，使所有机器人就某个状态量达成一致</li>
+                <li>C. 提高通信速率</li>
+                <li>D. 减少电池消耗</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">14</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人安全标准 ISO 10218 主要针对什么？</div>
+            <ul class="options">
+                <li>A. 机器人网络安全</li>
+                <li>B. 工业机器人的安全要求</li>
+                <li>C. 服务机器人的隐私保护</li>
+                <li>D. 机器人能耗标准</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">15</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">触觉传感器让机器人能够感知什么信息？</div>
+            <ul class="options">
+                <li>A. 压力、温度、纹理等接触信息</li>
+                <li>B. 障碍物距离</li>
+                <li>C. 光照强度</li>
+                <li>D. 声音大小</li>
+            </ul>
+        </div>
+
+        <div class="section-title">二、判断题（每题 2 分，共 20 分）</div>
+
+        <div class="question">
+            <div class="q-num">16</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人的"自由度"（DOF）是指机器人可以独立运动关节的数量，一个6轴机械臂有6个自由度。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">17</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">逆运动学（IK）求解一定存在且唯一。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">18</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">扩散模型（Diffusion Model）可以用于机器人的技能学习与动作生成。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">19</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">协作机器人的碰撞检测技术使得机器人在与人类接触时能够快速停止，保证人身安全。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">20</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">多模态大模型可以让机器人同时处理文本、图像、声音和触觉等多种信息。</div>
+            <ul class="options"><li>✓ 正确</li><li>✗ 错误</li></ul>
+        </div>
+
+        <div class="section-title">三、综合分析题（共 35 分）</div>
+
+        <div class="question">
+            <div class="q-num">21</div>
+            <div class="q-type">📝 分析题（12分）</div>
+            <div class="q-text">请分析自动驾驶技术（无人车）与具身智能机器人技术在感知算法层面的异同，并说明两者各面临哪些独特挑战。</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">22</div>
+            <div class="q-type">🔧 设计题（12分）</div>
+            <div class="q-text">假设你需要设计一套完整的室内移动机器人导航系统，请从感知、定位、规划、控制四个层面说明你的技术方案，并指出各层面的关键算法。</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">23</div>
+            <div class="q-type">🌟 论述题（11分）</div>
+            <div class="q-text">结合具身智能、大模型、仿生机器人等前沿方向，论述你对"未来家庭人形机器人"发展趋势的看法，包括技术路径、关键瓶颈以及对社会的影响。</div>
+        </div>
+
+        <div class="answer-block">
+            <h3>📋 参考答案</h3>
+            <ul>
+                <li><strong>1.</strong> D. 发电机（不属于控制系统基本构成）</li>
+                <li><strong>2.</strong> B. Integral（积分）</li>
+                <li><strong>3.</strong> A. 已知各关节角度，求末端执行器的位置和姿态</li>
+                <li><strong>4.</strong> B. 机器人通过与环境交互，根据奖励信号学习最优策略</li>
+                <li><strong>5.</strong> B. 将语言指令转化为可执行的物理动作序列</li>
+                <li><strong>6.</strong> B. 识别机器人是否回到了之前到过的位置，用于消除累计误差</li>
+                <li><strong>7.</strong> ABCD（均为常见仿生对象）</li>
+                <li><strong>8.</strong> A. 具身智能有物理身体，能与物理世界交互</li>
+                <li><strong>9.</strong> B. 可以同时表示旋转和平移，且便于矩阵运算</li>
+                <li><strong>10.</strong> C. 滑模控制（SMC）</li>
+                <li><strong>11.</strong> B. 力控机器人控制力/力矩输出，位置控机器人控制位置</li>
+                <li><strong>12.</strong> B. 自然语言处理（NLP）</li>
+                <li><strong>13.</strong> B. 通过局部信息交互，使所有机器人就某个状态量达成一致</li>
+                <li><strong>14.</strong> B. 工业机器人的安全要求</li>
+                <li><strong>15.</strong> A. 压力、温度、纹理等接触信息</li>
+                <li><strong>16.</strong> ✓ 正确</li>
+                <li><strong>17.</strong> ✗ 错误（逆运动学解不一定存在，也不唯一）</li>
+                <li><strong>18.</strong> ✓ 正确</li>
+                <li><strong>19.</strong> ✓ 正确</li>
+                <li><strong>20.</strong> ✓ 正确</li>
+                <li><strong>21-23.</strong> 开放性综合题，按论点深度、逻辑性、技术准确性酌情给分</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

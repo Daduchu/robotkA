@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧒‍🦱 基础测评（小3-6）| 机器人知识库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00d4ff; text-decoration: none; font-size: 0.95rem; margin-bottom: 30px; }
+        .back-link:hover { opacity: 0.7; }
+        .exam-header { text-align: center; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .exam-header h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .exam-header .level { display: inline-block; background: rgba(0,212,255,0.15); color: #00d4ff; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 10px; }
+        .exam-header .meta { color: #888; font-size: 0.9rem; margin-top: 8px; }
+        .question { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .q-num { display: inline-block; background: #00d4ff; color: #1a1a2e; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 0.85rem; margin-bottom: 12px; }
+        .q-type { font-size: 0.8rem; color: #7b2cbf; margin-bottom: 12px; font-weight: bold; }
+        .q-text { font-size: 1.05rem; margin-bottom: 15px; line-height: 1.6; }
+        .options { list-style: none; }
+        .options li { padding: 10px 15px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: background 0.2s; font-size: 0.95rem; }
+        .options li:hover { background: rgba(0,212,255,0.1); }
+        .answer-block { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 12px; padding: 25px; margin-top: 40px; }
+        .answer-block h3 { color: #00d4ff; margin-bottom: 15px; }
+        .answer-block ul { list-style: none; }
+        .answer-block li { padding: 6px 0; color: #a0a0a0; font-size: 0.9rem; }
+        .answer-block li strong { color: #fff; }
+        .section-title { font-size: 1.2rem; color: #00d4ff; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,212,255,0.2); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回科普与测评首页</a>
+        <div class="exam-header">
+            <h1>🤖 机器人基础测评</h1>
+            <p style="color:#a0a0a0; font-size:1rem;">小学3-6年级</p>
+            <div class="meta">共 20 题 | 满分 100 分 | 建议用时 30 分钟</div>
+            <span class="level">基础级</span>
+        </div>
+
+        <div class="section-title">一、选择题（每题 4 分，共 40 分）</div>
+
+        <div class="question">
+            <div class="q-num">1</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人主要由哪三部分组成？</div>
+            <ul class="options">
+                <li>A. 手臂、腿、头</li>
+                <li>B. 感知系统、控制系统、执行机构</li>
+                <li>C. 电机、电池、外壳</li>
+                <li>D. 屏幕、键盘、鼠标</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">2</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人身上的"眼睛"通常是指什么？</div>
+            <ul class="options">
+                <li>A. 真正的眼球</li>
+                <li>B. 摄像头或视觉传感器</li>
+                <li>C. 显示屏</li>
+                <li>D. 灯泡</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">3</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">以下哪种机器人属于服务机器人？</div>
+            <ul class="options">
+                <li>A. 工厂里喷漆的机械臂</li>
+                <li>B. 扫地机器人</li>
+                <li>C. 焊接汽车的机器</li>
+                <li>D. 码垛机器人</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">4</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">扫地机器人能够自动避开障碍物，主要靠的是什么？</div>
+            <ul class="options">
+                <li>A. 遥控器控制</li>
+                <li>B. 人工搬运</li>
+                <li>C. 传感器感知</li>
+                <li>D. 随机乱撞</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">5</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">人形机器人的代表作品"Atlas"是由哪家公司研发的？</div>
+            <ul class="options">
+                <li>A. 波士顿动力（Boston Dynamics）</li>
+                <li>B. 特斯拉</li>
+                <li>C. 苹果公司</li>
+                <li>D. 谷歌</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">6</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人要想听得懂人说话，需要用到什么技术？</div>
+            <ul class="options">
+                <li>A. 视觉识别</li>
+                <li>B. 语音识别</li>
+                <li>C. 触觉感知</li>
+                <li>D. GPS定位</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">7</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人要完成一项任务，需要什么来告诉它怎么做？</div>
+            <ul class="options">
+                <li>A. 电力</li>
+                <li>B. 程序（代码）</li>
+                <li>C. 水</li>
+                <li>D. 纸张</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">8</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">中国哪个公司生产的商用服务机器人比较知名？</div>
+            <ul class="options">
+                <li>A. 阿里巴巴</li>
+                <li>B. 优必选（UBTech）</li>
+                <li>C. 拼多多</li>
+                <li>D. 美团</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">9</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">机器人能和人下棋并赢过人类冠军，靠的是什么技术？</div>
+            <ul class="options">
+                <li>A. 机械制造</li>
+                <li>B. 材料科学</li>
+                <li>C. 人工智能</li>
+                <li>D. 化学反应</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">10</div>
+            <div class="q-type">🏆 单选题</div>
+            <div class="q-text">下面哪项不是机器人可以帮人类做的事情？</div>
+            <ul class="options">
+                <li>A. 在危险环境中探测</li>
+                <li>B. 帮助做手术</li>
+                <li>C. 自主创作音乐和绘画</li>
+                <li>D. 在火星上建房子</li>
+            </ul>
+        </div>
+
+        <div class="section-title">二、判断题（每题 3 分，共 30 分）</div>
+
+        <div class="question">
+            <div class="q-num">11</div>
+            <div class="q-type">✅ 判断题（正确✓ 错误✗）</div>
+            <div class="q-text">机器人和人类一样，有自己的思想和情感。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">12</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人必须长得像人才能叫机器人。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">13</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">无人机是一种在空中飞行的机器人。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">14</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人可以连续工作很长时间，不需要休息。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">15</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人身上的传感器就像人的五官，能感知外界环境。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">16</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">中国在机器人领域已经是世界领先的国家之一。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">17</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">机器人想要移动，必须有电机或发动机来驱动轮子、腿等部件。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">18</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">具身智能是指机器人具有像人一样的身体，能在真实世界中行动。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">19</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">人形机器人就是长得和人类一模一样的机器人，目前技术上已经完全实现。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <div class="q-num">20</div>
+            <div class="q-type">✅ 判断题</div>
+            <div class="q-text">学习编程可以帮助我们更好地理解机器人的工作原理。</div>
+            <ul class="options">
+                <li>✓ 正确</li>
+                <li>✗ 错误</li>
+            </ul>
+        </div>
+
+        <div class="section-title">三、简答题（共 30 分）</div>
+
+        <div class="question">
+            <div class="q-num">21</div>
+            <div class="q-type">✍️ 简答题（10分）</div>
+            <div class="q-text">请说出机器人相比人类工作的三个优势，并各举一个例子。</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">22</div>
+            <div class="q-type">✍️ 简答题（10分）</div>
+            <div class="q-text">如果让你设计一个家庭服务机器人，它需要有哪些功能？请列出至少4项功能并说明原因。</div>
+        </div>
+
+        <div class="question">
+            <div class="q-num">23</div>
+            <div class="q-type">🌟 思考题（10分）</div>
+            <div class="q-text">机器人发展越来越快，你认为未来机器人会不会取代人类的工作？我们应该怎么和机器人相处？说说你的想法。</div>
+        </div>
+
+        <div class="answer-block">
+            <h3>📋 参考答案</h3>
+            <ul>
+                <li><strong>1.</strong> B. 感知系统、控制系统、执行机构</li>
+                <li><strong>2.</strong> B. 摄像头或视觉传感器</li>
+                <li><strong>3.</strong> B. 扫地机器人</li>
+                <li><strong>4.</strong> C. 传感器感知</li>
+                <li><strong>5.</strong> A. 波士顿动力（Boston Dynamics）</li>
+                <li><strong>6.</strong> B. 语音识别</li>
+                <li><strong>7.</strong> B. 程序（代码）</li>
+                <li><strong>8.</strong> B. 优必选（UBTech）</li>
+                <li><strong>9.</strong> C. 人工智能</li>
+                <li><strong>10.</strong> C. 自主创作音乐和绘画（目前AI绘画仍需人类指导）</li>
+                <li><strong>11.</strong> ✗ 错误</li>
+                <li><strong>12.</strong> ✗ 错误</li>
+                <li><strong>13.</strong> ✓ 正确</li>
+                <li><strong>14.</strong> ✓ 正确</li>
+                <li><strong>15.</strong> ✓ 正确</li>
+                <li><strong>16.</strong> ✓ 正确</li>
+                <li><strong>17.</strong> ✓ 正确</li>
+                <li><strong>18.</strong> ✓ 正确</li>
+                <li><strong>19.</strong> ✗ 错误（仍在发展中）</li>
+                <li><strong>20.</strong> ✓ 正确</li>
+                <li><strong>21-23.</strong> 开放性题目，评分建议按逻辑性、完整性酌情给分</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

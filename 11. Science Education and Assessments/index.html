@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 科普与测评 | 机器人知识库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #00d4ff; text-decoration: none; font-size: 0.95rem;
+            margin-bottom: 30px; transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 0.7; }
+        .page-header { text-align: center; margin-bottom: 50px; }
+        .page-header h1 {
+            font-size: 2.5rem; margin-bottom: 15px;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .page-header p { color: #a0a0a0; font-size: 1.1rem; }
+        .grade-cards {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+        }
+        .grade-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px; padding: 30px;
+            text-decoration: none; color: inherit;
+            transition: all 0.3s ease;
+            position: relative; overflow: hidden;
+        }
+        .grade-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf); opacity: 0; transition: opacity 0.3s;
+        }
+        .grade-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%);
+            border-color: #00d4ff; box-shadow: 0 10px 40px rgba(0,212,255,0.2);
+        }
+        .grade-card:hover::before { opacity: 1; }
+        .grade-emoji { font-size: 2.5rem; margin-bottom: 15px; }
+        .grade-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; color: #fff; }
+        .grade-range { font-size: 0.85rem; color: #00d4ff; margin-bottom: 12px; font-weight: bold; }
+        .grade-desc { font-size: 0.9rem; color: #888; line-height: 1.5; }
+        .grade-badge {
+            display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 0.75rem; margin-top: 12px;
+        }
+        .badge-primary { background: rgba(0,212,255,0.15); color: #00d4ff; }
+        .info-box {
+            background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 12px; padding: 20px; margin-top: 40px;
+        }
+        .info-box h3 { color: #00d4ff; margin-bottom: 10px; font-size: 1.1rem; }
+        .info-box p { color: #a0a0a0; font-size: 0.9rem; line-height: 1.6; }
+        @media (max-width: 768px) { .page-header h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← 返回知识库首页</a>
+        <div class="page-header">
+            <h1>🧪 科普与测评</h1>
+            <p>机器人科普分级测评试卷，覆盖幼儿园大班至大学全学段</p>
+        </div>
+        <div class="grade-cards">
+            <a href="exam-kinder.html" class="grade-card">
+                <div class="grade-emoji">🧒</div>
+                <div class="grade-title">启蒙测评</div>
+                <div class="grade-range">幼儿园大班 · 小学1-2年级</div>
+                <div class="grade-desc">趣味图片题、简单判断题，培养对机器人的初步认知与兴趣</div>
+                <span class="grade-badge badge-primary">入门级</span>
+            </a>
+            <a href="exam-primary.html" class="grade-card">
+                <div class="grade-emoji">🧒‍🦱</div>
+                <div class="grade-title">基础测评</div>
+                <div class="grade-range">小学3-6年级</div>
+                <div class="grade-desc">基础概念选择题、判断题，了解机器人基本原理与应用场景</div>
+                <span class="grade-badge badge-primary">基础级</span>
+            </a>
+            <a href="exam-middle.html" class="grade-card">
+                <div class="grade-emoji">📐</div>
+                <div class="grade-title">进阶测评</div>
+                <div class="grade-range">初中1-3年级</div>
+                <div class="grade-desc">机器人原理、传感器技术、编程逻辑等综合知识测评</div>
+                <span class="grade-badge badge-primary">进阶级</span>
+            </a>
+            <a href="exam-high.html" class="grade-card">
+                <div class="grade-emoji">🔬</div>
+                <div class="grade-title">拓展测评</div>
+                <div class="grade-range">高中1-3年级</div>
+                <div class="grade-desc">人工智能、控制算法、具身智能等前沿技术与创新能力测评</div>
+                <span class="grade-badge badge-primary">拓展级</span>
+            </a>
+            <a href="exam-university.html" class="grade-card">
+                <div class="grade-emoji">🎓</div>
+                <div class="grade-title">专业测评</div>
+                <div class="grade-range">大学1-4年级</div>
+                <div class="grade-desc">机器人系统设计、SLAM、ROS、运动控制等专业综合能力测评</div>
+                <span class="grade-badge badge-primary">专业级</span>
+            </a>
+        </div>
+        <div class="info-box">
+            <h3>📌 关于测评</h3>
+            <p>本模块提供各学段机器人科普测评试卷，每套试卷均含单选题、判断题、综合题等题型。<br>
+            试卷内容持续更新，可作为教学评估、兴趣测试或科普活动的测评工具使用。</p>
+        </div>
+    </div>
+</body>
+</html>
