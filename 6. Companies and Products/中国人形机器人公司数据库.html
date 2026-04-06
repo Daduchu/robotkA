@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国人形机器人公司数据库（142家） | 机器人知识库</title>
+    <meta name="description" content="2026年中国人形机器人公司完整数据库，收录142家人形机器人本体研发企业，覆盖全国19个城市，含城市分布、成立年份、产品类型分析。">
+    <meta name="keywords" content="中国人形机器人公司,人形机器人公司数据库,人形机器人企业,具身智能公司">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .stat-card { background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; background: linear-gradient(90deg, #00d4ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { color: #a0a0a0; margin-top: 5px; }
+        .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .chart-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; }
+        .chart-title { font-size: 1.1rem; color: #00d4ff; margin-bottom: 15px; text-align: center; }
+        #cityChart, #yearChart { width: 100%; height: 300px; }
+        .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+        .filter-btn { padding: 8px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; }
+        .filter-btn:hover, .filter-btn.active { background: linear-gradient(90deg, #00d4ff, #7b2cbf); border-color: transparent; }
+        .search-bar { margin: 20px 0; }
+        .search-bar input { width: 100%; max-width: 400px; padding: 12px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 25px; background: rgba(255,255,255,0.08); color: #fff; font-size: 1rem; outline: none; }
+        .search-bar input::placeholder { color: #888; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { background: rgba(0,212,255,0.2); padding: 12px; text-align: left; border-bottom: 2px solid rgba(0,212,255,0.3); }
+        td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        tr:hover { background: rgba(255,255,255,0.03); }
+        .city-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.85rem; background: rgba(0,212,255,0.15); color: #00d4ff; }
+        .company-name { font-weight: 600; color: #fff; }
+        .table-wrapper { max-height: 500px; overflow-y: auto; }
+        .data-note { color: #888; font-size: 0.85rem; margin-top: 10px; }
+        @media (max-width: 768px) { .chart-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-link">← 返回首页</a>
+            <div class="breadcrumb"><a href="../index.html">🏠 首页</a><span>›</span><a href="index.html">🏢 公司与产品</a><span>›</span>公司数据库</div>
+            <h1>🏢 中国人形机器人公司数据库</h1>
+            <p class="subtitle">142家人形机器人本体研发企业全覆盖</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number">142</div><div class="stat-label">家公司</div></div>
+            <div class="stat-card"><div class="stat-number">19</div><div class="stat-label">个城市</div></div>
+            <div class="stat-card"><div class="stat-number">2023-25</div><div class="stat-label">爆发期占比62%</div></div>
+            <div class="stat-card"><div class="stat-number">62</div><div class="stat-label">家主攻双足人形</div></div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-box">
+                <div class="chart-title">📍 城市分布</div>
+                <div id="cityChart"></div>
+            </div>
+            <div class="chart-box">
+                <div class="chart-title">📅 成立年份趋势</div>
+                <div id="yearChart"></div>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="🔍 搜索企业名称、城市或产品..." oninput="filterTable()">
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterCity('全部')">全部</button>
+            <button class="filter-btn" onclick="filterCity('北京')">北京</button>
+            <button class="filter-btn" onclick="filterCity('上海')">上海</button>
+            <button class="filter-btn" onclick="filterCity('深圳')">深圳</button>
+            <button class="filter-btn" onclick="filterCity('杭州')">杭州</button>
+            <button class="filter-btn" onclick="filterCity('其他')">其他城市</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="companyTable">
+                <thead>
+                    <tr><th>序号</th><th>城市</th><th>企业名称</th><th>成立时间</th><th>主要产品</th></tr>
+                </thead>
+                <tbody>
+            <tr><td>1</td><td class="city-tag">北京</td><td class="company-name">理工华汇</td><td>2015年</td><td>双足人形机器人</td></tr>
+            <tr><td>2</td><td class="city-tag">北京</td><td class="company-name">钢铁侠科技</td><td>2015年</td><td>双足人形机器人</td></tr>
+            <tr><td>3</td><td class="city-tag">北京</td><td class="company-name">极智嘉</td><td>2015年</td><td>仓储机器人、轮式人形机器人</td></tr>
+            <tr><td>4</td><td class="city-tag">北京</td><td class="company-name">伟景智能</td><td>2016年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>5</td><td class="city-tag">北京</td><td class="company-name">睿尔曼智能</td><td>2018年</td><td>仿人机械臂、轮式人形机器人</td></tr>
+            <tr><td>6</td><td class="city-tag">北京</td><td class="company-name">思灵机器人</td><td>2018年</td><td>机械臂、双足人形机器人</td></tr>
+            <tr><td>7</td><td class="city-tag">北京</td><td class="company-name">月泉仿生</td><td>2022年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>8</td><td class="city-tag">北京</td><td class="company-name">深谋科技</td><td>2022年</td><td>双足人形机器人</td></tr>
+            <tr><td>9</td><td class="city-tag">北京</td><td class="company-name">星动纪元</td><td>2023年</td><td>双足及轮式人形机器人、具身模型</td></tr>
+            <tr><td>10</td><td class="city-tag">北京</td><td class="company-name">银河通用</td><td>2023年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>11</td><td class="city-tag">北京</td><td class="company-name">松延动力</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>12</td><td class="city-tag">北京</td><td class="company-name">逐际动力</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>13</td><td class="city-tag">北京</td><td class="company-name">星尘智能</td><td>2023年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>14</td><td class="city-tag">北京</td><td class="company-name">北京人形机器人创新中心</td><td>2023年</td><td>双足人形机器人、具身模型</td></tr>
+            <tr><td>15</td><td class="city-tag">北京</td><td class="company-name">灵宝机器人</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>16</td><td class="city-tag">北京</td><td class="company-name">源络科技</td><td>2023年</td><td>轮式人形机器人</td></tr>
+            <tr><td>17</td><td class="city-tag">北京</td><td class="company-name">智身科技</td><td>2023年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>18</td><td class="city-tag">北京</td><td class="company-name">小米机器人</td><td>2023年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>19</td><td class="city-tag">北京</td><td class="company-name">方舟无限</td><td>2023年</td><td>轮式人形机器人</td></tr>
+            <tr><td>20</td><td class="city-tag">北京</td><td class="company-name">长兴动力</td><td>2023年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>21</td><td class="city-tag">北京</td><td class="company-name">灵生科技</td><td>2023年</td><td>轮式人形机器人</td></tr>
+            <tr><td>22</td><td class="city-tag">北京</td><td class="company-name">极佳视界</td><td>2023年</td><td>轮式人形机器人</td></tr>
+            <tr><td>23</td><td class="city-tag">北京</td><td class="company-name">动易科技</td><td>2024年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>24</td><td class="city-tag">北京</td><td class="company-name">阿米奥机器人</td><td>2024年</td><td>轮式人形机器人</td></tr>
+            <tr><td>25</td><td class="city-tag">北京</td><td class="company-name">灵初智能</td><td>2024年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>26</td><td class="city-tag">北京</td><td class="company-name">中科第五纪</td><td>2024年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>27</td><td class="city-tag">北京</td><td class="company-name">维他动力</td><td>2024年</td><td>四足机器人、人形机器人</td></tr>
+            <tr><td>28</td><td class="city-tag">北京</td><td class="company-name">灵心智能</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>29</td><td class="city-tag">北京</td><td class="company-name">智往未来</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>30</td><td class="city-tag">北京</td><td class="company-name">无界动力</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>31</td><td class="city-tag">北京</td><td class="company-name">深度创智</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>32</td><td class="city-tag">北京</td><td class="company-name">大影机器人</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>33</td><td class="city-tag">北京</td><td class="company-name">视见求索</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>34</td><td class="city-tag">上海</td><td class="company-name">高仙智能</td><td>2010年</td><td>配送机器人、双足人形机器人</td></tr>
+            <tr><td>35</td><td class="city-tag">上海</td><td class="company-name">节卡机器人</td><td>2014年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>36</td><td class="city-tag">上海</td><td class="company-name">傅利叶智能</td><td>2015年</td><td>双足人形机器人</td></tr>
+            <tr><td>37</td><td class="city-tag">上海</td><td class="company-name">达闼科技</td><td>2015年</td><td>双足人形机器人</td></tr>
+            <tr><td>38</td><td class="city-tag">上海</td><td class="company-name">鲸鱼机器人</td><td>2018年</td><td>双足人形机器人</td></tr>
+            <tr><td>39</td><td class="city-tag">上海</td><td class="company-name">傲鲨智能</td><td>2018年</td><td>人形外骨骼复合机器人</td></tr>
+            <tr><td>40</td><td class="city-tag">上海</td><td class="company-name">钛虎机器人</td><td>2020年</td><td>双足人形机器人</td></tr>
+            <tr><td>41</td><td class="city-tag">上海</td><td class="company-name">仙工智能</td><td>2020年</td><td>轮式人形机器人</td></tr>
+            <tr><td>42</td><td class="city-tag">上海</td><td class="company-name">卓益得机器人</td><td>2021年</td><td>双足人形机器人</td></tr>
+            <tr><td>43</td><td class="city-tag">上海</td><td class="company-name">清宝机器人</td><td>2021年</td><td>仿生人形机器人</td></tr>
+            <tr><td>44</td><td class="city-tag">上海</td><td class="company-name">半醒科技</td><td>2022年</td><td>双足人形机器人</td></tr>
+            <tr><td>45</td><td class="city-tag">上海</td><td class="company-name">智元</td><td>2023年</td><td>四足、轮式及双足人形机器人、具身模型</td></tr>
+            <tr><td>46</td><td class="city-tag">上海</td><td class="company-name">开普勒智能</td><td>2023年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>47</td><td class="city-tag">上海</td><td class="company-name">青心意创</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>48</td><td class="city-tag">上海</td><td class="company-name">人形机器人(上海)有限公司</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>49</td><td class="city-tag">上海</td><td class="company-name">如身机器人</td><td>2023年</td><td>轮椅人形机器人</td></tr>
+            <tr><td>50</td><td class="city-tag">上海</td><td class="company-name">矩阵超智</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>51</td><td class="city-tag">上海</td><td class="company-name">智可派机器人</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>52</td><td class="city-tag">上海</td><td class="company-name">无限工坊机器人</td><td>2024年</td><td>轮式人形机器人</td></tr>
+            <tr><td>53</td><td class="city-tag">上海</td><td class="company-name">首形科技</td><td>2024年</td><td>仿生人脸机器人</td></tr>
+            <tr><td>54</td><td class="city-tag">上海</td><td class="company-name">镜识科技</td><td>2024年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>55</td><td class="city-tag">上海</td><td class="company-name">灵波科技</td><td>2025年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>56</td><td class="city-tag">上海</td><td class="company-name">它石智航</td><td>2025年</td><td>轮式及双足人形机器人、具身模型</td></tr>
+            <tr><td>57</td><td class="city-tag">上海</td><td class="company-name">萝博派对</td><td>2025年</td><td>开源人形机器人</td></tr>
+            <tr><td>58</td><td class="city-tag">上海</td><td class="company-name">未来不远</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>59</td><td class="city-tag">上海</td><td class="company-name">浩海星空</td><td>2025年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>60</td><td class="city-tag">深圳</td><td class="company-name">优必选</td><td>2012年</td><td>双足人形机器人</td></tr>
+            <tr><td>61</td><td class="city-tag">深圳</td><td class="company-name">越疆机器人</td><td>2015年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>62</td><td class="city-tag">深圳</td><td class="company-name">乐聚机器人</td><td>2016年</td><td>双足人形机器人</td></tr>
+            <tr><td>63</td><td class="city-tag">深圳</td><td class="company-name">普渡科技</td><td>2016年</td><td>四足机器人、双足及轮式人形机器人</td></tr>
+            <tr><td>64</td><td class="city-tag">深圳</td><td class="company-name">大象机器人</td><td>2016年</td><td>轮式人形机器人</td></tr>
+            <tr><td>65</td><td class="city-tag">深圳</td><td class="company-name">优艾智合</td><td>2017年</td><td>复合机器人、双足及轮式人形机器人</td></tr>
+            <tr><td>66</td><td class="city-tag">深圳</td><td class="company-name">卧安机器人</td><td>2018年</td><td>轮式人形机器人</td></tr>
+            <tr><td>67</td><td class="city-tag">深圳</td><td class="company-name">腾讯Robotics实验室</td><td>2018年</td><td>轮足式人形机器人</td></tr>
+            <tr><td>68</td><td class="city-tag">深圳</td><td class="company-name">跨维智能</td><td>2021年</td><td>双足人形机器人、具身模型</td></tr>
+            <tr><td>69</td><td class="city-tag">深圳</td><td class="company-name">帕西尼感知</td><td>2021年</td><td>触觉传感器、轮式人形机器人</td></tr>
+            <tr><td>70</td><td class="city-tag">深圳</td><td class="company-name">星尘智能</td><td>2022年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>71</td><td class="city-tag">深圳</td><td class="company-name">逐际动力</td><td>2022年</td><td>双足人形机器人</td></tr>
+            <tr><td>72</td><td class="city-tag">深圳</td><td class="company-name">众擎机器人</td><td>2023年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>73</td><td class="city-tag">深圳</td><td class="company-name">智平方</td><td>2023年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>74</td><td class="city-tag">深圳</td><td class="company-name">戴盟机器人</td><td>2023年</td><td>触觉传感器、轮式人形机器人</td></tr>
+            <tr><td>75</td><td class="city-tag">深圳</td><td class="company-name">自变量机器人</td><td>2023年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>76</td><td class="city-tag">深圳</td><td class="company-name">灵翅智能</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>77</td><td class="city-tag">深圳</td><td class="company-name">若想科技</td><td>2023年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>78</td><td class="city-tag">深圳</td><td class="company-name">数字华夏</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>79</td><td class="city-tag">深圳</td><td class="company-name">鹿明机器人</td><td>2024年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>80</td><td class="city-tag">深圳</td><td class="company-name">赛博格</td><td>2024年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>81</td><td class="city-tag">深圳</td><td class="company-name">智动未来</td><td>2024年</td><td>轮式人形机器人</td></tr>
+            <tr><td>82</td><td class="city-tag">深圳</td><td class="company-name">科技</td><td>2025年</td><td>人形机器人</td></tr>
+            <tr><td>83</td><td class="city-tag">深圳</td><td class="company-name">三号宇宙</td><td>2025年</td><td>陪伴机器人</td></tr>
+            <tr><td>84</td><td class="city-tag">深圳</td><td class="company-name">塔克斯机器人</td><td>2025年</td><td>人形机器人</td></tr>
+            <tr><td>85</td><td class="city-tag">深圳</td><td class="company-name">超维动力</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>86</td><td class="city-tag">深圳</td><td class="company-name">领益机器人</td><td>2025年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>87</td><td class="city-tag">杭州</td><td class="company-name">宇树科技</td><td>2016年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>88</td><td class="city-tag">杭州</td><td class="company-name">蓝芯机器人</td><td>2016年</td><td>轮式人形机器人</td></tr>
+            <tr><td>89</td><td class="city-tag">杭州</td><td class="company-name">海康机器人</td><td>2016年</td><td>移动机器人、轮式人形机器人</td></tr>
+            <tr><td>90</td><td class="city-tag">杭州</td><td class="company-name">云深处科技</td><td>2017年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>91</td><td class="city-tag">杭州</td><td class="company-name">西湖机器人</td><td>2021年</td><td>轮式人形机器人</td></tr>
+            <tr><td>92</td><td class="city-tag">杭州</td><td class="company-name">五八智能</td><td>2022年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>93</td><td class="city-tag">杭州</td><td class="company-name">图睿智能</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>94</td><td class="city-tag">杭州</td><td class="company-name">原力无限</td><td>2023年</td><td>轮式人形机器人</td></tr>
+            <tr><td>95</td><td class="city-tag">杭州</td><td class="company-name">智澄AI</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>96</td><td class="city-tag">杭州</td><td class="company-name">软通天擎</td><td>2024年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>97</td><td class="city-tag">杭州</td><td class="company-name">千寻智能</td><td>2024年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>98</td><td class="city-tag">杭州</td><td class="company-name">行思无界</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>99</td><td class="city-tag">杭州</td><td class="company-name">纽鼐机器人</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>100</td><td class="city-tag">苏州</td><td class="company-name">穿山甲机器人</td><td>2006年</td><td>配送机器人、轮式人形机器人</td></tr>
+            <tr><td>101</td><td class="city-tag">苏州</td><td class="company-name">云幕智选</td><td>2021年</td><td>仿生人形机器人</td></tr>
+            <tr><td>102</td><td class="city-tag">苏州</td><td class="company-name">优理奇机器人</td><td>2024年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>103</td><td class="city-tag">苏州</td><td class="company-name">双子智掌</td><td>2025年</td><td>轮式人形机器人、灵巧手</td></tr>
+            <tr><td>104</td><td class="city-tag">苏州</td><td class="company-name">昆工聚将</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>105</td><td class="city-tag">广州</td><td class="company-name">小鹏</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>106</td><td class="city-tag">广州</td><td class="company-name">广汽集团</td><td>2019年</td><td>双足人形机器人</td></tr>
+            <tr><td>107</td><td class="city-tag">广州</td><td class="company-name">高擎机电</td><td>2022年</td><td>轮式人形机器人</td></tr>
+            <tr><td>108</td><td class="city-tag">广州</td><td class="company-name">富擎智能</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>109</td><td class="city-tag">广州</td><td class="company-name">未来动力</td><td>2024年</td><td>轮式人形机器人</td></tr>
+            <tr><td>110</td><td class="city-tag">宁波</td><td class="company-name">新尔科技</td><td>2005年</td><td>双足人形机器人</td></tr>
+            <tr><td>111</td><td class="city-tag">宁波</td><td class="company-name">均普智能</td><td>2017年</td><td>双足人形机器人</td></tr>
+            <tr><td>112</td><td class="city-tag">宁波</td><td class="company-name">PNDbotics</td><td>2023年</td><td>双足人形机器人</td></tr>
+            <tr><td>113</td><td class="city-tag">合肥</td><td class="company-name">无论科技</td><td>2024年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>114</td><td class="city-tag">合肥</td><td class="company-name">中科灵星</td><td>2024年</td><td>仿生人形机器人</td></tr>
+            <tr><td>115</td><td class="city-tag">合肥</td><td class="company-name">聆动通用</td><td>2025年</td><td>灵巧手、轮式人形机器人</td></tr>
+            <tr><td>116</td><td class="city-tag">合肥</td><td class="company-name">零次方</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>117</td><td class="city-tag">南京</td><td class="company-name">天创智能</td><td>2011年</td><td>轮式人形机器人、具身模型</td></tr>
+            <tr><td>118</td><td class="city-tag">南京</td><td class="company-name">埃斯顿酷卓</td><td>2022年</td><td>仿生人形机器人</td></tr>
+            <tr><td>119</td><td class="city-tag">南京</td><td class="company-name">中科超纪</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>120</td><td class="city-tag">南京</td><td class="company-name">著智能</td><td>2025年</td><td>轮式人形机器人</td></tr>
+            <tr><td>121</td><td class="city-tag">无锡</td><td class="company-name">斯坦德</td><td>2016年</td><td>双足人形机器人</td></tr>
+            <tr><td>122</td><td class="city-tag">无锡</td><td class="company-name">无界探索</td><td>2023年</td><td>仿真人形机器人</td></tr>
+            <tr><td>123</td><td class="city-tag">无锡</td><td class="company-name">魔法原子</td><td>2024年</td><td>四足机器人、双足人形机器人</td></tr>
+            <tr><td>124</td><td class="city-tag">无锡</td><td class="company-name">钦通天擎</td><td>2024年</td><td>轮式人形机器人、双足人形机器人</td></tr>
+            <tr><td>125</td><td class="city-tag">芜湖</td><td class="company-name">启智机器人</td><td>2024年</td><td>轮式人形机器人</td></tr>
+            <tr><td>126</td><td class="city-tag">芜湖</td><td class="company-name">墨甲智创</td><td>2025年</td><td></td></tr>
+            <tr><td>127</td><td class="city-tag">武汉</td><td class="company-name">光谷华汇</td><td>2024年</td><td></td></tr>
+            <tr><td>128</td><td class="city-tag">武汉</td><td class="company-name">格蓝若机器人</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>129</td><td class="city-tag">武汉</td><td class="company-name">光谷东智</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>130</td><td class="city-tag">武汉</td><td class="company-name">荆楚机器人</td><td>2025年</td><td>双足人形机器人</td></tr>
+            <tr><td>131</td><td class="city-tag">成都</td><td class="company-name">阿加犀智能</td><td>2020年</td><td>双足人形机器人</td></tr>
+            <tr><td>132</td><td class="city-tag">成都</td><td class="company-name">双擎人形</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>133</td><td class="city-tag">成都</td><td class="company-name">阿瑞斯动力</td><td>2024年</td><td>双足人形机器人</td></tr>
+            <tr><td>134</td><td class="city-tag">佛山</td><td class="company-name">天太机器人</td><td>2014年</td><td>双足人形机器人</td></tr>
+            <tr><td>135</td><td class="city-tag">佛山</td><td class="company-name">美的</td><td>2016年</td><td>关节模组、轮式人形机器人</td></tr>
+            <tr><td>136</td><td class="city-tag">长沙</td><td class="company-name">超能机器人</td><td>2021年</td><td>双足及轮式人形机器人</td></tr>
+            <tr><td>137</td><td class="city-tag">长沙</td><td class="company-name">比邻星科技</td><td>2012年</td><td>双足人形机器人</td></tr>
+            <tr><td>138</td><td class="city-tag">长沙</td><td class="company-name">天链机器人</td><td>2024年</td><td>轮式人形机器人</td></tr>
+            <tr><td>139</td><td class="city-tag">天津</td><td class="company-name">阿童木机器人</td><td>2013年</td><td>双足人形机器人</td></tr>
+            <tr><td>140</td><td class="city-tag">济南</td><td class="company-name">优宗特机器人</td><td>2014年</td><td>轮式人形机器人</td></tr>
+            <tr><td>141</td><td class="city-tag">济宁</td><td class="company-name">珞石机器人</td><td>2015年</td><td>双足人形机器人</td></tr>
+            <tr><td>142</td><td class="city-tag">金华</td><td class="company-name">有鹿科技</td><td>2024年</td><td>轮式人形机器人</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="data-note">📊 数据来源：公众号「机器人都市观察」文章《中国人形机器人超140家公司！》| 更新时间：2026年4月</p>
+
+        <div class="md-content" style="margin-top:40px;">
+            <h2>关键发现</h2>
+            <ul>
+                <li><strong>城市集中度高</strong>：北京(33)、深圳(27)、上海(26)、杭州(13)四城占比超70%</li>
+                <li><strong>2023-2025年爆发</strong>：近三年新增88家，占总数62%，行业热度持续升温</li>
+                <li><strong>产品类型</strong>：双足人形机器人最热门(62家)，其次是轮式人形(49家)，具身模型成为新趋势(17家)</li>
+                <li><strong>投资阶段</strong>：多数公司处于早期~成长期，资本密集涌入</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var cityChart = echarts.init(document.getElementById('cityChart'));
+        cityChart.setOption({
+            tooltip: { trigger: 'item' },
+            series: [{
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                itemStyle: { borderRadius: 10, borderColor: '#1a1a2e', borderWidth: 2 },
+                label: { show: true, color: '#fff', fontSize: 11 },
+                data: [
+                    ["北京", 33],
+            ["上海", 26],
+            ["深圳", 27],
+            ["杭州", 13],
+            ["苏州", 5],
+            ["广州", 5],
+            ["宁波", 3],
+            ["合肥", 4],
+            ["南京", 4],
+            ["无锡", 4],
+            ["芜湖", 2],
+            ["武汉", 4],
+            ["成都", 3],
+            ["佛山", 2],
+            ["长沙", 3],
+            ["天津", 1],
+            ["济南", 1],
+            ["济宁", 1],
+            ["金华", 1]
+                ],
+                color: ['#00d4ff','#7b2cbf','#ff6b6b','#4ecdc4','#ffe66d','#95e1d3','#f38181','#aa96da','#fcbad3','#a8d8ea']
+            }]
+        });
+
+        var yearChart = echarts.init(document.getElementById('yearChart'));
+        yearChart.setOption({
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: ["2005年", "2006年", "2010年", "2011年", "2012年", "2013年", "2014年", "2015年", "2016年", "2017年", "2018年", "2019年", "2020年", "2021年", "2022年", "2023年", "2024年", "2025年"], axisLabel: { color: '#a0a0a0' } },
+            yAxis: { type: 'value', axisLabel: { color: '#a0a0a0' } },
+            series: [{
+                data: [["2005年", 1],
+            ["2006年", 1],
+            ["2010年", 1],
+            ["2011年", 1],
+            ["2012年", 2],
+            ["2013年", 1],
+            ["2014年", 3],
+            ["2015年", 7],
+            ["2016年", 9],
+            ["2017年", 3],
+            ["2018年", 6],
+            ["2019年", 1],
+            ["2020年", 3],
+            ["2021年", 7],
+            ["2022年", 8],
+            ["2023年", 29],
+            ["2024年", 32],
+            ["2025年", 27]],
+                type: 'bar',
+                itemStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: '#00d4ff' },
+                        { offset: 1, color: '#7b2cbf' }
+                    ])
+                },
+                barRadius: [5, 5, 0, 0]
+            }]
+        });
+
+        var currentFilter = '全部';
+        function filterCity(city) {
+            currentFilter = city;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.includes(city) || (city === '全部' && btn.textContent === '全部'));
+            });
+            filterTable();
+        }
+
+        function filterTable() {
+            var query = document.getElementById('searchInput').value.toLowerCase();
+            var rows = document.querySelectorAll('#companyTable tbody tr');
+            rows.forEach(row => {
+                var text = row.textContent.toLowerCase();
+                var city = row.querySelector('.city-tag')?.textContent || '';
+                var otherCities = ['苏州','广州','宁波','合肥','南京','无锡','芜湖','武汉','成都','佛山','长沙','天津','济南','济宁','金华'];
+                var show = (currentFilter === '全部' || city === currentFilter || (currentFilter === '其他' && otherCities.includes(city))) && text.includes(query);
+                row.style.display = show ? '' : 'none';
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            cityChart.resize();
+            yearChart.resize();
+        });
+    </script>
+</body>
+</html>
