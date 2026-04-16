@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国人形机器人企业数据库（增强版）| 机器人知识库</title>
+<meta name="description" content="130+家人形机器人企业全字段数据库，覆盖融资、IPO、注册资本、法人、知识产权等40+维度，支持多条件筛选与搜索">
+<meta name="keywords" content="人形机器人,企业数据库,IPO追踪,融资轮次,机器人公司">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c14;
+  --surface: #0d1421;
+  --surface2: #111827;
+  --border: #1e2d40;
+  --accent: #00d4ff;
+  --accent2: #ff6b35;
+  --accent3: #ffd600;
+  --text: #e8edf5;
+  --text2: #7a8ba3;
+  --text3: #4a5568;
+  --green: #10b981;
+  --red: #ef4444;
+  --orange: #f59e0b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,212,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255,107,53,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* Navigation */
+.nav-bar {
+  padding: 16px 0;
+  margin-bottom: 20px;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+.breadcrumb {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text3);
+}
+.breadcrumb a { color: var(--text2); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span { margin: 0 6px; color: var(--text3); }
+
+/* ── Header ── */
+.header {
+  padding: 30px 0 40px;
+  text-align: center;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: var(--accent);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 4px 14px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 60%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header p {
+  color: var(--text2);
+  font-size: 15px;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.header-meta {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.header-meta span { display: flex; align-items: center; gap: 6px; }
+.header-meta .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* ── Stats ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 40px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0.6;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Space Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  color: var(--text);
+}
+
+.stat-value.accent { color: var(--accent); }
+.stat-value.orange { color: var(--accent2); }
+.stat-value.yellow { color: var(--accent3); }
+.stat-value.green { color: var(--green); }
+
+.stat-sub {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 4px;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ── Filters ── */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 16px 10px 40px;
+  color: var(--text);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-box input:focus { border-color: var(--accent); }
+.search-box input::placeholder { color: var(--text3); }
+
+.search-box::before {
+  content: '⌕';
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text2);
+  font-size: 16px;
+}
+
+select.filter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 32px 10px 14px;
+  color: var(--text);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237a8ba3' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.3s;
+}
+
+select.filter:focus { border-color: var(--accent); }
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: var(--accent);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-family: 'Space Mono', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tag:hover { background: rgba(0,212,255,0.2); }
+
+.filter-tag.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.result-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--text2);
+  margin-left: auto;
+}
+
+.result-count strong { color: var(--accent); }
+
+/* ── Table ── */
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead {
+  background: var(--surface2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text2);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: 'Space Mono', monospace;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+th:hover { color: var(--accent); }
+th.sort-asc::after { content: ' ↑'; color: var(--accent); }
+th.sort-desc::after { content: ' ↓'; color: var(--accent); }
+
+td {
+  padding: 11px 14px;
+  border-bottom: 1px solid rgba(30,45,64,0.5);
+  color: var(--text);
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+tr:hover td { background: rgba(0,212,255,0.03); }
+
+tr:last-child td { border-bottom: none; }
+
+/* Row number */
+td.num {
+  color: var(--text3);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  width: 40px;
+}
+
+/* Company name */
+td.name {
+  font-weight: 600;
+  color: #fff;
+  max-width: 200px;
+}
+
+td.short-name {
+  font-size: 12px;
+  color: var(--text2);
+}
+
+/* Legal rep */
+td.legal { color: var(--text2); font-size: 12px; white-space: nowrap; }
+
+/* Capital */
+td.capital { font-family: 'Space Mono', monospace; font-size: 12px; white-space: nowrap; }
+
+/* Status badge */
+.badge-status {
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'Space Mono', monospace;
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge-status.IPO { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+.badge-status.IPO-pending { background: rgba(245,158,11,0.15); color: var(--orange); border: 1px solid rgba(245,158,11,0.3); }
+.badge-status.listed { background: rgba(0,212,255,0.15); color: var(--accent); border: 1px solid rgba(0,212,255,0.3); }
+.badge-status.active { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.badge-status.unknown { background: rgba(120,139,163,0.15); color: var(--text2); border: 1px solid rgba(120,139,163,0.2); }
+.badge-status.canceled { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+
+/* Financing */
+td.financing { font-size: 12px; white-space: nowrap; }
+td.financing .round { color: var(--accent2); font-weight: 600; font-family: 'Space Mono', monospace; }
+td.financing .amount { color: var(--text2); font-size: 11px; margin-top: 1px; }
+
+/* Province tag */
+td.province { font-size: 12px; white-space: nowrap; }
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--text2);
+  font-family: 'Space Mono', monospace;
+}
+
+.loading::after {
+  content: '...';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+}
+
+.page-info {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.page-controls { display: flex; gap: 8px; }
+
+.page-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.page-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  color: var(--text3);
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.footer a { color: var(--accent); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 0 16px 60px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  th:nth-child(n+6), td:nth-child(n+6) { display: none; }
+  .header h1 { font-size: 24px; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* Entrance animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-bar { animation: fadeUp 0.5s ease both; }
+.header { animation: fadeUp 0.6s ease both; }
+.stats { animation: fadeUp 0.6s 0.1s ease both; }
+.filters { animation: fadeUp 0.6s 0.2s ease both; }
+.table-wrap { animation: fadeUp 0.6s 0.3s ease both; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="nav-bar">
+    <a href="index.html" class="back-link">← 返回公司与产品</a>
+    <div class="breadcrumb"><a href="../index.html">🏠 首页</a><span>›</span><a href="index.html">🏢 公司与产品</a><span>›</span>中国人形机器人企业数据库（增强版）</div>
+  </div>
+
+  <div class="header">
+    <div class="badge">DATASET 2026.04 · 增强版</div>
+    <h1>中国人形机器人<br>企业数据库</h1>
+    <p>130+家企业全字段数据库，覆盖融资、IPO、注册资本、法人、知识产权等40+维度，支持多条件筛选</p>
+    <div class="header-meta">
+      <span><span class="dot"></span>数据来源：天眼查 / 公开信息</span>
+      <span>GMT+8 · 2026-04-11</span>
+    </div>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="loading">LOADING</div>
+  </div>
+
+  <div class="filters">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索企业名称、简称、法人...">
+    </div>
+    <select class="filter" id="provinceFilter">
+      <option value="">全部省份</option>
+    </select>
+    <select class="filter" id="statusFilter">
+      <option value="">全部状态</option>
+      <option value="IPO">IPO/上市</option>
+      <option value="IPO-pending">IPO审核中</option>
+      <option value="active">存续</option>
+      <option value="canceled">已注销</option>
+    </select>
+    <select class="filter" id="financingFilter">
+      <option value="">全部融资</option>
+      <option value="IPO轮">IPO轮</option>
+      <option value="Pre-IPO">Pre-IPO</option>
+      <option value="战略轮">战略轮</option>
+      <option value="E轮">E轮</option>
+      <option value="D轮">D轮</option>
+      <option value="C轮">C轮</option>
+      <option value="B轮">B轮</option>
+      <option value="A轮">A轮</option>
+      <option value="天使轮">天使轮</option>
+    </select>
+    <div class="result-count" id="resultCount"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="pagination" id="pagination" style="display:none;">
+    <div class="page-info" id="pageInfo"></div>
+    <div class="page-controls" id="pageControls"></div>
+  </div>
+
+  <div class="footer">
+    数据来源：天眼查 · 公开信息 &nbsp;|&nbsp; 
+    <a href="../index.html">机器人知识库</a> &nbsp;|&nbsp; 
+    如有疏漏请指正
+  </div>
+
+</div>
+
+<script src="db_data_enhanced.js"></script>
+<script>
+let allData = [];
+let filtered = [];
+let currentPage = 1;
+const PAGE_SIZE = 30;
+
+const COL_MAP = {
+  '#': '序号',
+  '企业名称': '企业名称',
+  '简称/品牌': '简称',
+  '法定代表人': '法人',
+  '注册资本': '资本',
+  '成立时间': '成立',
+  '省份': '省份',
+  '最新融资轮次': '融资',
+  'IPO状态': 'IPO',
+  'IPO时间': 'IPO日期',
+  '交易所/市场': '市场'
+};
+
+const IPO_STATUS_MAP = {
+  'IPO审核中': 'IPO-pending',
+  '港股IPO': 'IPO',
+  '已获港股IPO备案': 'IPO',
+  '已获证监会备案': 'IPO',
+  '存续': 'listed',
+  'IPO': 'IPO',
+  '已注销': 'canceled',
+};
+
+function getIPOClass(status) {
+  if (!status) return 'unknown';
+  return IPO_STATUS_MAP[status] || 'unknown';
+}
+
+function formatStatus(status) {
+  if (!status) return '—';
+  if (status.includes('IPO') || status.includes('上市')) return 'IPO';
+  if (status.includes('审核') || status.includes('备案')) return 'IPO-pending';
+  if (status.includes('存续') || status.includes('在营')) return 'listed';
+  if (status.includes('注销')) return 'canceled';
+  return 'unknown';
+}
+
+function renderStats(data) {
+  const total = data.length;
+  const provinces = new Set(data.filter(d => d['省份']).map(d => d['省份']));
+  const hasIPO = data.filter(d => d['IPO状态'] && !['—', '—', ''].includes(d['IPO状态'])).length;
+  const hasLegal = data.filter(d => d['法定代表人'] && !['❓', '—', '❓', ''].includes(d['法定代表人'])).length;
+  const totalCapital = data.reduce((sum, d) => {
+    const v = parseFloat(d['注册资本金额'] || d['实缴资本'] || 0);
+    return sum + (isNaN(v) ? 0 : v);
+  }, 0);
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-label">企业总数</div>
+      <div class="stat-value accent">${total}</div>
+      <div class="stat-sub">家</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">覆盖省份</div>
+      <div class="stat-value orange">${provinces.size}</div>
+      <div class="stat-sub">省级行政区</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">已/拟IPO</div>
+      <div class="stat-value green">${hasIPO}</div>
+      <div class="stat-sub">家</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">有法人信息</div>
+      <div class="stat-value yellow">${hasLegal}</div>
+      <div class="stat-sub">/${total}家</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">总注册资本</div>
+      <div class="stat-value">${(totalCapital/10000).toFixed(0)}</div>
+      <div class="stat-sub">亿元</div>
+    </div>
+  `;
+}
+
+function renderTable(data, page) {
+  const start = (page - 1) * PAGE_SIZE;
+  const pageData = data.slice(start, start + PAGE_SIZE);
+  
+  // Header
+  const headers = ['#', '企业名称', '简称/品牌', '法定代表人', '注册资本', '成立时间', '省份', '最新融资轮次', 'IPO状态'];
+  document.getElementById('thead').innerHTML = '<tr>' + 
+    headers.map(h => `<th>${COL_MAP[h] || h}</th>`).join('') + 
+    '</tr>';
+
+  // Rows
+  const rows = pageData.map((d, i) => {
+    const ipo = d['IPO状态'] || '';
+    const ipoClass = getIPOClass(ipo);
+    const statusLabel = ipo || '—';
+    const capital = d['注册资本'] || d['实缴资本'] || '—';
+    const financing = d['最新融资轮次'] || '';
+    const legal = d['法定代表人'] || '—';
+    const province = d['省份'] || d['参保人数'] || '—';
+    
+    return `<tr>
+      <td class="num">${start + i + 1}</td>
+      <td class="name">${d['企业名称'] || '—'}</td>
+      <td class="short-name">${d['简称/品牌'] || ''}</td>
+      <td class="legal">${legal}</td>
+      <td class="capital">${capital}</td>
+      <td class="legal">${d['成立时间'] || '—'}</td>
+      <td class="province">${province}</td>
+      <td class="financing">
+        ${financing ? `<div class="round">${financing}</div>` : '—'}
+      </td>
+      <td><span class="badge-status ${ipoClass}">${statusLabel}</span></td>
+    </tr>`;
+  }).join('');
+  
+  document.getElementById('tbody').innerHTML = rows || '<tr><td colspan="9" style="text-align:center;padding:40px;color:var(--text2);font-family:Space Mono,monospace">无匹配结果</td></tr>';
+
+  // Pagination
+  renderPagination(data.length, page);
+}
+
+function renderPagination(total, page) {
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  if (totalPages <= 1) {
+    document.getElementById('pagination').style.display = 'none';
+    return;
+  }
+  document.getElementById('pagination').style.display = 'flex';
+  document.getElementById('pageInfo').textContent = `第 ${page} / ${totalPages} 页，共 ${total} 条`;
+
+  let btns = '';
+  btns += `<button class="page-btn" onclick="goPage(${page-1})" ${page===1?'disabled':''}>← 上一页</button>`;
+  
+  const range = [];
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || (i >= page - 2 && i <= page + 2)) range.push(i);
+  }
+  let prev = 0;
+  for (const p of range) {
+    if (prev && p - prev > 1) btns += '<button class="page-btn" onclick="goPage(' + Math.round((prev+p)/2) + ')">…</button>';
+    btns += `<button class="page-btn ${p===page?'active':''}" onclick="goPage(${p})">${p}</button>`;
+    prev = p;
+  }
+  
+  btns += `<button class="page-btn" onclick="goPage(${page+1})" ${page===totalPages?'disabled':''}>下一页 →</button>`;
+  document.getElementById('pageControls').innerHTML = btns;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderTable(filtered, p);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const province = document.getElementById('provinceFilter').value;
+  const status = document.getElementById('statusFilter').value;
+  const financing = document.getElementById('financingFilter').value;
+
+  filtered = allData.filter(d => {
+    if (q && ![d['企业名称'], d['简称/品牌'], d['法定代表人']].some(v => (v||'').toLowerCase().includes(q))) return false;
+    if (province && d['省份'] !== province) return false;
+    if (status && formatStatus(d['IPO状态']) !== status) return false;
+    if (financing && !(d['最新融资轮次'] || '').includes(financing)) return false;
+    return true;
+  });
+
+  currentPage = 1;
+  document.getElementById('resultCount').innerHTML = `显示 <strong>${filtered.length}</strong> / ${allData.length} 家`;
+  renderTable(filtered, 1);
+}
+
+function populateProvinceFilter() {
+  const provinces = [...new Set(allData.map(d => d['省份']).filter(Boolean))].sort();
+  const sel = document.getElementById('provinceFilter');
+  provinces.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.textContent = p;
+    sel.appendChild(opt);
+  });
+}
+
+// Load embedded data
+try {
+    if (typeof DB_DATA !== 'undefined') {
+        allData = DB_DATA.companies || [];
+    } else {
+        allData = [];
+    }
+    filtered = [...allData];
+    renderStats(allData);
+    populateProvinceFilter();
+    applyFilters();
+} catch(err) {
+    document.getElementById('stats').innerHTML = '<p style="color:#ef4444;padding:40px">数据加载失败: ' + err.message + '</p>';
+}
+
+// Event listeners
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+document.getElementById('provinceFilter').addEventListener('change', applyFilters);
+document.getElementById('statusFilter').addEventListener('change', applyFilters);
+document.getElementById('financingFilter').addEventListener('change', applyFilters);
+</script>
+</body>
+</html>
