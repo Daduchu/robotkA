@@ -4,52 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>机器人发展历史与趋势 | 机器人知识库</title>
+    <meta name="description" content="机器人70年发展全史：从Unimate到人形机器人，详述每个阶段的技术突破、关键企业与里程碑事件">
     <link rel="stylesheet" href="../style.css">
     <style>
         .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.8; }
         .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
-        .md-content h2 { font-size: 1.5rem; color: #fff; margin-top: 30px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
-        .md-content h3 { font-size: 1.1rem; color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
-        .md-content ul { margin-left: 25px; margin-bottom: 20px; color: #ccc; }
+        .md-content h2 { font-size: 1.5rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
+        .md-content h3 { font-size: 1.15rem; color: #00d4ff; margin-top: 25px; margin-bottom: 12px; }
+        .md-content h4 { font-size: 1rem; color: #b0b0b0; margin-top: 18px; margin-bottom: 8px; }
+        .md-content ul { margin-left: 25px; margin-bottom: 18px; color: #ccc; }
         .md-content li { margin-bottom: 8px; }
+        .md-content p { margin-bottom: 16px; color: #c8cdd8; }
+        .md-content a { color: #00d4ff; text-decoration: none; }
+        .md-content a:hover { text-decoration: underline; }
+        .md-content .tag { display: inline-block; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); color: #00d4ff; font-size: 11px; padding: 2px 8px; border-radius: 3px; margin-right: 4px; }
+        .md-content .timeline { border-left: 2px solid rgba(0,212,255,0.4); padding-left: 24px; margin-left: 10px; }
+        .md-content .timeline-item { margin-bottom: 24px; position: relative; }
+        .md-content .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #00d4ff; }
+        .md-content .timeline-year { font-family: 'Space Mono', monospace; font-weight: 700; color: #00d4ff; font-size: 1rem; }
+        .md-content .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+        .md-content .stat-box { background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 16px; text-align: center; }
+        .md-content .stat-box .num { font-size: 1.8rem; font-weight: 700; color: #00d4ff; font-family: 'Space Mono', monospace; }
+        .md-content .stat-box .label { font-size: 12px; color: #888; margin-top: 4px; }
+        .md-content strong { color: #fff; }
+        .md-content .ext-links { background: rgba(123,44,191,0.1); border: 1px solid rgba(123,44,191,0.3); border-radius: 10px; padding: 24px; margin-top: 30px; }
+        .md-content .ext-links h3 { color: #b388ff; margin-top: 0; }
+        .md-content .ext-links a { color: #b388ff; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="../index.html" class="back-link">← 返回首页</a>
-            <h1>📈 发展历史与趋势</h1>
+            <a href="index.html" class="back-link">← 返回发展历史与趋势</a>
+            <div class="breadcrumb"><a href="../index.html">🏠 首页</a><span>›</span><a href="index.html">📈 发展历史与趋势</a><span>›</span>机器人发展历史与趋势</div>
+            <h1>📈 机器人发展历史与趋势</h1>
             <p class="subtitle">Development History and Trends</p>
         </header>
         <div class="md-content">
-            <h1>机器人发展历史与趋势</h1>
-            <h2>1. 发展历史</h2>
-            <h3>1.1 早期发展</h3>
-            <ul><li>古代机器人雏形</li><li>工业革命时期的自动化装置</li><li>20世纪初的机器人概念</li><li>二战期间的自动化武器</li></ul>
-            <h3>1.2 工业机器人时代</h3>
-            <ul><li>1959年：第一台工业机器人Unimate诞生</li><li>1960s：工业机器人开始商业化</li><li>1970s：机器人技术在汽车工业中的应用</li><li>1980s：工业机器人的普及与标准化</li></ul>
-            <h3>1.3 智能机器人时代</h3>
-            <ul><li>1990s：传感器技术与计算机视觉的发展</li><li>2000s：人工智能技术在机器人中的应用</li><li>2010s：协作机器人的兴起</li><li>2020s：智能机器人的广泛应用</li></ul>
-            <h3>1.4 人形机器人发展</h3>
-            <ul><li>早期人形机器人研究</li><li>日本人形机器人的发展</li><li>波士顿动力的人形机器人</li><li>现代人形机器人的技术突破</li></ul>
-            <h2>2. 技术趋势</h2>
-            <h3>2.1 智能化发展</h3>
-            <ul><li>机器学习与深度学习的应用</li><li>自主决策能力的提升</li><li>多模态感知技术</li><li>自适应学习能力</li></ul>
-            <h3>2.2 协同化发展</h3>
-            <ul><li>人机协作技术</li><li>多机器人协同系统</li><li>云端机器人</li><li>边缘计算与机器人</li></ul>
-            <h3>2.3 轻量化发展</h3>
-            <ul><li>新型材料的应用</li><li>结构优化设计</li><li>能量效率提升</li><li>小型化与便携化</li></ul>
-            <h3>2.4 多模态交互</h3>
-            <ul><li>语音交互</li><li>视觉交互</li><li>触觉交互</li><li>情感交互</li></ul>
-            <h2>3. 市场趋势</h2>
-            <h3>3.1 全球市场分析</h3>
-            <ul><li>工业机器人市场</li><li>服务机器人市场</li><li>特种机器人市场</li><li>人形机器人市场</li></ul>
-            <h3>3.2 区域市场分析</h3>
-            <ul><li>北美市场</li><li>欧洲市场</li><li>亚洲市场</li><li>新兴市场</li></ul>
-            <h3>3.3 行业应用趋势</h3>
-            <ul><li>汽车行业</li><li>电子行业</li><li>医疗行业</li><li>物流行业</li></ul>
-            <h3>3.4 投资与融资</h3>
-            <ul><li>风险投资趋势</li><li>产业基金布局</li><li>政府支持政策</li><li>上市企业表现</li></ul>
+
+<h1>机器人发展历史与趋势</h1>
+
+<div class="stat-grid">
+    <div class="stat-box"><div class="num">1959</div><div class="label">第一台工业机器人诞生</div></div>
+    <div class="stat-box"><div class="num">70+</div><div class="label">年行业发展历史</div></div>
+    <div class="stat-box"><div class="num">$55B</div><div class="label">2025年全球市场规模</div></div>
+    <div class="stat-box"><div class="num">15%</div><div class="label">年均复合增长率</div></div>
+</div>
+
+<h2>一、发展历史</h2>
+
+<h3>1.1 史前探索（1920s–1950s）</h3>
+<p>1920年，捷克作家卡雷尔·恰佩克（Karel Čapek）在科幻小说《罗萨姆的万能机器人》中首次使用"Robot"（源自捷克语"robota"，意为苦役）一词，机器人概念正式诞生。此后近40年间，机器人停留在文学与想象阶段，但自动机械的研究为后来奠定基础。</p>
+<ul>
+    <li><strong>1954年</strong>：英国发明家乔治·德沃尔（George Devol）申请了首个工业机器人专利，提出"可编程的机器人"概念</li>
+    <li><strong>1956年</strong>：德沃尔与约瑟夫·恩盖尔布赖恩（Joseph Engelberger）联合创立Unimation公司，意为"自动化单位"</li>
+    <li><strong>1959年</strong>：世界上第一台工业机器人<strong>Unimate #001</strong>诞生，部署于美国通用汽车压铸车间，标志着机器人工业时代正式开启</li>
+</ul>
+
+<h3>1.2 工业机器人时代（1960s–1980s）</h3>
+<p>1960年代工业机器人开始商业化，但受制于控制技术和成本，应用范围有限。1970年代石油危机推动制造业自动化升级，工业机器人进入爆发期。</p>
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-year">1961年</div>
+        <p>Unimate正式部署于通用汽车新泽西工厂，用于压铸和焊接，开创工业机器人商业化先河</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">1969年</div>
+        <p>日本 Kawasaki Heavy Industries 引进 Unimate 技术，亚洲首台工业机器人诞生；日本此后数十年成为全球最大工业机器人生产国</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">1973年</div>
+        <p>德国库卡（KUKA）推出 FAMULUS——第一台拥有6个机电驱动轴的工业机器人，奠定了现代多轴机器人架构</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">1978年</div>
+        <p>日本发那科（Fanuc）推出油压驱动工业机器人；同年日本安川电机（Yaskawa）推出 Motoman 系列；日本工业机器人产业全面崛起</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">1980年代</div>
+        <p>工业机器人标准化进程加快，汽车工业成为最大应用场景。ABB（当时ASEA）、KUKA、发那科、安川电机四大巨头格局初步形成，至今仍是全球工业机器人市场主导者</p>
+    </div>
+</div>
+
+<h3>1.3 智能机器人时代（1990s–2010s）</h3>
+<p>1990年代传感器技术、计算机视觉和人工智能的突破，使机器人从"程序化执行"走向"感知-决策"智能时代。2000年代协作机器人（cobot）的出现打破了人机隔离的安全壁垒。</p>
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-year">1992年</div>
+        <p>瑞士联邦理工学院的Roland Siegwart教授启动户外移动机器人研究，推动自主导航技术发展</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">1997年</div>
+        <p>NASA发射火星探路者号，其搭载的<strong>Sojourner</strong>无人车成为首台在地外星球运行的机器人；波士顿动力公司成立（最初隶属于MIT）</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2000年</div>
+        <p>本田（Honda）推出<strong>ASIMO</strong>，全球最先进的人形机器人之一，可行走、奔跑、上下楼梯，成为日本国家名片</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2005年</div>
+        <p>iRobot扫地机器人Roomba全球销量突破100万台，服务机器人开始大规模进入家庭</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2008年</div>
+        <p>ABB推出双臂协作机器人<strong>YuMi</strong>（2015年正式发布），专为小件装配设计，人机协作安全性达到新高度</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2012年</div>
+        <p>亚马逊收购Kiva Systems（后更名Amazon Robotics），仓储机器人行业迎来爆发；同年深度学习在图像识别领域取得突破，机器人视觉能力大幅提升</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2016年</div>
+        <p>波士顿动力<strong>Atlas</strong>人形机器人发布后空翻视频引爆网络；同年软银收购法国Aldebaran推出的<strong>Pepper</strong>机器人进入商用服务场景</p>
+    </div>
+</div>
+
+<h3>1.4 人形机器人时代（2020s–至今）</h3>
+<p>2021年特斯拉宣布Optimus项目，2022年小米发布CyberOne，2023年Figure AI成立并获微软/OpenAI投资，2024年智元机器人、宇树科技等中国公司密集发布人形机器人，人形机器人赛道进入爆发期。</p>
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-year">2021年</div>
+        <p>特斯拉AI Day宣布<strong>Optimus</strong>人形机器人项目，马斯克预测未来人形机器人需求将超过汽车</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2022年</div>
+        <p>小米发布全尺寸人形机器人<strong>CyberOne</strong>；波士顿动力宣布液压Atlas停产，全面转向电驱动Atlas</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2023年</div>
+        <p>Figure AI（美国）获微软、OpenAI、英伟达等7.5亿美元投资；智元机器人（上海）发布远征A1；Figure 01展示与OpenAI结合的多模态交互能力</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2024年</div>
+        <p>宇树科技H1人形机器人量产；银河通用获7亿+5亿两轮融资；松延动力完成股改；傅利叶GR-1开放预售；国家人形机器人创新中心在北京亦庄成立</p>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2025年</div>
+        <p>Figure 02发布；宇树科技IPO港股获受理（42亿募资）；珞石机器人港股IPO申报；Figure/BMW合作进入实际生产场景。人形机器人从展示进入实际商业应用阶段</p>
+    </div>
+</div>
+
+<h2>二、技术趋势</h2>
+
+<h3>2.1 具身智能：从"肢体"到"大脑"</h3>
+<p>大模型赋能机器人实现"常识推理+物理操作"的结合。2023年后，VLA（视觉-语言-动作）模型成为主流技术路线，机器人不仅能执行预设指令，还能理解自然语言意图、进行零样本任务泛化。</p>
+<ul>
+    <li><strong>RT-2</strong>（Google DeepMind）：视觉-语言-动作 Transformer，在互联网上训练，直接输出机器人动作</li>
+    <li><strong>PaLM-E</strong>（Google）：多模态大模型接入机器人控制，实现复杂指令理解</li>
+    <li><strong>RoboAgent</strong>（Meta）：少样本多任务泛化能力，单一模型覆盖12种不同机器人任务</li>
+    <li><strong>智元Go1</strong>：国产具身智能机器人，结合视觉语言模型和运控算法</li>
+</ul>
+
+<h3>2.2 硬件轻量化与新材料</h3>
+<p>碳纤维、镁合金、PEEK高性能塑料等轻量化材料正在替代传统铝合金，关节减速器向一体化关节（一体化机电关节）方向演进，成本持续下降。</p>
+
+<h3>2.3 多机协同与群体智能</h3>
+<p>分布式控制+云端算力使多机器人协同作业成为可能。亚马逊仓储体系中已有超75万台机器人同时运行，协同路径规划和任务分配算法成为核心技术。</p>
+
+<h3>2.4 仿生设计突破</h3>
+<p>MIT生物启发机器人实验室、波士顿动力等机构持续从自然界汲取设计灵感。软体机器人（使用柔性材料和人工肌肉）正在医疗和精密操作场景开辟新赛道。</p>
+
+<h2>三、市场趋势</h2>
+
+<h3>3.1 全球市场规模</h3>
+<p>根据国际机器人联合会（IFR）数据，2024年全球工业机器人装机量约59万台，服务机器人市场约450亿美元。预计2025年全球机器人市场规模超过550亿美元，中国是全球最大单一市场。</p>
+<ul>
+    <li><strong>工业机器人</strong>：汽车制造（35%）、电子制造（25%）、金属加工（15%）、其他（25%）</li>
+    <li><strong>服务机器人</strong>：物流配送、家政服务、医疗健康、农业采摘增长最快</li>
+    <li><strong>人形机器人</strong>：2025年市场规模约30亿美元，预计2030年超过300亿美元</li>
+</ul>
+
+<h3>3.2 中国市场格局</h3>
+<p>中国已连续多年是全球最大工业机器人市场，2024年装机量约占全球50%。但国产化率（以价值计）约35%，高端机器人本体仍依赖进口。近年来国产替代加速，埃斯顿、珞石、节卡等品牌快速崛起。</p>
+
+<h3>3.3 投资与融资</h3>
+<p>2023-2025年人形机器人赛道融资爆发：Figure AI 7.5亿美元、智元机器人超20亿人民币、银河通用两轮超10亿人民币、宇树科技冲刺港股IPO。人形机器人成为近三年最热投资赛道之一。</p>
+
+<h2>四、未来展望</h2>
+
+<h3>4.1 技术预测</h3>
+<ul>
+    <li><strong>2026-2028年</strong>：人形机器人在工厂流水线完成规模化部署，成本降至20万人民币以内</li>
+    <li><strong>2029-2032年</strong>：通用人形机器人进入家庭场景，实现简单家务和陪伴功能</li>
+    <li><strong>2033-2035年</strong>：多模态大模型与机器人深度融合，机器人具备持续自主学习能力</li>
+</ul>
+
+<h3>4.2 关键挑战</h3>
+<ul>
+    <li><strong>硬件成本</strong>：减速器、伺服电机、灵巧手等核心零部件成本仍高</li>
+    <li><strong>泛化能力</strong>：在非结构化环境中的操作成功率仍有待提升</li>
+    <li><strong>数据瓶颈</strong>：机器人物理交互数据极度稀缺，合成数据质量参差不齐</li>
+    <li><strong>安全标准</strong>：人形机器人进入人类生活场景的安全认证体系尚不完善</li>
+</ul>
+
+<div class="ext-links">
+    <h3>🌐 外部权威资源</h3>
+    <ul>
+        <li><a href="https://ifr.org" target="_blank">IFR 国际机器人联合会</a> — 全球机器人市场年度统计数据</li>
+        <li><a href="https://www.ieee-ras.org" target="_blank">IEEE机器人与自动化协会</a> — ICRA/IROS等顶级会议论文索引</li>
+        <li><a href="https://arxiv.org/list/cs.RO/recent" target="_blank">arXiv Robotics</a> — 最新预印本论文</li>
+        <li><a href="https://www.bostondynamics.com/news" target="_blank">Boston Dynamics 新闻</a> — 机器人技术最新进展</li>
+        <li><a href="https://www.therobotreport.com" target="_blank">Robot Report</a> — 机器人行业深度报道</li>
+        <li><a href="https://spectrum.ieee.org/robotics" target="_blank">IEEE Spectrum 机器人版块</a> — 技术深度文章与视频</li>
+        <li><a href="https://www.nature.com/natre/articles?search=yes&subject=robotics" target="_blank">Nature Robotics</a> — 机器人学术前沿</li>
+    </ul>
+</div>
+
         </div>
     </div>
 </body>

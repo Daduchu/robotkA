@@ -4,59 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>机器人应用领域概述 | 机器人知识库</title>
+    <meta name="description" content="机器人应用场景全覆盖：工业制造、医疗健康、物流仓储、农业采摘、家庭服务、特种作业（军事/救援/空间/水下）等各领域深度解析">
     <link rel="stylesheet" href="../style.css">
     <style>
         .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.8; }
         .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
-        .md-content h2 { font-size: 1.5rem; color: #fff; margin-top: 30px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
-        .md-content h3 { font-size: 1.1rem; color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
-        .md-content ul { margin-left: 25px; margin-bottom: 20px; color: #ccc; }
+        .md-content h2 { font-size: 1.5rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
+        .md-content h3 { font-size: 1.15rem; color: #00d4ff; margin-top: 25px; margin-bottom: 12px; }
+        .md-content h4 { font-size: 1rem; color: #b0b0b0; margin-top: 18px; margin-bottom: 8px; }
+        .md-content ul { margin-left: 25px; margin-bottom: 18px; color: #ccc; }
         .md-content li { margin-bottom: 8px; }
+        .md-content p { margin-bottom: 16px; color: #c8cdd8; }
+        .md-content a { color: #00d4ff; text-decoration: none; }
+        .md-content a:hover { text-decoration: underline; }
+        .md-content strong { color: #fff; }
+        .md-content .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .md-content .stat-box { background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 16px; text-align: center; }
+        .md-content .stat-box .num { font-size: 1.8rem; font-weight: 700; color: #00d4ff; font-family: 'Space Mono', monospace; }
+        .md-content .stat-box .label { font-size: 12px; color: #888; margin-top: 4px; }
+        .md-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+        .md-content th { background: rgba(0,212,255,0.1); padding: 9px 13px; text-align: left; color: #00d4ff; border-bottom: 1px solid rgba(0,212,255,0.2); font-size: 12px; }
+        .md-content td { padding: 8px 13px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; }
+        .md-content .app-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px; margin: 16px 0; }
+        .md-content .app-card h4 { color: #fff; margin-top: 0; }
+        .md-content .ext-links { background: rgba(123,44,191,0.1); border: 1px solid rgba(123,44,191,0.3); border-radius: 10px; padding: 24px; margin-top: 30px; }
+        .md-content .ext-links h3 { color: #b388ff; margin-top: 0; }
+        .md-content .ext-links a { color: #b388ff; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="../index.html" class="back-link">← 返回首页</a>
+            <a href="index.html" class="back-link">← 返回应用领域</a>
+            <div class="breadcrumb"><a href="../index.html">🏠 首页</a><span>›</span><a href="index.html">🏭 应用领域</a><span>›</span>机器人应用领域概述</div>
             <h1>🏭 应用领域</h1>
             <p class="subtitle">Application Areas</p>
         </header>
         <div class="md-content">
-            <h1>机器人应用领域概述</h1>
-            <h2>1. 工业机器人</h2>
-            <h3>1.1 焊接机器人</h3>
-            <ul><li>弧焊机器人</li><li>点焊机器人</li><li>激光焊接机器人</li><li>等离子焊接机器人</li></ul>
-            <h3>1.2 搬运机器人</h3>
-            <ul><li>码垛机器人</li><li>搬运机械手</li><li>AGV（自动导引车）</li><li>RGV（有轨制导车辆）</li></ul>
-            <h3>1.3 装配机器人</h3>
-            <ul><li>电子装配机器人</li><li>汽车装配机器人</li><li>精密装配机器人</li><li>协作装配机器人</li></ul>
-            <h3>1.4 喷涂机器人</h3>
-            <ul><li>油漆喷涂机器人</li><li>粉末喷涂机器人</li><li>等离子喷涂机器人</li><li>火焰喷涂机器人</li></ul>
-            <h2>2. 服务机器人</h2>
-            <h3>2.1 家用机器人</h3>
-            <ul><li>扫地机器人</li><li>擦窗机器人</li><li>割草机器人</li><li>智能家居控制机器人</li></ul>
-            <h3>2.2 医疗机器人</h3>
-            <ul><li>手术机器人</li><li>康复机器人</li><li>护理机器人</li><li>诊断机器人</li></ul>
-            <h3>2.3 教育机器人</h3>
-            <ul><li>编程教育机器人</li><li>科学实验机器人</li><li>竞赛机器人</li><li>益智机器人</li></ul>
-            <h3>2.4 商用服务机器人</h3>
-            <ul><li>餐饮服务机器人</li><li>酒店服务机器人</li><li>零售服务机器人</li><li>金融服务机器人</li></ul>
-            <h2>3. 特种机器人</h2>
-            <h3>3.1 军事机器人</h3>
-            <ul><li>侦察机器人</li><li>排爆机器人</li><li>作战机器人</li><li>后勤保障机器人</li></ul>
-            <h3>3.2 救援机器人</h3>
-            <ul><li>地震救援机器人</li><li>消防机器人</li><li>水下救援机器人</li><li>山区救援机器人</li></ul>
-            <h3>3.3 空间机器人</h3>
-            <ul><li>空间探测机器人</li><li>空间站维护机器人</li><li>月球探测机器人</li><li>火星探测机器人</li></ul>
-            <h3>3.4 水下机器人</h3>
-            <ul><li>海底探测机器人</li><li>水下作业机器人</li><li>海洋环境监测机器人</li><li>水下考古机器人</li></ul>
-            <h2>4. 人形机器人</h2>
-            <h3>4.1 双足人形机器人</h3>
-            <ul><li>仿人行走机器人</li><li>跳跃机器人</li><li>奔跑机器人</li><li>平衡机器人</li></ul>
-            <h3>4.2 仿人机器人</h3>
-            <ul><li>仿人上肢机器人</li><li>仿人手部机器人</li><li>仿人头部机器人</li><li>仿人表情机器人</li></ul>
-            <h3>4.3 社交机器人</h3>
-            <ul><li>情感交互机器人</li><li>对话机器人</li><li>服务机器人</li><li>表演机器人</li></ul>
+
+<h1>机器人应用领域概述</h1>
+
+<div class="stat-grid">
+    <div class="stat-box"><div class="num">70%</div><div class="label">工业机器人占比（2024）</div></div>
+    <div class="stat-box"><div class="num">$450亿</div><div class="label">服务机器人市场规模</div></div>
+    <div class="stat-box"><div class="num">30%</div><div class="label">物流机器人增速（年均）</div></div>
+    <div class="stat-box"><div class="num">3类</div><div class="label">工业/服务/特种机器人</div></div>
+</div>
+
+<h2>一、工业机器人</h2>
+<p>工业机器人是机器人产业最大的细分市场，2024年全球工业机器人装机量约59万台，中国市场占全球约50%。汽车制造和电子制造是两大核心应用领域，合计占工业机器人需求的60%以上。</p>
+
+<h3>1.1 焊接机器人</h3>
+<p>焊接是工业机器人最早、也是最大规模的应用场景，约占工业机器人总量的40%。弧焊（占弧焊机器人的80%）和点焊（主要在汽车车身）是两大核心工艺。</p>
+<ul>
+    <li><strong>市场格局</strong>：ABB、发那科、库卡三分天下；国产奥太电气、松下（天津）焊机紧随其后</li>
+    <li><strong>技术趋势</strong>：激光焊接机器人（速度快、变形小）替代传统电弧焊成为高端主流；2024年激光焊接机器人增速超30%</li>
+    <li><strong>协作焊接</strong>：小型轻量协作机器人进入焊接领域，适合小批量多品种生产</li>
+</ul>
+
+<h3>1.2 搬运与物流机器人</h3>
+<p>搬运机器人（码垛、上下料、分拣）和物流机器人（AGV/AMR）是增速最快的工业机器人品类。</p>
+
+<table>
+    <tr><th>类型</th><th>代表企业</th><th>应用场景</th><th>市场特点</th></tr>
+    <tr><td>传统AGV</td><td>昆船智能、机科股份</td><td>工厂内物料输送</td><td>需磁条/二维码导引，灵活性低</td></tr>
+    <tr><td>AMR（自主移动）</td><td>极智嘉、海康机器人、快仓</td><td>仓储、车间柔性物流</td><td>激光SLAM导航，无需改造环境</td></tr>
+    <tr><td>料箱机器人</td><td>极智嘉、快仓</td><td>电商仓储分拣</td><td>"货到人"模式，效率提升3-5倍</td></tr>
+    <tr><td>叉式AMR</td><td>未来机器人、仙工智能</td><td>无人叉车</td><td>替代人工叉车，危险场景刚需</td></tr>
+</table>
+
+<h3>1.3 装配机器人</h3>
+<p>装配是工业机器人中技术要求最高的场景之一，需要亚毫米级精度。汽车发动机装配、3C电子精密装配是典型场景。</p>
+<ul>
+    <li><strong>协作装配</strong>：ABB YuMi、发那科 CRX、节卡Cobot成为3C电子装配主流，工人和机器人协同作业</li>
+    <li><strong>视觉引导</strong>：2D/3D视觉系统引导机器人精准抓取和放置，解决零件位置不确定问题</li>
+</ul>
+
+<h3>1.4 喷涂与打磨</h3>
+<ul>
+    <li><strong>喷涂机器人</strong>：广泛用于汽车车身喷涂，隔绝人工接触有害漆雾；发那科、ABB、川崎是主要供应商</li>
+    <li><strong>打磨抛光机器人</strong>：用于卫浴（五金抛光）、金属制品表面处理；力控技术（恒力打磨）是核心技术</li>
+</ul>
+
+<h2>二、服务机器人</h2>
+<p>服务机器人是非制造业使用的机器人，涵盖家庭、商业、医疗、教育等多个领域。2024年全球服务机器人市场规模约450亿美元，中国是全球最大的服务机器人生产和消费市场。</p>
+
+<h3>2.1 物流与配送</h3>
+<div class="app-card">
+    <h4>🏭 仓储物流</h4>
+    <p>中国电商仓储自动化率在2024年已超60%，"货到人"、"件到人"拣选模式大规模应用。</p>
+    <ul>
+        <li><strong>极智嘉（Geek+）</strong>：全球AMR市场占有率第一，2024年营收超40亿元，服务客户包括顺丰、京东、长安汽车</li>
+        <li><strong>海康机器人</strong>：潜伏系列AMR年出货量超3万台，覆盖3C、汽车、医药等多行业</li>
+        <li><strong>快仓智能</strong>：料箱机器人全球领先，进入北美、欧洲、日本市场</li>
+    </ul>
+</div>
+
+<div class="app-card">
+    <h4>🍽️ 室内配送</h4>
+    <p>送餐、迎宾、导览机器人已在中国大规模部署。</p>
+    <ul>
+        <li><strong>普渡科技</strong>：送餐机器人全球出货超7万台，进入60+国家；在欧洲餐饮市场占有率超40%</li>
+        <li><strong>猎户星空</strong>：迎宾导览机器人部署超1万台，用于商场、酒店、政务大厅</li>
+        <li><strong>九号公司</strong>：配送机器人（Segway配送机器人S2）用于写字楼、医院配送</li>
+    </ul>
+</div>
+
+<h3>2.2 医疗健康</h3>
+<p>医疗机器人是服务机器人中技术壁垒最高的领域，也是国产替代重点方向。</p>
+<ul>
+    <li><strong>手术机器人</strong>：达芬奇（直觉外科，美）垄断全球手术机器人市场，中国<strong>微创机器人</strong>（图迈腹腔镜）、<strong>天智航</strong>（骨科手术机器人，天玑）正在快速追赶；天智航骨科手术机器人已完成超4万例手术</li>
+    <li><strong>康复机器人</strong>：傅利叶智能（康复机械手/下肢康复机器人）、程天科技（外骨骼康复）</li>
+    <li><strong>配药机器人</strong>：大族机器人、博柯莱（自动配药系统），用于医院药房自动化</li>
+    <li><strong>消杀机器人</strong>：疫情期间大量部署，钛米机器人、灵至科技等</li>
+</ul>
+
+<h3>2.3 清洁与家政</h3>
+<ul>
+    <li><strong>扫地机器人</strong>：石头科技、科沃斯是中国两大龙头，石头科技扫地机器人全球市场份额前三；追觅（小米生态链）增速最快</li>
+    <li><strong>商用清洁</strong>：<strong>高仙机器人</strong>：商用清洁机器人出口60+国家，室内外全场景覆盖，年营收超10亿元</li>
+    <li><strong>擦窗机器人</strong>：科沃斯窗宝系列，市场较成熟</li>
+</ul>
+
+<h3>2.4 教育与陪伴</h3>
+<ul>
+    <li><strong>编程教育机器人</strong>：优必选（Alpha系列）、大疆（RoboMaster S1）、乐森机器人（星际特工）</li>
+    <li><strong>人形陪伴</strong>：优必选Alpha、宇树科技Go2机器狗，用于家庭教育和娱乐</li>
+    <li><strong>老年陪伴</strong>：大族爱餐、ROOBO布丁系列，AI大模型接入后对话能力大幅提升</li>
+</ul>
+
+<h2>三、特种机器人</h2>
+
+<h3>3.1 农业机器人</h3>
+<p>农业机器人是增速最快的特种机器人品类之一，解决农业劳动力短缺问题。</p>
+<ul>
+    <li><strong>采摘机器人</strong>：极目机器人（丘陵果园采摘）、博田机器人（蔬菜采摘），采摘效率约等于人工的3-5倍，但成本仍高于人工</li>
+    <li><strong>植保无人机</strong>：大疆农业无人机T60国内市场占有率超80%，全球作业面积超15亿亩次</li>
+    <li><strong> agricultural AMR</strong>：温室巡检、果园运输机器人</li>
+</ul>
+
+<h3>3.2 军事与安防</h3>
+<ul>
+    <li><strong>侦察无人机</strong>：大疆Mavic系列在全球执法、军事侦察中广泛应用（争议极大）</li>
+    <li><strong>排爆机器人</strong>：国产排爆机器人（北方车辆研究所）用于公安、军队的爆炸物处置</li>
+    <li><strong>地面无人车</strong>：中国北方工业集团"锐爪"系列、兵器工业集团无人战车</li>
+</ul>
+
+<h3>3.3 救援与消防</h3>
+<ul>
+    <li><strong>消防机器人</strong>：山东国兴智能、中信重工开诚智能消防机器人，可代替消防员进入危险火场</li>
+    <li><strong>地震救援机器人</strong>：中国科学院沈阳自动化研究所"蛇形搜救机器人"，可进入废墟缝隙</li>
+    <li><strong>电力巡检机器人</strong>：国网智能（山东）变电站巡检机器人，覆盖超3万座变电站</li>
+</ul>
+
+<h3>3.4 水下与空间</h3>
+<ul>
+    <li><strong>水下机器人（ROV/AUV）</strong>：博雅工道（消费级）、中科院沈阳自动化所（作业级）；用于水下检测、搜救、养殖</li>
+    <li><strong>水下清淤</strong>：深圳潜行创新（消费级水下机器人）出口全球</li>
+    <li><strong>太空机器人</strong>：中国空间站机械臂（"天和"机械臂），用于舱段对接和设备维护</li>
+</ul>
+
+<h2>四、人形机器人：新应用场景</h2>
+<p>2024-2025年人形机器人进入实际应用场景测试阶段。</p>
+
+<table>
+    <tr><th>场景</th><th>代表企业/机器人</th><th>进展</th><th>难点</th></tr>
+    <tr><td>汽车工厂</td><td>Figure 01/BMW、Optimus/特斯拉</td><td>已进入实际产线测试</td><td>成本高、效率待提升</td></tr>
+    <tr><td>仓储搬运</td><td>Figure/Amazon测试中</td><td>概念测试阶段</td><td>泛化能力不足</td></tr>
+    <tr><td>商业服务</td><td>傅利叶GR-1、智元远征A1</td><td>展示和试点应用</td><td>交互体验待优化</td></tr>
+    <tr><td>家庭服务</td><td>预计2028年后</td><td>技术储备期</td><td>安全、成本双挑战</td></tr>
+</table>
+
+<div class="ext-links">
+    <h3>🌐 外部权威资源</h3>
+    <ul>
+        <li><a href="https://ifr.org" target="_blank">IFR 国际机器人联合会</a> — 全球机器人应用领域统计数据</li>
+        <li><a href="https://www.jiqizhixin.com" target="_blank">机器之心</a> — 中国机器人应用场景深度报道</li>
+        <li><a href="https://spectrum.ieee.org/robots" target="_blank">IEEE Spectrum Robots</a> — 国际机器人应用案例</li>
+        <li><a href="https://www.therobotreport.com" target="_blank">Robot Report</a> — 机器人行业应用进展</li>
+    </ul>
+</div>
+
         </div>
     </div>
 </body>
