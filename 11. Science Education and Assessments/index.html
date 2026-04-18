@@ -56,12 +56,20 @@
             font-size: 0.75rem; margin-top: 12px;
         }
         .badge-primary { background: rgba(0,212,255,0.15); color: #00d4ff; }
+        .badge-new { background: rgba(123,44,191,0.2); color: #b388ff; }
         .info-box {
             background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
             border-radius: 12px; padding: 20px; margin-top: 40px;
         }
         .info-box h3 { color: #00d4ff; margin-bottom: 10px; font-size: 1.1rem; }
         .info-box p { color: #a0a0a0; font-size: 0.9rem; line-height: 1.6; }
+        .diy-highlight {
+            background: linear-gradient(135deg, rgba(123,44,191,0.15) 0%, rgba(0,212,255,0.1) 100%);
+            border: 1px solid rgba(123,44,191,0.3);
+        }
+        .diy-highlight:hover {
+            border-color: #7b2cbf; box-shadow: 0 10px 40px rgba(123,44,191,0.25);
+        }
         @media (max-width: 768px) { .page-header h1 { font-size: 2rem; } }
     </style>
 </head>
@@ -70,9 +78,16 @@
         <a href="../index.html" class="back-link">← 返回知识库首页</a>
         <div class="page-header">
             <h1>🧪 科普与测评</h1>
-            <p>机器人科普分级测评试卷，覆盖幼儿园大班至大学全学段</p>
+            <p>机器人科普分级测评试卷 + 动手实践模块，覆盖幼儿园至大学全学段</p>
         </div>
         <div class="grade-cards">
+            <a href="robot-diy/index.html" class="grade-card diy-highlight">
+                <div class="grade-emoji">🔧</div>
+                <div class="grade-title">机器人DIY实践</div>
+                <div class="grade-range">动手造机器人 · 从零开始</div>
+                <div class="grade-desc">机械设计、电子控制、软件编程的完整实践指南，适合学生、创客、工程师的渐进式学习路径</div>
+                <span class="grade-badge badge-new">✨ 新模块</span>
+            </a>
             <a href="exam-kinder.html" class="grade-card">
                 <div class="grade-emoji">🧒</div>
                 <div class="grade-title">启蒙测评</div>
@@ -110,8 +125,9 @@
             </a>
         </div>
         <div class="info-box">
-            <h3>📌 关于测评</h3>
+            <h3>📌 关于本模块</h3>
             <p>本模块提供各学段机器人科普测评试卷，每套试卷均含单选题、判断题、综合题等题型。<br>
+            <strong>🔧 机器人DIY实践</strong>是新增加的动手实践模块，提供从机械设计到软件编程的完整实践指南。<br>
             试卷内容持续更新，可作为教学评估、兴趣测试或科普活动的测评工具使用。</p>
         </div>
     </div>
