@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一章：机械基础 | 机器人DIY实践</title>
+    <meta name="description" content="机器人DIY机械基础：机构学原理、连杆机构、关节设计、材料选择、3D打印与加工工艺的完整指南。">
+    <meta name="keywords" content="机器人机械设计,连杆机构,关节设计,3D打印机器人,机器人材料">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.8; }
+        .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
+        .md-content h2 { font-size: 1.4rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
+        .md-content h3 { font-size: 1.1rem; color: #00d4ff; margin-top: 22px; margin-bottom: 10px; }
+        .md-content h4 { font-size: 1rem; color: #b0b0b0; margin-top: 18px; margin-bottom: 8px; }
+        .md-content p { margin-bottom: 14px; color: #c8cdd8; }
+        .md-content ul, .md-content ol { margin-left: 25px; margin-bottom: 16px; color: #ccc; }
+        .md-content li { margin-bottom: 7px; }
+        .md-content strong { color: #fff; }
+        .md-content a { color: #00d4ff; text-decoration: none; }
+        .md-content a:hover { text-decoration: underline; }
+        .md-content code { background: rgba(0,212,255,0.1); padding: 2px 8px; border-radius: 4px; color: #00d4ff; font-size: 0.88rem; }
+        .md-content blockquote { border-left: 4px solid #7b2cbf; padding: 12px 20px; margin: 16px 0; background: rgba(123,44,191,0.08); border-radius: 0 8px 8px 0; }
+        .md-content blockquote p { margin-bottom: 0; color: #a0a0a0; }
+        .md-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+        .md-content th { background: rgba(0,212,255,0.1); padding: 10px 14px; text-align: left; color: #00d4ff; border-bottom: 1px solid rgba(0,212,255,0.2); }
+        .md-content td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; }
+        .md-content tr:hover td { background: rgba(255,255,255,0.03); }
+        .md-content .formula { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.15); border-radius: 8px; padding: 15px; margin: 15px 0; font-family: 'Space Mono', monospace; color: #00d4ff; text-align: center; }
+        .mechanism-diagram { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 25px; margin: 20px 0; text-align: center; }
+        .mechanism-diagram .ascii-art { font-family: 'Space Mono', monospace; font-size: 12px; color: #888; line-height: 1.4; white-space: pre; }
+        .tip-box { background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .tip-box h4 { color: #ffc107; margin-top: 0; }
+        .warning-box { background: rgba(244,67,54,0.08); border: 1px solid rgba(244,67,54,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .warning-box h4 { color: #f44336; margin-top: 0; }
+        .progress-bar { background: rgba(255,255,255,0.1); border-radius: 10px; height: 8px; margin: 10px 0; }
+        .progress-fill { background: linear-gradient(90deg, #00d4ff, #7b2cbf); height: 100%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← 返回DIY实践首页</a>
+            <div class="breadcrumb"><a href="../../index.html">🏠 首页</a><span>›</span><a href="index.html">🔧 DIY实践</a><span>›</span>第一章：机械基础</div>
+            <h1>⚙️ 第一章：机械基础</h1>
+            <p class="subtitle">Mechanical Fundamentals</p>
+        </header>
+        <div class="md-content">
+
+<h1>机构学原理与机械设计基础</h1>
+
+<blockquote>
+    <p>💡 <strong>核心思想</strong>：机器人的机械结构是其"骨骼"和"肌肉"。理解机构学原理，才能设计出既灵活又可靠的机器人。</p>
+</blockquote>
+
+<h2>1.1 机构学基础</h2>
+
+<h3>什么是机构？</h3>
+
+<p><strong>机构（Mechanism）</strong>是由若干构件通过运动副连接而成的系统，能够实现预期的运动传递和变换。</p>
+
+<p>在机器人中，机构的作用：</p>
+<ul>
+    <li>将电机的旋转运动转换为关节的摆动或直线运动</li>
+    <li>实现力的放大或速度的改变</li>
+    <li>保证运动的精度和稳定性</li>
+    <li>支撑和连接机器人的各个部件</li>
+</ul>
+
+<h3>运动副（Kinematic Pair）</h3>
+
+<p>运动副是两个构件之间的可动连接。根据接触形式和运动自由度，分为：</p>
+
+<table>
+<tr><th>运动副类型</th><th>符号</th><th>自由度</th><th>机器人应用</th></tr>
+<tr><td>转动副（Revolute）</td><td>R</td><td>1</td><td>关节旋转、手臂摆动</td></tr>
+<tr><td>移动副（Prismatic）</td><td>P</td><td>1</td><td>直线伸缩、升降机构</td></tr>
+<tr><td>螺旋副（Helical）</td><td>H</td><td>1</td><td>丝杠传动、精密调节</td></tr>
+<tr><td>圆柱副（Cylindrical）</td><td>C</td><td>2</td><td>伸缩旋转组合</td></tr>
+<tr><td>球面副（Spherical）</td><td>S</td><td>3</td><td>万向节、手腕关节</td></tr>
+<tr><td>平面副（Planar）</td><td>E</td><td>3</td><td>平面运动平台</td></tr>
+</table>
+
+<div class="tip-box">
+    <h4>🎯 设计提示</h4>
+    <p>人形机器人的关节主要使用<strong>转动副（R）</strong>，因为人类的关节大多是旋转运动。少数情况下使用移动副，如脊柱的伸缩。</p>
+</div>
+
+<h2>1.2 连杆机构（Linkage Mechanisms）</h2>
+
+<h3>四连杆机构（Four-bar Linkage）</h3>
+
+<p>四连杆机构是最基本、最常用的平面连杆机构，由四个构件通过四个转动副连接成闭环。</p>
+
+<div class="mechanism-diagram">
+    <p><strong>四连杆机构示意图</strong></p>
+    <div class="ascii-art">
+        机架（固定）
+           A ━━━━━━━━━ B
+           ┃           ┃
+           ┃  连杆1    ┃ 连杆2
+           ┃           ┃
+           D ━━━━━━━━━ C
+              连杆3（输出）
+    </div>
+    <p style="color: #888; font-size: 0.85rem; margin-top: 10px;">A、B、C、D为转动副；AD为机架；AB、BC、CD为连杆</p>
+</div>
+
+<h4>四连杆机构的类型</h4>
+
+<table>
+<tr><th>类型</th><th>杆长条件</th><th>运动特性</th><th>机器人应用</th></tr>
+<tr><td>曲柄摇杆机构</td><td>最短杆为连架杆</td><td>连续转动→往复摆动</td><td>腿部摆动、手臂摆动</td></tr>
+<tr><td>双曲柄机构</td><td>最短杆为机架</td><td>两连架杆都整周转动</td><td>平行四边形传动</td></tr>
+<tr><td>双摇杆机构</td><td>最短杆为连杆</td><td>两连架杆都往复摆动</td><td>机器人手指关节</td></tr>
+<tr><td>曲柄滑块机构</td><td>转动副+移动副</td><td>转动→直线往复</td><td>直线驱动、液压缸</td></tr>
+</table>
+
+<h4>Grashof条件</h4>
+
+<p>判断四连杆机构能否实现整周转动的条件：</p>
+
+<div class="formula">
+    最短杆 + 最长杆 ≤ 其余两杆之和
+</div>
+
+<p>满足Grashof条件时，最短杆可以相对于相邻杆做整周转动。</p>
+
+<h3>多连杆机构</h3>
+
+<p>复杂机器人通常使用多连杆机构：</p>
+
+<ul>
+    <li><strong>六连杆机构</strong>：实现更复杂的运动轨迹</li>
+    <li><strong>开链机构</strong>：机械臂、人形机器人的手臂和腿</li>
+    <li><strong>闭链机构</strong>：并联机器人、步行机器人的腿部</li>
+    <li><strong>混合链机构</strong>：开链+闭链组合，如人形机器人全身</li>
+</ul>
+
+<div class="mechanism-diagram">
+    <p><strong>人形机器人腿部简化模型</strong></p>
+    <div class="ascii-art">
+        髋关节（3自由度）
+             ●
+            /┃\
+           / ┃ \    大腿（连杆1）
+          /  ┃  \
+         /   ┃   \
+        ●━━━━━━━●  膝关节（1自由度）
+        ┃         ┃
+        ┃ 小腿（连杆2）┃
+        ┃         ┃
+        ●━━━━━━━●  踝关节（2自由度）
+             ┃
+            ═══  脚掌
+    </div>
+    <p style="color: #888; font-size: 0.85rem; margin-top: 10px;">人形机器人单腿通常有6个自由度（髋关节3+膝关节1+踝关节2）</p>
+</div>
+
+<h2>1.3 关节设计</h2>
+
+<h3>关节的自由度配置</h3>
+
+<p>人形机器人的关节自由度配置参考人类解剖学：</p>
+
+<table>
+<tr><th>关节部位</th><th>自由度</th><th>运动形式</th><th>典型角度范围</th></tr>
+<tr><td>肩关节</td><td>3</td><td>屈伸/外展内收/内外旋</td><td>±180°/±180°/±90°</td></tr>
+<tr><td>肘关节</td><td>1</td><td>屈伸</td><td>0°~150°</td></tr>
+<tr><td>腕关节</td><td>2</td><td>屈伸/外展内收</td><td>±80°/±45°</td></tr>
+<tr><td>髋关节</td><td>3</td><td>屈伸/外展内收/内外旋</td><td>±120°/±45°/±45°</td></tr>
+<tr><td>膝关节</td><td>1</td><td>屈伸</td><td>0°~140°</td></tr>
+<tr><td>踝关节</td><td>2</td><td>屈伸/内外翻</td><td>±45°/±30°</td></tr>
+<tr><td>脊柱</td><td>2-3</td><td>屈伸/侧屈/旋转</td><td>±30°/±20°/±30°</td></tr>
+</table>
+
+<h3>关节驱动方式</h3>
+
+<table>
+<tr><th>驱动方式</th><th>优点</th><th>缺点</th><th>适用场景</th></tr>
+<tr><td>舵机（Servo）</td><td>成本低、控制简单、集成度高</td><td>精度一般、寿命有限、扭矩小</td><td>教育机器人、小型机器人</td></tr>
+<tr><td>伺服电机+减速器</td><td>精度高、扭矩大、寿命长</td><td>成本高、体积大、控制复杂</td><td>工业机器人、人形机器人</td></tr>
+<tr><td>液压驱动</td><td>功率密度极高、响应快</td><td>系统复杂、维护难、噪音大</td><td>大型机器人、Atlas</td></tr>
+<tr><td>气动驱动</td><td>清洁、安全、成本低</td><td>控制精度低、需要气源</td><td>协作机器人、软体机器人</td></tr>
+<tr><td>人工肌肉</td><td>仿生、轻量化、柔顺性好</td><td>技术不成熟、寿命短</td><td>研究原型、软体机器人</td></tr>
+</table>
+
+<div class="warning-box">
+    <h4>⚠️ 设计警告</h4>
+    <p>不要盲目追求自由度数量！每增加一个自由度，就增加：</p>
+    <ul>
+        <li>一个电机（成本、重量、功耗）</li>
+        <li>一套传动系统（复杂度、维护）</li>
+        <li>控制难度（逆运动学、协调控制）</li>
+    </ul>
+    <p>建议从最小可行自由度开始，逐步增加。</p>
+</div>
+
+<h2>1.4 材料选择</h2>
+
+<h3>常用结构材料</h3>
+
+<table>
+<tr><th>材料</th><th>密度(g/cm³)</th><th>强度(MPa)</th><th>成本</th><th>加工性</th><th>适用部位</th></tr>
+<tr><td>PLA（3D打印）</td><td>1.24</td><td>50-70</td><td>低</td><td>极易</td><td>原型、外壳、非承力件</td></tr>
+<tr><td>ABS（3D打印）</td><td>1.05</td><td>40-50</td><td>低</td><td>易</td><td>外壳、连接件</td></tr>
+<tr><td>PETG（3D打印）</td><td>1.27</td><td>50</td><td>低</td><td>易</td><td>承力件、耐冲击件</td></tr>
+<tr><td>尼龙（3D打印）</td><td>1.14</td><td>80</td><td>中</td><td>中等</td><td>齿轮、轴承、耐磨件</td></tr>
+<tr><td>铝合金6061</td><td>2.7</td><td>310</td><td>中</td><td>易</td><td>框架、关节、承力件</td></tr>
+<tr><td>铝合金7075</td><td>2.81</td><td>570</td><td>中高</td><td>中等</td><td>高强度承力件</td></tr>
+<tr><td>碳纤维</td><td>1.6</td><td>1500+</td><td>高</td><td>难</td><td>轻量化结构、高端机器人</td></tr>
+<tr><td>不锈钢304</td><td>7.9</td><td>520</td><td>中</td><td>中等</td><td>轴、紧固件、耐腐蚀件</td></tr>
+<tr><td>钛合金</td><td>4.5</td><td>900</td><td>很高</td><td>难</td><td>高端轻量化结构</td></tr>
+</table>
+
+<h3>材料选择原则</h3>
+
+<ol>
+    <li><strong>功能优先</strong>：承力部位用金属，外壳可用塑料</li>
+    <li><strong>重量敏感</strong>：运动部件尽量轻量化，固定部件可重一些</li>
+    <li><strong>成本控制</strong>：原型阶段用3D打印，量产考虑注塑或CNC</li>
+    <li><strong>加工能力</strong>：根据自己的设备和技能选择材料</li>
+    <li><strong>安全第一</strong>：高速旋转部件要有足够的强度和防护</li>
+</ol>
+
+<h2>1.5 3D打印与加工工艺</h2>
+
+<h3>3D打印技术对比</h3>
+
+<table>
+<tr><th>技术</th><th>精度</th><th>强度</th><th>速度</th><th>成本</th><th>适用场景</th></tr>
+<tr><td>FDM（熔融沉积）</td><td>0.1-0.3mm</td><td>中</td><td>慢</td><td>低</td><td>原型、外壳、结构件</td></tr>
+<tr><td>SLA（光固化）</td><td>0.025-0.1mm</td><td>中高</td><td>中等</td><td>中</td><td>精密件、外观件</td></tr>
+<tr><td>SLS（选择性激光烧结）</td><td>0.1mm</td><td>高</td><td>中等</td><td>高</td><td>功能件、复杂结构</td></tr>
+<tr><td>SLM（金属3D打印）</td><td>0.05mm</td><td>很高</td><td>慢</td><td>很高</td><td>金属承力件</td></tr>
+</table>
+
+<h3>FDM打印设计准则</h3>
+
+<div class="tip-box">
+    <h4>🖨️ FDM打印最佳实践</h4>
+    <ul>
+        <li><strong>层厚选择</strong>：0.2mm是平衡速度和精度的最佳选择</li>
+        <li><strong>壁厚</strong>：至少2-3层壁（约1.2-1.8mm）</li>
+        <li><strong>填充密度</strong>：非承力件15-20%，承力件40-60%</li>
+        <li><strong>支撑</strong>：悬垂角度>45°需要支撑</li>
+        <li><strong>方向</strong>：承力方向与层纹垂直，避免层间剥离</li>
+        <li><strong>公差</strong>：配合间隙预留0.2-0.3mm</li>
+    </ul>
+</div>
+
+<h3>其他加工工艺</h3>
+
+<ul>
+    <li><strong>CNC铣削</strong>：精度高、表面好，适合金属件</li>
+    <li><strong>激光切割</strong>：适合板材、快速原型</li>
+    <li><strong>线切割</strong>：适合精密金属件、异形孔</li>
+    <li><strong>钣金加工</strong>：适合外壳、支架</li>
+    <li><strong>注塑成型</strong>：适合大批量塑料件</li>
+</ul>
+
+<h2>1.6 设计实例：简单关节</h2>
+
+<h3>舵机直接驱动关节</h3>
+
+<p>最简单的关节设计：舵机输出轴直接连接连杆。</p>
+
+<div class="mechanism-diagram">
+    <p><strong>舵机直接驱动关节</strong></p>
+    <div class="ascii-art">
+        ┌─────────────────┐
+        │   舵机（Servo）  │
+        │                 │
+        │  ┌───────────┐  │
+        │  │  输出轴    │══╪════ 连杆
+        │  └───────────┘  │
+        │                 │
+        └─────────────────┘
+             固定支架
+    </div>
+</div>
+
+<p><strong>优点</strong>：结构简单、成本低、易于实现</p>
+<p><strong>缺点</strong>：舵机承受弯矩、精度受舵机限制</p>
+
+<h3>带轴承的关节设计</h3>
+
+<p>改进设计：使用轴承支撑连杆，舵机只传递扭矩。</p>
+
+<div class="mechanism-diagram">
+    <p><strong>带轴承支撑的关节</strong></p>
+    <div class="ascii-art">
+        连杆A              连杆B
+          ═══════════════════
+                ┃
+           ┌────┴────┐
+           │  轴承    │
+           └────┬────┘
+                ┃
+           ┌────┴────┐
+           │  舵机    │
+           │  输出轴  │
+           └─────────┘
+    </div>
+</div>
+
+<p><strong>优点</strong>：轴承承受径向力，舵机寿命长，精度高</p>
+<p><strong>缺点</strong>：结构复杂，需要额外空间</p>
+
+<h2>1.7 本章小结</h2>
+
+<ul>
+    <li>✅ 理解了机构学的基本概念和运动副类型</li>
+    <li>✅ 掌握了四连杆机构的原理和应用</li>
+    <li>✅ 了解了人形机器人关节的自由度配置</li>
+    <li>✅ 熟悉了常用材料和加工工艺</li>
+    <li>✅ 学习了两种基本的关节设计方法</li>
+</ul>
+
+<div class="tip-box">
+    <h4>📚 下一步</h4>
+    <p>进入<a href="chapter2-electronics.html">第二章：电子基础</a>，学习传感器、电机驱动和电路设计。</p>
+</div>
+
+        </div>
+        <div class="page-footer">
+            <p>© 2026 机器人知识库 | Robot Knowledge Base</p>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">🔧 DIY实践模块 — 持续建设中</p>
+        </div>
+    </div>
+</body>
+</html>
