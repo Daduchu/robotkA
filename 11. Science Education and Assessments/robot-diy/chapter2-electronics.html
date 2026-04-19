@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二章：电子基础 | 机器人DIY实践</title>
+    <meta name="description" content="机器人DIY电子基础：传感器原理、电机驱动、单片机控制、电路设计、电源管理完整指南。">
+    <meta name="keywords" content="机器人电子设计,传感器,电机驱动,Arduino,STM32,电源管理">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.8; }
+        .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
+        .md-content h2 { font-size: 1.4rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
+        .md-content h3 { font-size: 1.1rem; color: #00d4ff; margin-top: 22px; margin-bottom: 10px; }
+        .md-content h4 { font-size: 1rem; color: #b0b0b0; margin-top: 18px; margin-bottom: 8px; }
+        .md-content p { margin-bottom: 14px; color: #c8cdd8; }
+        .md-content ul, .md-content ol { margin-left: 25px; margin-bottom: 16px; color: #ccc; }
+        .md-content li { margin-bottom: 7px; }
+        .md-content strong { color: #fff; }
+        .md-content a { color: #00d4ff; text-decoration: none; }
+        .md-content a:hover { text-decoration: underline; }
+        .md-content code { background: rgba(0,212,255,0.1); padding: 2px 8px; border-radius: 4px; color: #00d4ff; font-size: 0.88rem; font-family: 'Courier New', monospace; }
+        .md-content pre { background: rgba(0,0,0,0.4); border: 1px solid rgba(0,212,255,0.15); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 16px 0; }
+        .md-content pre code { background: none; padding: 0; color: #a8ff78; font-size: 0.85rem; line-height: 1.6; }
+        .md-content blockquote { border-left: 4px solid #7b2cbf; padding: 12px 20px; margin: 16px 0; background: rgba(123,44,191,0.08); border-radius: 0 8px 8px 0; }
+        .md-content blockquote p { margin-bottom: 0; color: #a0a0a0; }
+        .md-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+        .md-content th { background: rgba(0,212,255,0.1); padding: 10px 14px; text-align: left; color: #00d4ff; border-bottom: 1px solid rgba(0,212,255,0.2); }
+        .md-content td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; }
+        .md-content tr:hover td { background: rgba(255,255,255,0.03); }
+        .tip-box { background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .tip-box h4 { color: #ffc107; margin-top: 0; margin-bottom: 8px; }
+        .warning-box { background: rgba(244,67,54,0.08); border: 1px solid rgba(244,67,54,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .warning-box h4 { color: #f44336; margin-top: 0; margin-bottom: 8px; }
+        .info-box { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .info-box h4 { color: #00d4ff; margin-top: 0; margin-bottom: 8px; }
+        .circuit-diagram { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 25px; margin: 20px 0; font-family: 'Courier New', monospace; font-size: 12px; color: #888; line-height: 1.5; white-space: pre; overflow-x: auto; }
+        .nav-links { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .nav-links a { color: #00d4ff; text-decoration: none; font-size: 0.95rem; }
+        .nav-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← 返回DIY实践首页</a>
+            <div class="breadcrumb"><a href="../../index.html">🏠 首页</a><span>›</span><a href="../index.html">🧪 科普与测评</a><span>›</span><a href="index.html">🔧 DIY实践</a><span>›</span>第二章：电子基础</div>
+            <h1>🔌 第二章：电子基础</h1>
+            <p class="subtitle">Electronics Fundamentals</p>
+        </header>
+        <div class="md-content">
+
+<h1>传感器、电机驱动与控制电路</h1>
+
+<blockquote>
+    <p>💡 <strong>核心思想</strong>：机器人的电子系统是其"神经系统"。传感器是感官，控制器是大脑，驱动器是肌肉。理解这三者的协作，才能让机器人真正"活"起来。</p>
+</blockquote>
+
+<h2>2.1 传感器原理与选型</h2>
+
+<h3>传感器的作用</h3>
+
+<p>机器人需要感知自身状态和外部环境，才能做出正确的动作。传感器是机器人与物理世界的接口。</p>
+
+<table>
+<tr><th>感知类型</th><th>传感器</th><th>输出信号</th><th>典型精度</th><th>价格参考</th></tr>
+<tr><td>关节角度</td><td>编码器（磁/光）</td><td>数字脉冲</td><td>0.01°~0.1°</td><td>5~500元</td></tr>
+<tr><td>姿态/加速度</td><td>IMU（MPU6050/ICM42688）</td><td>I²C/SPI</td><td>0.1°</td><td>5~50元</td></tr>
+<tr><td>距离/障碍</td><td>超声波（HC-SR04）</td><td>PWM脉宽</td><td>±3mm</td><td>3~10元</td></tr>
+<tr><td>距离/精密</td><td>激光测距（VL53L1X）</td><td>I²C</td><td>±1mm</td><td>30~80元</td></tr>
+<tr><td>视觉</td><td>摄像头（OV2640/CSI）</td><td>MIPI/USB</td><td>像素级</td><td>20~200元</td></tr>
+<tr><td>力/扭矩</td><td>应变片/力传感器</td><td>模拟/I²C</td><td>0.1%FS</td><td>50~500元</td></tr>
+<tr><td>足底压力</td><td>FSR压力传感器</td><td>模拟电阻</td><td>±5%</td><td>10~30元</td></tr>
+<tr><td>温度</td><td>NTC热敏电阻/DS18B20</td><td>模拟/单总线</td><td>±0.5°C</td><td>1~10元</td></tr>
+</table>
+
+<h3>IMU（惯性测量单元）详解</h3>
+
+<p>IMU是机器人最重要的传感器之一，用于测量姿态、加速度和角速度。</p>
+
+<h4>MPU6050 — 入门首选</h4>
+<ul>
+    <li>3轴加速度计 + 3轴陀螺仪（6轴）</li>
+    <li>I²C接口，地址0x68或0x69</li>
+    <li>内置DMP（数字运动处理器），可直接输出四元数</li>
+    <li>价格：5~15元，适合Level 1-2</li>
+</ul>
+
+<h4>ICM-42688-P — 进阶推荐</h4>
+<ul>
+    <li>6轴，噪声更低，精度更高</li>
+    <li>SPI/I²C双接口，最高24MHz SPI</li>
+    <li>适合高速控制（1kHz+采样率）</li>
+    <li>价格：30~60元，适合Level 3-4</li>
+</ul>
+
+<div class="tip-box">
+    <h4>🎯 IMU使用要点</h4>
+    <ul>
+        <li><strong>安装位置</strong>：尽量靠近机器人重心，远离电机和振动源</li>
+        <li><strong>校准</strong>：每次上电前做零偏校准（静止1-2秒）</li>
+        <li><strong>滤波</strong>：原始数据噪声大，必须用互补滤波或卡尔曼滤波</li>
+        <li><strong>采样率</strong>：控制频率越高，IMU采样率要求越高（至少控制频率的5倍）</li>
+    </ul>
+</div>
+
+<h3>编码器详解</h3>
+
+<p>编码器用于测量电机转速和关节角度，是闭环控制的基础。</p>
+
+<table>
+<tr><th>类型</th><th>原理</th><th>分辨率</th><th>优点</th><th>缺点</th></tr>
+<tr><td>增量式光电编码器</td><td>光栅遮断计数</td><td>100~10000线/圈</td><td>精度高、成本中等</td><td>断电丢失位置</td></tr>
+<tr><td>绝对式编码器</td><td>格雷码/磁场</td><td>12~24位</td><td>断电不丢位置</td><td>成本高</td></tr>
+<tr><td>磁编码器（AS5600）</td><td>霍尔效应</td><td>12位（4096步/圈）</td><td>无接触、耐污染、便宜</td><td>受磁场干扰</td></tr>
+<tr><td>舵机内置电位器</td><td>电阻分压</td><td>8~10位</td><td>集成方便</td><td>精度低、寿命有限</td></tr>
+</table>
+
+<div class="info-box">
+    <h4>💡 AS5600磁编码器推荐</h4>
+    <p>AS5600是DIY机器人的绝佳选择：12位分辨率（0.088°/步）、I²C接口、只需一块小磁铁、价格约10元。配合无刷电机使用，可以实现高精度位置控制。</p>
+</div>
+
+<h2>2.2 电机与驱动</h2>
+
+<h3>电机类型对比</h3>
+
+<table>
+<tr><th>电机类型</th><th>控制方式</th><th>扭矩</th><th>精度</th><th>成本</th><th>适用场景</th></tr>
+<tr><td>舵机（标准）</td><td>PWM（50Hz）</td><td>小（1~20kg·cm）</td><td>中（±1°）</td><td>低（10~100元）</td><td>小型机器人、教育</td></tr>
+<tr><td>舵机（数字）</td><td>PWM（高频）</td><td>中（5~50kg·cm）</td><td>高（±0.1°）</td><td>中（50~500元）</td><td>中型机器人</td></tr>
+<tr><td>步进电机</td><td>脉冲序列</td><td>中</td><td>高（开环）</td><td>低（20~100元）</td><td>机械臂、精密定位</td></tr>
+<tr><td>无刷直流（BLDC）</td><td>FOC/方波</td><td>大</td><td>高（闭环）</td><td>中（50~500元）</td><td>高性能关节</td></tr>
+<tr><td>伺服电机</td><td>EtherCAT/CAN</td><td>很大</td><td>极高</td><td>高（500~5000元）</td><td>工业/高端人形</td></tr>
+</table>
+
+<h3>舵机控制原理</h3>
+
+<p>标准舵机通过PWM信号控制角度：</p>
+<ul>
+    <li>信号周期：20ms（50Hz）</li>
+    <li>脉宽范围：500μs（0°）~ 2500μs（180°）</li>
+    <li>中位：1500μs（90°）</li>
+</ul>
+
+<div class="circuit-diagram">舵机PWM时序：
+
+周期 20ms
+|←————————————————————————————→|
+|                                |
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+|←→|                             |←→|
+500μs~2500μs                   下一周期
+
+脉宽 → 角度映射：
+500μs  = 0°
+1000μs = 45°
+1500μs = 90°（中位）
+2000μs = 135°
+2500μs = 180°</div>
+
+<h4>Arduino控制舵机代码</h4>
+
+<pre><code>#include &lt;Servo.h&gt;
+
+Servo myServo;
+
+void setup() {
+    myServo.attach(9);  // 舵机信号线接D9
+}
+
+void loop() {
+    // 扫描 0° → 180°
+    for (int angle = 0; angle &lt;= 180; angle++) {
+        myServo.write(angle);
+        delay(15);  // 等待舵机到位
+    }
+    // 扫描 180° → 0°
+    for (int angle = 180; angle &gt;= 0; angle--) {
+        myServo.write(angle);
+        delay(15);
+    }
+}</code></pre>
+
+<h3>无刷电机（BLDC）与FOC控制</h3>
+
+<p>无刷电机是高性能机器人关节的首选，配合FOC（磁场定向控制）可以实现精确的力矩控制。</p>
+
+<h4>推荐方案：ODrive / SimpleFOC</h4>
+
+<table>
+<tr><th>方案</th><th>特点</th><th>价格</th><th>适用Level</th></tr>
+<tr><td>ODrive v3.6</td><td>双轴FOC，CAN/UART，成熟稳定</td><td>~500元</td><td>Level 3-4</td></tr>
+<tr><td>SimpleFOC Shield</td><td>开源，Arduino兼容，单轴</td><td>~100元</td><td>Level 2-3</td></tr>
+<tr><td>小米CyberGear</td><td>集成电机+驱动+编码器，CAN接口</td><td>~800元/轴</td><td>Level 4</td></tr>
+<tr><td>宇树科技电机</td><td>高扭矩密度，专为机器人设计</td><td>~1500元/轴</td><td>Level 4</td></tr>
+</table>
+
+<div class="tip-box">
+    <h4>🎯 电机选型建议</h4>
+    <p><strong>入门（Level 1）</strong>：MG996R舵机（约15元/个），扭矩13kg·cm，适合小型双足机器人<br>
+    <strong>进阶（Level 2）</strong>：DS3218舵机（约50元/个），扭矩20kg·cm，数字舵机精度更高<br>
+    <strong>高级（Level 3）</strong>：无刷电机+SimpleFOC，扭矩大、效率高、寿命长<br>
+    <strong>专业（Level 4）</strong>：小米CyberGear或宇树电机，接近商用水平</p>
+</div>
+
+<h2>2.3 主控板选型</h2>
+
+<h3>常用主控板对比</h3>
+
+<table>
+<tr><th>主控板</th><th>处理器</th><th>主频</th><th>RAM</th><th>特点</th><th>价格</th><th>适用Level</th></tr>
+<tr><td>Arduino Uno</td><td>ATmega328P</td><td>16MHz</td><td>2KB</td><td>入门经典，生态丰富</td><td>~30元</td><td>Level 1</td></tr>
+<tr><td>Arduino Mega</td><td>ATmega2560</td><td>16MHz</td><td>8KB</td><td>多IO，适合多舵机</td><td>~50元</td><td>Level 1-2</td></tr>
+<tr><td>STM32F103</td><td>Cortex-M3</td><td>72MHz</td><td>20KB</td><td>性价比高，工业级</td><td>~20元</td><td>Level 2</td></tr>
+<tr><td>STM32F407</td><td>Cortex-M4</td><td>168MHz</td><td>192KB</td><td>浮点运算，适合控制算法</td><td>~40元</td><td>Level 2-3</td></tr>
+<tr><td>ESP32</td><td>Xtensa LX6</td><td>240MHz</td><td>520KB</td><td>WiFi/BT内置，双核</td><td>~20元</td><td>Level 2-3</td></tr>
+<tr><td>树莓派4B</td><td>Cortex-A72</td><td>1.8GHz</td><td>4/8GB</td><td>Linux，ROS，视觉处理</td><td>~400元</td><td>Level 3</td></tr>
+<tr><td>Jetson Nano</td><td>Cortex-A57+GPU</td><td>1.43GHz</td><td>4GB</td><td>AI推理，深度学习</td><td>~800元</td><td>Level 3-4</td></tr>
+<tr><td>Jetson Orin NX</td><td>Cortex-A78+GPU</td><td>2GHz</td><td>16GB</td><td>高性能AI，具身智能</td><td>~3000元</td><td>Level 4</td></tr>
+</table>
+
+<div class="info-box">
+    <h4>💡 手机作为机器人大脑</h4>
+    <p>现代智能手机（骁龙8 Gen3、麒麟9000等）的算力远超树莓派，且集成了摄像头、IMU、WiFi、蓝牙。通过USB OTG或蓝牙，手机可以作为机器人的高级控制器，运行视觉识别、语音交互等AI任务，而底层运动控制交给STM32等实时控制器。这是一种非常有潜力的架构。</p>
+</div>
+
+<h3>分层控制架构</h3>
+
+<p>复杂机器人通常采用分层控制架构：</p>
+
+<div class="circuit-diagram">分层控制架构：
+
+┌─────────────────────────────────────────┐
+│  高层控制器（树莓派/Jetson/手机）          │
+│  - 任务规划、路径规划                     │
+│  - 视觉识别、语音交互                     │
+│  - ROS节点、AI推理                       │
+│  运行频率：10~100Hz                      │
+└──────────────┬──────────────────────────┘
+               │ UART/CAN/USB
+┌──────────────▼──────────────────────────┐
+│  中层控制器（STM32/ESP32）               │
+│  - 步态生成、逆运动学                    │
+│  - 关节轨迹插值                          │
+│  - 传感器数据融合                        │
+│  运行频率：100~1000Hz                   │
+└──────────────┬──────────────────────────┘
+               │ PWM/CAN/RS485
+┌──────────────▼──────────────────────────┐
+│  底层驱动器（电机驱动板）                 │
+│  - FOC电流控制                           │
+│  - 编码器读取                            │
+│  - 过流/过温保护                         │
+│  运行频率：10kHz~100kHz                 │
+└─────────────────────────────────────────┘</div>
+
+<h2>2.4 电路设计基础</h2>
+
+<h3>机器人电路的基本组成</h3>
+
+<ol>
+    <li><strong>电源系统</strong>：电池、BMS、稳压模块</li>
+    <li><strong>主控电路</strong>：MCU/SBC及其外围电路</li>
+    <li><strong>驱动电路</strong>：电机驱动、舵机驱动</li>
+    <li><strong>传感器电路</strong>：信号调理、ADC、通信接口</li>
+    <li><strong>通信电路</strong>：WiFi/BT/CAN/RS485</li>
+    <li><strong>保护电路</strong>：过流、过压、反接保护</li>
+</ol>
+
+<h3>常用通信接口</h3>
+
+<table>
+<tr><th>接口</th><th>速率</th><th>距离</th><th>设备数</th><th>典型用途</th></tr>
+<tr><td>UART/串口</td><td>115200bps~4Mbps</td><td>短距</td><td>点对点</td><td>调试、模块通信</td></tr>
+<tr><td>I²C</td><td>100k~3.4Mbps</td><td>短距</td><td>127个</td><td>传感器（IMU、编码器）</td></tr>
+<tr><td>SPI</td><td>1~50Mbps</td><td>短距</td><td>多个（CS选择）</td><td>高速传感器、显示屏</td></tr>
+<tr><td>CAN</td><td>1Mbps</td><td>40m</td><td>110个</td><td>电机驱动、工业总线</td></tr>
+<tr><td>RS485</td><td>10Mbps</td><td>1200m</td><td>32个</td><td>舵机总线（Dynamixel）</td></tr>
+<tr><td>PWM</td><td>50Hz~400Hz</td><td>短距</td><td>1:1</td><td>舵机控制</td></tr>
+<tr><td>USB</td><td>480Mbps</td><td>5m</td><td>127个</td><td>调试、摄像头、高速数据</td></tr>
+</table>
+
+<h3>基本保护电路</h3>
+
+<div class="warning-box">
+    <h4>⚠️ 必须加的保护电路</h4>
+    <ul>
+        <li><strong>反接保护</strong>：电源正负极接反会立即烧毁电路，用P-MOS或肖特基二极管保护</li>
+        <li><strong>过流保护</strong>：电机堵转时电流可达额定值5~10倍，用保险丝或自恢复保险</li>
+        <li><strong>滤波电容</strong>：电机启停产生的电压尖峰会干扰MCU，在电源端加100μF+0.1μF电容</li>
+        <li><strong>光耦隔离</strong>：高压驱动电路与MCU之间加光耦，防止高压串入损坏MCU</li>
+    </ul>
+</div>
+
+<h3>电源设计</h3>
+
+<h4>锂电池选型</h4>
+
+<table>
+<tr><th>电池类型</th><th>标称电压</th><th>能量密度</th><th>安全性</th><th>适用场景</th></tr>
+<tr><td>18650锂电（3S）</td><td>11.1V</td><td>中</td><td>中</td><td>Level 1-2，成本低</td></tr>
+<tr><td>锂聚合物（LiPo）3S</td><td>11.1V</td><td>高</td><td>低（需注意）</td><td>Level 2-3，轻量化</td></tr>
+<tr><td>锂聚合物（LiPo）4S</td><td>14.8V</td><td>高</td><td>低</td><td>Level 3，高功率</td></tr>
+<tr><td>磷酸铁锂（LFP）</td><td>12.8V</td><td>低</td><td>高</td><td>Level 4，安全优先</td></tr>
+</table>
+
+<h4>稳压模块</h4>
+<ul>
+    <li><strong>5V/3A</strong>：给MCU、传感器供电（用LM2596或MP1584降压模块）</li>
+    <li><strong>3.3V/1A</strong>：给ESP32、传感器供电（用AMS1117-3.3或LDO）</li>
+    <li><strong>舵机电源</strong>：舵机需要独立5V/6V供电，不要与MCU共用（电流大，干扰大）</li>
+    <li><strong>电机电源</strong>：直接用电池电压，通过驱动板控制</li>
+</ul>
+
+<div class="circuit-diagram">典型电源分配方案：
+
+电池（3S LiPo，11.1V）
+    │
+    ├── 主开关（带LED指示）
+    │
+    ├── 保险丝（10A）
+    │
+    ├──→ 电机驱动板（11.1V直接供电）
+    │         │
+    │         └──→ 电机1, 电机2, ...
+    │
+    ├──→ 降压模块1（11.1V→6V/5A）
+    │         │
+    │         └──→ 舵机1, 舵机2, ... (独立供电)
+    │
+    └──→ 降压模块2（11.1V→5V/3A）
+              │
+              ├──→ 树莓派/主控板
+              ├──→ 传感器
+              └──→ 通信模块</div>
+
+<h2>2.5 实战：多舵机控制板</h2>
+
+<h3>基于Arduino Mega的16路舵机控制</h3>
+
+<p>Arduino Mega有15个硬件PWM引脚，可以直接控制15个舵机，加上软件PWM可扩展到更多。</p>
+
+<h4>硬件连接</h4>
+
+<div class="circuit-diagram">Arduino Mega 舵机接线：
+
+Arduino Mega          舵机
+D2  ──────────────→  舵机1 信号线（黄/白）
+D3  ──────────────→  舵机2 信号线
+D4  ──────────────→  舵机3 信号线
+...
+D13 ──────────────→  舵机12 信号线
+
+5V电源（独立）──────→  所有舵机 VCC（红线）
+GND ──────────────→  所有舵机 GND（黑/棕线）
+                      ↑ 注意：GND必须共地！</div>
+
+<h4>PCA9685 — 16路PWM扩展芯片</h4>
+
+<p>当舵机数量超过Arduino PWM引脚时，使用PCA9685扩展：</p>
+<ul>
+    <li>16路12位PWM输出</li>
+    <li>I²C接口，只占用2个引脚</li>
+    <li>可级联最多62个（992路PWM）</li>
+    <li>价格：约15元/块</li>
+</ul>
+
+<pre><code>#include &lt;Wire.h&gt;
+#include &lt;Adafruit_PWMServoDriver.h&gt;
+
+Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
+
+#define SERVOMIN  150  // 最小脉宽（0°）
+#define SERVOMAX  600  // 最大脉宽（180°）
+
+void setup() {
+    pwm.begin();
+    pwm.setPWMFreq(50);  // 50Hz，标准舵机频率
+}
+
+// 设置舵机角度（0~180°）
+void setServoAngle(uint8_t channel, float angle) {
+    uint16_t pulse = map(angle, 0, 180, SERVOMIN, SERVOMAX);
+    pwm.setPWM(channel, 0, pulse);
+}
+
+void loop() {
+    setServoAngle(0, 90);   // 舵机0 → 90°
+    setServoAngle(1, 45);   // 舵机1 → 45°
+    delay(1000);
+    setServoAngle(0, 0);
+    setServoAngle(1, 180);
+    delay(1000);
+}</code></pre>
+
+<h2>2.6 调试技巧</h2>
+
+<h3>常见问题与解决方案</h3>
+
+<table>
+<tr><th>问题现象</th><th>可能原因</th><th>解决方法</th></tr>
+<tr><td>舵机抖动</td><td>电源不稳、PWM干扰</td><td>独立供电、加滤波电容</td></tr>
+<tr><td>MCU复位</td><td>电源电流不足</td><td>加大电源容量、加滤波</td></tr>
+<tr><td>IMU数据漂移</td><td>温度变化、振动</td><td>温度补偿、低通滤波</td></tr>
+<tr><td>电机发热</td><td>电流过大、堵转</td><td>限制电流、加散热片</td></tr>
+<tr><td>通信丢包</td><td>波特率不匹配、接线问题</td><td>检查波特率、加上拉电阻</td></tr>
+<tr><td>编码器计数错误</td><td>信号干扰、速度过快</td><td>屏蔽线、降低采样间隔</td></tr>
+</table>
+
+<h3>调试工具推荐</h3>
+
+<ul>
+    <li><strong>万用表</strong>：必备，测电压/电流/电阻</li>
+    <li><strong>示波器</strong>（或逻辑分析仪）：查看PWM波形、通信时序</li>
+    <li><strong>串口调试助手</strong>：监控MCU输出，调试通信</li>
+    <li><strong>电流表</strong>：监控各路电流，发现异常</li>
+    <li><strong>热成像仪</strong>（可选）：快速定位发热元件</li>
+</ul>
+
+<h2>2.7 本章小结</h2>
+
+<ul>
+    <li>✅ 掌握了机器人常用传感器的原理和选型</li>
+    <li>✅ 理解了各类电机的特点和驱动方式</li>
+    <li>✅ 了解了主控板的选型和分层控制架构</li>
+    <li>✅ 学习了电路设计基础和电源管理</li>
+    <li>✅ 掌握了多舵机控制的实现方法</li>
+</ul>
+
+<div class="tip-box">
+    <h4>📚 下一步</h4>
+    <p>进入<a href="chapter3-software.html">第三章：软件基础</a>，学习运动学、PID控制、步态规划和ROS入门。</p>
+</div>
+
+<div class="nav-links">
+    <a href="chapter1-mechanics.html">← 第一章：机械基础</a>
+    <a href="chapter3-software.html">第三章：软件基础 →</a>
+</div>
+
+        </div>
+        <div class="page-footer">
+            <p>© 2026 机器人知识库 | Robot Knowledge Base</p>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">🔧 DIY实践模块 — 持续建设中</p>
+        </div>
+    </div>
+</body>
+</html>
