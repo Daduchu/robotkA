@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绗笁绔狅細杞欢鍩虹 | 鏈哄櫒浜篋IY瀹炶返</title>
+    <meta name="description" content="鏈哄櫒浜鸿蒋浠跺熀纭€锛氳繍鍔ㄥ銆丳ID鎺у埗銆佹鎬佽鍒掋€丷OS鍏ラ棬瀹屾暣鎸囧崡銆?>
+    <meta name="keywords" content="鏈哄櫒浜鸿繍鍔ㄥ,PID鎺у埗,姝ユ€佽鍒?ROS,閫嗚繍鍔ㄥ">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>馃</text></svg>">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.8; }
+        .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
+        .md-content h2 { font-size: 1.4rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 10px; border-left: 4px solid #7b2cbf; }
+        .md-content h3 { font-size: 1.1rem; color: #00d4ff; margin-top: 22px; margin-bottom: 10px; }
+        .md-content h4 { font-size: 1rem; color: #b0b0b0; margin-top: 18px; margin-bottom: 8px; }
+        .md-content p { margin-bottom: 14px; color: #c8cdd8; }
+        .md-content ul, .md-content ol { margin-left: 25px; margin-bottom: 16px; color: #ccc; }
+        .md-content li { margin-bottom: 7px; }
+        .md-content strong { color: #fff; }
+        .md-content a { color: #00d4ff; text-decoration: none; }
+        .md-content a:hover { text-decoration: underline; }
+        .md-content code { background: rgba(0,212,255,0.1); padding: 2px 8px; border-radius: 4px; color: #00d4ff; font-size: 0.88rem; font-family: 'Courier New', monospace; }
+        .md-content pre { background: rgba(0,0,0,0.4); border: 1px solid rgba(0,212,255,0.15); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 16px 0; }
+        .md-content pre code { background: none; padding: 0; color: #a8ff78; font-size: 0.85rem; line-height: 1.6; }
+        .md-content blockquote { border-left: 4px solid #7b2cbf; padding: 12px 20px; margin: 16px 0; background: rgba(123,44,191,0.08); border-radius: 0 8px 8px 0; }
+        .md-content blockquote p { margin-bottom: 0; color: #a0a0a0; }
+        .md-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+        .md-content th { background: rgba(0,212,255,0.1); padding: 10px 14px; text-align: left; color: #00d4ff; border-bottom: 1px solid rgba(0,212,255,0.2); }
+        .md-content td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; }
+        .md-content tr:hover td { background: rgba(255,255,255,0.03); }
+        .tip-box { background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .tip-box h4 { color: #ffc107; margin-top: 0; margin-bottom: 8px; }
+        .warning-box { background: rgba(244,67,54,0.08); border: 1px solid rgba(244,67,54,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .warning-box h4 { color: #f44336; margin-top: 0; margin-bottom: 8px; }
+        .info-box { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
+        .info-box h4 { color: #00d4ff; margin-top: 0; margin-bottom: 8px; }
+        .formula-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 20px; margin: 18px 0; text-align: center; font-size: 1.1rem; color: #fff; font-family: 'Times New Roman', serif; }
+        .diagram-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 25px; margin: 20px 0; font-family: 'Courier New', monospace; font-size: 12px; color: #888; line-height: 1.5; white-space: pre; overflow-x: auto; }
+        .nav-links { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .nav-links a { color: #00d4ff; text-decoration: none; font-size: 0.95rem; }
+        .nav-links a:hover { text-decoration: underline; }
+        .experience-box { background: linear-gradient(135deg, rgba(123,44,191,0.15) 0%, rgba(0,212,255,0.1) 100%); border: 1px solid rgba(123,44,191,0.3); border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .experience-box h4 { color: #c77dff; margin-top: 0; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">鈫?杩斿洖DIY瀹炶返棣栭〉</a>
+            <div class="breadcrumb"><a href="../../index.html">馃彔 棣栭〉</a><span>鈥?/span><a href="../index.html">馃И 绉戞櫘涓庢祴璇?/a><span>鈥?/span><a href="index.html">馃敡 DIY瀹炶返</a><span>鈥?/span>绗笁绔狅細杞欢鍩虹</div>
+            <h1>馃捇 绗笁绔狅細杞欢鍩虹</h1>
+            <p class="subtitle">Kinematics, Control, and Software</p>
+        </header>
+        <div class="md-content">
+
+<h1>杩愬姩瀛︺€佹帶鍒剁畻娉曚笌缂栫▼妗嗘灦</h1>
+
+<blockquote>
+    <p>馃挕 <strong>鏍稿績鎬濇兂</strong>锛氳蒋浠舵槸鏈哄櫒浜虹殑"鐏甸瓊"銆傛満姊板拰鐢靛瓙鎼缓浜嗚函澹筹紝浣嗗彧鏈夐€氳繃杞欢锛屾満鍣ㄤ汉鎵嶈兘"鎬濊€?鈥斺€旇鍒掑姩浣溿€佹劅鐭ョ幆澧冦€佹墽琛屼换鍔°€傛湰绔犱粠杩愬姩瀛﹀紑濮嬶紝閫愭娣卞叆鍒版帶鍒剁畻娉曞拰杞欢妗嗘灦銆?/p>
+</blockquote>
+
+<h2>3.1 鍧愭爣绯讳笌鍙樻崲</h2>
+
+<h3>涓轰粈涔堥渶瑕佸潗鏍囩郴锛?/h3>
+
+<p>鏈哄櫒浜烘槸涓€涓鏉傜殑绌洪棿绯荤粺銆傝鎻忚堪"鎵嬭噦鏈鍦ㄥ摢閲?銆?鑴氳惤鑴氬湪浠€涔堜綅缃?锛屽繀椤诲缓绔嬬粺涓€鐨勬暟瀛︽弿杩扳€斺€旇繖灏辨槸鍧愭爣绯汇€?/p>
+
+<h4>甯哥敤鍧愭爣绯?/h4>
+
+<table>
+<tr><th>鍧愭爣绯?/th><th>鍘熺偣浣嶇疆</th><th>鐢ㄩ€?/th></tr>
+<tr><td>涓栫晫鍧愭爣绯?/td><td>鍦伴潰鍥哄畾鐐?/td><td>鎻忚堪鏈哄櫒浜哄湪鐜涓殑缁濆浣嶇疆</td></tr>
+<tr><td>鏈轰綋鍧愭爣绯?/td><td>鏈哄櫒浜哄嚑浣曚腑蹇?/td><td>鎻忚堪鏈哄櫒浜哄悇閮ㄤ欢鐩稿鏈鸿韩鐨勪綅缃?/td></tr>
+<tr><td>鍏宠妭鍧愭爣绯?/td><td>鍏宠妭鏃嬭浆涓績</td><td>鎻忚堪鍗曚釜鍏宠妭鐨勮繍鍔?/td></tr>
+<tr><td>鏈鍧愭爣绯?/td><td>鎵嬮儴/鑴氶儴涓績</td><td>鎻忚堪鎿嶄綔浠诲姟锛堟姄鍙栥€佽惤鑴氾級</td></tr>
+</table>
+
+<h3>浜岀淮鏃嬭浆鐭╅樀</h3>
+
+<p>鍦ㄤ簩缁村钩闈紝涓€涓偣缁曞師鐐规棆杞搴ξ稿悗锛屾柊鍧愭爣涓猴細</p>
+
+<div class="formula-box">
+[x']   [cos胃  -sin胃] [x]
+[y'] = [sin胃   cos胃] [y]
+</div>
+
+<p>杩欎釜2脳2鐭╅樀灏辨槸<span style="color:#00d4ff;">鏃嬭浆鐭╅樀</span>锛岃浣淩(胃)銆?/p>
+
+<h3>涓夌淮鏃嬭浆涓庨綈娆″彉鎹?/h3>
+
+<p>鍦ㄤ笁缁寸┖闂达紝鏃嬭浆鍙互缁昘銆乊銆乑杞村垎鍒繘琛岋細</p>
+
+<ul>
+    <li><strong>缁昘杞存棆杞?/strong>锛堟í婊氳 roll锛夛細R<sub>x</sub>(蠁)</li>
+    <li><strong>缁昚杞存棆杞?/strong>锛堜刊浠拌 pitch锛夛細R<sub>y</sub>(胃)</li>
+    <li><strong>缁昛杞存棆杞?/strong>锛堝亸鑸 yaw锛夛細R<sub>z</sub>(蠄)</li>
+</ul>
+
+<p>涓轰簡缁熶竴澶勭悊鏃嬭浆鍜屽钩绉伙紝寮曞叆<strong>榻愭鍧愭爣</strong>锛屽皢3脳3鏃嬭浆鐭╅樀鎵╁睍涓?脳4榻愭鍙樻崲鐭╅樀锛?/p>
+
+<div class="formula-box">
+      [R   p]   [r11 r12 r13 px]
+T =   [     ] = [r21 r22 r23 py]
+      [0   1]   [r31 r32 r33 pz]
+                  [ 0   0   0  1]
+</div>
+
+<p>鍏朵腑R鏄?脳3鏃嬭浆鐭╅樀锛宲鏄?脳1骞崇Щ鍚戦噺銆?/p>
+
+<div class="diagram-box">鍧愭爣绯婚摼绀轰緥锛?
+      涓栫晫鍧愭爣绯?{W}
+           鈹?           鈹?T_WB (鏈轰綋浣嶅Э)
+           鈻?      鏈轰綋鍧愭爣绯?{B}
+          /|\
+         / | \
+        /  |  \
+  T_BH1/   |   \T_BH2 (宸﹀彸楂嬪叧鑺?
+      /    |    \
+     鈻?    鈻?    鈻?  宸﹂珛{H1}  ...  鍙抽珛{H2}
+      鈹?      鈹?T_H1K (鑶濆叧鑺傜浉瀵归珛)
+      鈻?   鑶濆叧鑺倇K}
+      鈹?      鈹?T_KA (韪濆叧鑺?
+      鈻?   韪濆叧鑺倇A}
+      鈹?      鈹?T_AF (瓒崇)
+      鈻?   瓒崇{F}</div>
+
+<h2>3.2 姝ｈ繍鍔ㄥ锛團orward Kinematics锛?/h2>
+
+<h3>瀹氫箟</h3>
+
+<p><strong>姝ｈ繍鍔ㄥ</strong>锛氬凡鐭ュ悇鍏宠妭瑙掑害锛屾眰鏈鎵ц鍣ㄧ殑浣嶇疆鍜屽Э鎬併€?/p>
+
+<div class="formula-box">
+鏈浣嶅Э = f(鍏宠妭瑙掑害)
+</div>
+
+<h3>鍗曞叧鑺傜ず渚?/h3>
+
+<p>鍋囪涓€涓畝鍗曟満姊拌噦锛屽熀搴ч珮搴锛屽ぇ鑷傞暱搴鈧侊紝灏忚噦闀垮害L鈧傦紝鑲樺叧鑺傝搴ξ革細</p>
+
+<div class="diagram-box">鍗曡噦姝ｈ繍鍔ㄥ锛?
+        * 鏈(x,y)
+       /|
+      / |
+   L鈧?  | y
+    /   |
+   /胃鈧? |
+   鈼忊攢鈹€鈹€鈹€鈹€鈹尖攢鈹€鈹€鈹€鈹€*
+   鈹? L鈧?鈹?    鈹?x
+   鈹?    鈹?    鈹?   鈹偽糕倎   鈹?    鈹?鈺愨晲鈺愨棌鈺愨晲鈺愨晲鈺愨棌鈺愨晲鈺愨晲鈺愨棌鈺愨晲鈺愨晲 鍦伴潰
+  鍩哄骇          h
+
+x = L鈧伮穋os(胃鈧? + L鈧偮穋os(胃鈧?胃鈧?
+y = h + L鈧伮穝in(胃鈧? + L鈧偮穝in(胃鈧?胃鈧?</div>
+
+<h3>DH鍙傛暟娉?/h3>
+
+<p>瀵逛簬澶嶆潅鐨勫鍏宠妭鏈哄櫒浜猴紝浣跨敤<strong>Denavit-Hartenberg鍙傛暟</strong>锛圖H鍙傛暟锛夌郴缁熷寲鎻忚堪姣忎釜鍏宠妭锛?/p>
+
+<table>
+<tr><th>DH鍙傛暟</th><th>鍚箟</th><th>绗﹀彿</th></tr>
+<tr><td>鍏宠妭瑙?/td><td>缁晍<sub>i-1</sub>杞存棆杞?/td><td>胃<sub>i</sub></td></tr>
+<tr><td>杩炴潌闀垮害</td><td>娌縳<sub>i</sub>杞村钩绉?/td><td>a<sub>i</sub></td></tr>
+<tr><td>杩炴潌鍋忚窛</td><td>娌縵<sub>i-1</sub>杞村钩绉?/td><td>d<sub>i</sub></td></tr>
+<tr><td>鎵浆瑙?/td><td>缁晉<sub>i</sub>杞存棆杞?/td><td>伪<sub>i</sub></td></tr>
+</table>
+
+<p>姣忎釜鍏宠妭鐨勫彉鎹㈢煩闃典负锛?/p>
+
+<div class="formula-box">
+      [cos(胃)  -sin(胃)cos(伪)   sin(胃)sin(伪)   a路cos(胃)]
+A岬?=  [sin(胃)   cos(胃)cos(伪)  -cos(胃)sin(伪)   a路sin(胃)]
+      [  0        sin(伪)          cos(伪)         d      ]
+      [  0          0               0            1      ]
+</div>
+
+<p>鏈浣嶅Э = A鈧?脳 A鈧?脳 A鈧?脳 ... 脳 A<sub>n</sub></p>
+
+<div class="info-box">
+    <h4>馃挕 蹇€熺悊瑙?/h4>
+    <p>姝ｈ繍鍔ㄥ鏄?浠庝笅寰€涓?璁＄畻锛氬凡鐭ユ瘡涓叧鑺傝浆浜嗗灏戝害锛岄棶"鎵嬫寚灏栧湪鍝効锛?杩欏湪鏈哄櫒浜轰豢鐪熴€佸彲瑙嗗寲銆佺鎾炴娴嬩腑鏄熀纭€銆?/p>
+</div>
+
+<h2>3.3 閫嗚繍鍔ㄥ锛圛nverse Kinematics锛?/h2>
+
+<h3>瀹氫箟</h3>
+
+<p><strong>閫嗚繍鍔ㄥ</strong>锛氬凡鐭ユ湯绔洰鏍囦綅缃拰濮挎€侊紝姹傚悇鍏宠妭闇€瑕佺殑瑙掑害銆?/p>
+
+<div class="formula-box">
+鍏宠妭瑙掑害 = f鈦宦?鐩爣浣嶅Э)
+</div>
+
+<p>杩欐鏄疄闄呮帶鍒舵椂鐨勯渶姹傦細鎴戞兂璁╂墜鑷傚埌杈炬煇鐐癸紝姣忎釜鍏宠妭璇ヨ浆澶氬皯搴︼紵</p>
+
+<h3>瑙ｆ瀽瑙?vs 鏁板€艰В</h3>
+
+<table>
+<tr><th>鏂规硶</th><th>鐗圭偣</th><th>閫傜敤</th></tr>
+<tr><td>瑙ｆ瀽瑙?/td><td>绮剧‘銆佸揩閫燂紝浣嗛渶瑕佺壒瀹氬嚑浣曟潯浠?/td><td>绠€鍗曠粨鏋勶紙鈮?DOF锛?/td></tr>
+<tr><td>鏁板€艰В</td><td>閫氱敤銆佽凯浠ｆ眰瑙ｏ紝鍙兘鏀舵暃鎱㈡垨闄峰叆灞€閮ㄦ瀬鍊?/td><td>澶嶆潅缁撴瀯</td></tr>
+<tr><td>Jacobian娉?/td><td>鍩轰簬闆呭彲姣旂煩闃佃凯浠ｏ紝鏈€甯哥敤鏁板€兼柟娉?/td><td>閫氱敤</td></tr>
+</table>
+
+<h3>闆呭彲姣旂煩闃垫硶</h3>
+
+<p>闆呭彲姣旂煩闃礘鎻忚堪鏈閫熷害涓庡叧鑺傞€熷害鐨勫叧绯伙細</p>
+
+<div class="formula-box">
+[鏈閫熷害] = J 脳 [鍏宠妭瑙掗€熷害]
+
+鍗筹細岷?= J 路 胃虈
+</div>
+
+<p>鍙嶈繃鏉ワ紝濡傛灉鎴戜滑鎯宠鏈浠ラ€熷害岷嬬Щ鍔紝鍏宠妭搴旇浠ヤ粈涔堥€熷害杩愬姩锛?/p>
+
+<div class="formula-box">
+胃虈 = J鈦?路 岷?</div>
+
+<p>鍏朵腑J鈦烘槸闆呭彲姣旂煩闃电殑浼€嗐€傝凯浠ｆ洿鏂帮細</p>
+
+<div class="formula-box">
+胃鈧栤倞鈧?= 胃鈧?+ J鈦?路 螖x
+</div>
+
+<h4>瀹炵幇姝ラ</h4>
+
+<ol>
+    <li>缁欏畾鐩爣鏈浣嶅Эx<sub>target</sub></li>
+    <li>鐢ㄥ綋鍓嶅叧鑺傝胃璁＄畻褰撳墠鏈浣嶅Эx<sub>current</sub>锛堟杩愬姩瀛︼級</li>
+    <li>璁＄畻璇樊锛毼攛 = x<sub>target</sub> - x<sub>current</sub></li>
+    <li>濡傛灉璇樊瓒冲灏忥紝鍋滄锛涘惁鍒欑户缁?/li>
+    <li>璁＄畻闆呭彲姣旂煩闃礘</li>
+    <li>鏇存柊锛毼?= 胃 + J鈦?路 螖x</li>
+    <li>鍥炲埌姝ラ2锛岃凯浠ｇ洿鍒版敹鏁?/li>
+</ol>
+
+<h4>Python瀹炵幇绀轰緥</h4>
+
+<pre><code>import numpy as np
+
+def jacobian_ik(target_pos, current_angles, L1, L2, max_iter=100, tol=1e-4):
+    """
+    闆呭彲姣旈€嗚繍鍔ㄥ姹傝В锛?DOF骞抽潰鑷傦級
+    target_pos: 鐩爣浣嶇疆 [x, y]
+    current_angles: 褰撳墠瑙掑害 [胃1, 胃2]
+    L1, L2: 澶ц噦銆佸皬鑷傞暱搴?    """
+    theta = np.array(current_angles)
+    
+    for i in range(max_iter):
+        # 姝ｈ繍鍔ㄥ璁＄畻褰撳墠浣嶇疆
+        x = L1 * np.cos(theta[0]) + L2 * np.cos(theta[0] + theta[1])
+        y = L1 * np.sin(theta[0]) + L2 * np.sin(theta[0] + theta[1])
+        current_pos = np.array([x, y])
+        
+        # 璇樊
+        error = target_pos - current_pos
+        if np.linalg.norm(error) &lt; tol:
+            return theta
+        
+        # 闆呭彲姣旂煩闃?        J = np.array([
+            [-L1*np.sin(theta[0]) - L2*np.sin(theta[0]+theta[1]), -L2*np.sin(theta[0]+theta[1])],
+            [ L1*np.cos(theta[0]) + L2*np.cos(theta[0]+theta[1]),  L2*np.cos(theta[0]+theta[1])]
+        ])
+        
+        # 浼€嗘洿鏂?        J_pinv = np.linalg.pinv(J)
+        theta += J_pinv @ error
+    
+    return theta  # 杈惧埌鏈€澶ц凯浠ｆ鏁帮紝杩斿洖褰撳墠鍊?
+# 娴嬭瘯
+target = [0.3, 0.5]  # 鐩爣浣嶇疆
+initial = [0.5, 0.5]  # 鍒濆瑙掑害浼版祴
+result = jacobian_ik(target, initial, L1=0.3, L2=0.25)
+print(f"姹傝В瑙掑害: 胃1={np.degrees(result[0]):.1f}掳, 胃2={np.degrees(result[1]):.1f}掳")</code></pre>
+
+<h2>3.4 PID鎺у埗鍣ㄨ瑙?/h2>
+
+<blockquote>
+    <p>馃幆 PID鎺у埗鏄伐涓氭帶鍒堕鍩熷簲鐢ㄦ渶骞挎硾鐨勭畻娉曘€傚叾鎬濇兂绠€鍗曟湁鏁堬細鏍规嵁<span style="color:#00d4ff;">璇樊</span>鐨勫ぇ灏忋€佺疮绉拰鍙樺寲瓒嬪娍锛屼骇鐢熸帶鍒堕噺銆?/p>
+</blockquote>
+
+<h3>閲嶇幇鍘嗗彶锛氭瘮渚嬫帶鍒?/h3>
+
+<div class="experience-box">
+    <h4>馃暟锔?浜斿崄骞村墠鐨勬瘮渚嬫帶鍒?/h4>
+    <p>浜斿崄骞村墠锛屽湪鑷姩鍖栫爺绌舵墍锛屽伐绋嬪笀浠敤杩愮畻鏀惧ぇ鍣ㄥ拰鐢甸樆鐢靛鎼缓妯℃嫙PID鎺у埗鍣ㄣ€傞偅鏃剁殑"姣斾緥鎺у埗"鏄函纭欢瀹炵幇鈥斺€旇皟鏁寸數浣嶅櫒锛屾敼鍙樻斁澶у€嶆暟锛岃瀵熺郴缁熷搷搴斻€傛病鏈夋暟瀛楁樉绀哄睆锛屾病鏈夎蒋浠惰皟璇曠晫闈紝鍏ㄩ潬绀烘尝鍣ㄥ拰缁忛獙銆?/p>
+    <p>浠婂ぉ鎴戜滑鐢ㄥ嚑琛屼唬鐮佸氨鑳藉疄鐜板綋骞撮渶瑕佷竴鏁村潡鐢佃矾鏉跨殑鍔熻兘銆備絾鏍稿績鍘熺悊鏈彉锛?strong>璇樊澶?鈫?鎺у埗閲忓ぇ锛涜宸皬 鈫?鎺у埗閲忓皬</strong>銆?/p>
+</div>
+
+<h3>PID涓変釜鍒嗛噺</h3>
+
+<table>
+<tr><th>鍒嗛噺</th><th>鍚嶇О</th><th>浣滅敤</th><th>鍏紡</th></tr>
+<tr><td>P</td><td>姣斾緥</td><td>鏍规嵁褰撳墠璇樊浜х敓鎺у埗閲忥紝璇樊瓒婂ぇ浣滅敤瓒婂己</td><td>K<sub>p</sub> 路 e(t)</td></tr>
+<tr><td>I</td><td>绉垎</td><td>娑堥櫎绋虫€佽宸紝绱Н鍘嗗彶璇樊</td><td>K<sub>i</sub> 路 鈭玡(蟿)d蟿</td></tr>
+<tr><td>D</td><td>寰垎</td><td>棰勬祴璇樊鍙樺寲瓒嬪娍锛屽鍔犻樆灏?/td><td>K<sub>d</sub> 路 de(t)/dt</td></tr>
+</table>
+
+<h3>PID鎺у埗鍏紡</h3>
+
+<div class="formula-box" style="font-size: 1.2rem;">
+u(t) = K<sub>p</sub>路e(t) + K<sub>i</sub>路鈭玡(蟿)d蟿 + K<sub>d</sub>路de(t)/dt
+</div>
+
+<p>鍏朵腑锛?/p>
+<ul>
+    <li>e(t) = 鐩爣鍊?- 瀹為檯鍊硷紙璇樊锛?/li>
+    <li>u(t) = 鎺у埗杈撳嚭锛堝鐢垫満PWM鍗犵┖姣旓級</li>
+    <li>K<sub>p</sub>銆並<sub>i</sub>銆並<sub>d</sub> = PID鍙傛暟</li>
+</ul>
+
+<h3>浣嶇疆寮廝ID涓庡閲忓紡PID</h3>
+
+<h4>浣嶇疆寮廝ID</h4>
+<p>鐩存帴璁＄畻鎺у埗閲忕殑缁濆鍊硷細</p>
+<pre><code>u(k) = Kp路e(k) + Ki路鈭慹(i) + Kd路(e(k)-e(k-1))</code></pre>
+
+<h4>澧為噺寮廝ID</h4>
+<p>璁＄畻鎺у埗閲忕殑<strong>澧為噺</strong>锛?/p>
+<pre><code>螖u(k) = Kp路(e(k)-e(k-1)) + Ki路e(k) + Kd路(e(k)-2e(k-1)+e(k-2))
+u(k) = u(k-1) + 螖u(k)</code></pre>
+
+<div class="tip-box">
+    <h4>馃幆 閫夋嫨寤鸿</h4>
+    <ul>
+        <li><strong>浣嶇疆寮?/strong>锛氶€傚悎缁濆浣嶇疆鎺у埗锛堝鑸垫満瑙掑害锛?/li>
+        <li><strong>澧為噺寮?/strong>锛氶€傚悎閫熷害鎺у埗銆佹祦閲忔帶鍒讹紝閬垮厤绉垎楗卞拰</li>
+    </ul>
+</div>
+
+<h3>Arduino PID瀹炵幇</h3>
+
+<pre><code>class PIDController {
+private:
+    float Kp, Ki, Kd;
+    float integral, prev_error;
+    unsigned long prev_time;
+    float output_min, output_max;
+    
+public:
+    PIDController(float p, float i, float d, float min_out, float max_out)
+        : Kp(p), Ki(i), Kd(d), integral(0), prev_error(0),
+          output_min(min_out), output_max(max_out) {
+        prev_time = millis();
+    }
+    
+    float compute(float setpoint, float current) {
+        unsigned long now = millis();
+        float dt = (now - prev_time) / 1000.0;  // 绉?        prev_time = now;
+        
+        float error = setpoint - current;
+        
+        // P椤?        float P = Kp * error;
+        
+        // I椤癸紙甯︾Н鍒嗛檺骞咃級
+        integral += error * dt;
+        integral = constrain(integral, -100, 100);  // 闃茬Н鍒嗛ケ鍜?        float I = Ki * integral;
+        
+        // D椤?        float derivative = (error - prev_error) / dt;
+        float D = Kd * derivative;
+        
+        prev_error = error;
+        
+        // 鎬昏緭鍑?+ 闄愬箙
+        float output = P + I + D;
+        output = constrain(output, output_min, output_max);
+        
+        return output;
+    }
+    
+    void reset() {
+        integral = 0;
+        prev_error = 0;
+    }
+};
+
+// 浣跨敤绀轰緥
+PIDController pid(2.0, 0.1, 0.5, -255, 255);  // Kp=2, Ki=0.1, Kd=0.5
+
+void loop() {
+    float target_angle = 90.0;
+    float current_angle = readEncoder();  // 璇诲彇缂栫爜鍣?    
+    float control = pid.compute(target_angle, current_angle);
+    motorWrite(control);  // 杈撳嚭鍒扮數鏈?}</code></pre>
+
+<h3>璋冨弬鏂规硶</h3>
+
+<h4>鎵嬪姩璋冨弬锛堢粡鍏告柟娉曪級</h4>
+
+<ol>
+    <li><strong>鍏堝皢Ki銆並d璁句负0</strong>锛屽彧淇濈暀Kp</li>
+    <li>閫愭澧炲ぇKp锛岀洿鍒扮郴缁熷嚭鐜?strong>鎸佺画鎸崱</strong>锛堝垰濂戒笉鍙戞暎锛?/li>
+    <li>璁颁笅姝ゆ椂Kp涓篕<sub>u</sub>锛堜复鐣屽鐩婏級锛屾尟鑽″懆鏈熶负T<sub>u</sub></li>
+    <li>鏍规嵁缁忛獙鍏紡璁剧疆锛?        <ul>
+            <li>Kp = 0.6 路 K<sub>u</sub></li>
+            <li>Ki = 2 路 Kp / T<sub>u</sub></li>
+            <li>Kd = Kp 路 T<sub>u</sub> / 8</li>
+        </ul>
+    </li>
+    <li>寰皟锛氬鏋滃搷搴旀參锛屽澶p锛涘鏋滆秴璋冨ぇ锛屽澶d锛涘鏋滄湁绋虫€佽宸紝澧炲ぇKi</li>
+</ol>
+
+<div class="warning-box">
+    <h4>鈿狅笍 璋冨弬娉ㄦ剰浜嬮」</h4>
+    <ul>
+        <li>K<sub>p</sub>杩囧ぇ锛氱郴缁熸尟鑽°€佸彂鏁?/li>
+        <li>K<sub>i</sub>杩囧ぇ锛氳秴璋冧弗閲嶃€佺Н鍒嗛ケ鍜?/li>
+        <li>K<sub>d</sub>杩囧ぇ锛氬鍣０鏁忔劅銆佹姈鍔?/li>
+        <li>鍏堣皟P锛屽啀璋僆锛屾渶鍚庤皟D锛圥ID涓嶆槸鍞竴椤哄簭锛?/li>
+    </ul>
+</div>
+
+<h4>璇曞噾娉曪紙瀹炵敤鏂规硶锛?/h4>
+
+<ol>
+    <li><strong>Kp浠庡皬寮€濮?/strong>锛氱郴缁熷搷搴旀參銆佽宸ぇ</li>
+    <li><strong>閫愭澧炲ぇKp</strong>锛氬搷搴斿彉蹇紝鐩村埌鍑虹幇杞诲井瓒呰皟</li>
+    <li><strong>鍔犲叆灏忛噺Ki</strong>锛氭秷闄ょǔ鎬佽宸?/li>
+    <li><strong>濡傛灉鎸崱鏄庢樉</strong>锛氬姞鍏d澧炲姞闃诲凹</li>
+    <li><strong>鍙嶅寰皟</strong>锛氭壘鍒版渶浣冲钩琛＄偣</li>
+</ol>
+
+<div class="experience-box">
+    <h4>馃晲 褰撳勾鐨勮皟鍙傜粡楠?/h4>
+    <p>鍦ㄦ病鏈夋暟瀛楁帶鍒跺櫒骞翠唬锛岃皟鍙傚畬鍏ㄩ潬"璇?鍜?鐪?锛?/p>
+    <ul>
+        <li>鐢ㄧず娉㈠櫒瑙傚療绯荤粺鍝嶅簲娉㈠舰</li>
+        <li>璋冩暣鐢典綅鍣ㄦ敼鍙樺鐩婏紝鐪嬫尝褰㈠彉鍖?/li>
+        <li>缁忛獙涓板瘜鐨勫伐绋嬪笀鑳藉揩閫熷垽鏂細涓寸晫鐘舵€併€佺ǔ瀹氳竟鐣?/li>
+        <li>鐜娓╁害鍙樺寲鍚庯紝鍙傛暟闇€瑕侀噸鏂拌皟鏁达紙妯℃嫙鍣ㄤ欢婕傜Щ锛?/li>
+    </ul>
+    <p>浠婂ぉ鐨勬暟瀛桺ID鍙傛暟鏄簿纭殑鏁板瓧锛堝Kp=2.35锛夛紝涓嶅瓨鍦ㄦ紓绉婚棶棰橈紝鍙噸澶嶆€уぇ澶ф彁楂樸€?/p>
+</div>
+
+<h3>甯歌闂涓庤В鍐?/h3>
+
+<table>
+<tr><th>闂</th><th>鍘熷洜</th><th>瑙ｅ喅</th></tr>
+<tr><td>绯荤粺鍙戞暎</td><td>Kp杩囧ぇ</td><td>鍑忓皬Kp</td></tr>
+<tr><td>绋虫€佽宸ぇ</td><td>Ki澶皬鎴栨棤绉垎</td><td>澧炲ぇKi</td></tr>
+<tr><td>鍝嶅簲瓒呰皟涓ラ噸</td><td>Ki杩囧ぇ鎴朘d灏?/td><td>鍑忓皬Ki锛屽澶d</td></tr>
+<tr><td>楂橀鎶栧姩</td><td>Kd杩囧ぇ锛屽鍣０鏁忔劅</td><td>鍑忓皬Kd锛屽姞浣庨€氭护娉?/td></tr>
+<tr><td>鍝嶅簲鎱?/td><td>Kp澶皬</td><td>澧炲ぇKp</td></tr>
+<tr><td>绉垎楗卞拰</td><td>闀挎椂闂村ぇ璇樊</td><td>绉垎闄愬箙鎴栫Н鍒嗗垎绂?/td></tr>
+</table>
+
+<!-- 缁х画涓嬩竴閮ㄥ垎... -->
+
+<h2>3.5 姝ユ€佽鍒掑熀纭€</h2>
+
+<h3>浠€涔堟槸姝ユ€侊紵</h3>
+
+<p><strong>姝ユ€?/strong>锛圙ait锛夋槸鏈哄櫒浜鸿璧扮殑鍛ㄦ湡鎬ц繍鍔ㄦā寮忋€傚浜庡弻瓒虫満鍣ㄤ汉锛屾牳蹇冮棶棰樻槸锛?strong>濡備綍鍗忚皟涓ゆ潯鑵跨殑杩愬姩锛屼繚鎸佸钩琛″苟鍓嶈繘锛?/strong></p>
+
+<h4>鍙岃冻琛岃蛋鐨勫叧閿寫鎴?/h4>
+
+<ul>
+    <li><strong>骞宠　闂</strong>锛氫换浣曟椂鍒婚兘鍙湁涓€鍙剼锛堟垨闆跺彧鑴氾級鏀拺锛屽浣曚繚鎸佺ǔ瀹氾紵</li>
+    <li><strong>鍐插嚮闂</strong>锛氳剼钀藉湴鏃剁殑鍐插嚮濡備綍鍚告敹锛?/li>
+    <li><strong>鍛ㄦ湡鎬?/strong>锛氳璧版槸閲嶅杩愬姩锛岄渶瑕佸畾涔夋竻鏅扮殑鍛ㄦ湡</li>
+    <li><strong>鑳借€楅棶棰?/strong>锛氬浣曢珮鏁堝湴鍒╃敤鑳介噺锛?/li>
+</ul>
+
+<h3>绋冲畾鎬у垽鎹?/h3>
+
+<h4>闈欐€佺ǔ瀹?/h4>
+
+<p>褰撴満鍣ㄤ汉閲嶅績鎶曞奖钀藉湪鏀拺澶氳竟褰紙support polygon锛夊唴閮ㄦ椂锛屾満鍣ㄤ汉闈欐鐘舵€佷笅涓嶄細鍊惧€掋€傝繖鏄渶绠€鍗曠殑绋冲畾鎬ф潯浠躲€?/p>
+
+<div class="diagram-box">鏀拺澶氳竟褰紙淇鍥撅級锛?
+     宸﹁剼 鈼忊攣鈹佲攣鈹佲攣鈹佲棌 鍙宠剼
+      
+      鏀拺鍖哄煙 = 涓よ剼涔嬮棿鐨勫尯鍩?      
+         鈻?閲嶅績鎶曞奖蹇呴』鍦ㄥ尯鍩熷唴
+         鈹?      鈹屸攢鈹€鈼忊攢鈹€鈹?      鈹?    鈹? 瀹夊叏鍖猴紒
+      鈹斺攢鈹€鈹€鈹€鈹€鈹?/div>
+
+<h4>鍔ㄦ€佺ǔ瀹氾細ZMP锛堥浂鍔涚煩鐐癸級</h4>
+
+<p><strong>ZMP</strong>锛圸ero Moment Point锛夋槸 Honda 浜哄舰鏈哄櫒浜虹巼鍏堜娇鐢ㄧ殑鍔ㄦ€佺ǔ瀹氭€ф寚鏍囷細</p>
+
+<ul>
+    <li>ZMP钀藉湪鏀拺澶氳竟褰㈠唴 鈫?绋冲畾</li>
+    <li>ZMP鍗冲皢绂诲紑鏀拺澶氳竟褰?鈫?鍙兘鍊惧€?/li>
+</ul>
+
+<p>ZMP鑰冭檻浜嗘満鍣ㄤ汉鐨勫姩鍔涘锛堟儻鎬у姏銆侀噸鍔涳級锛屾瘮闈欐€侀噸蹇冩洿鍔犵簿纭€?/p>
+
+<div class="formula-box" style="font-size: 0.95rem;">
+p<sub>x</sub> = 危(m<sub>i</sub>(岷?sub>i</sub>路z<sub>i</sub> - z虉<sub>i</sub>路x<sub>i</sub> + g路x<sub>i</sub>)) / 危(m<sub>i</sub>(z虉<sub>i</sub> + g))
+</div>
+
+<div class="info-box">
+    <h4>馃挕 瀹炵敤绠€鍖?/h4>
+    <p>瀵逛簬閫熷害杈冩參鐨勫弻瓒虫満鍣ㄤ汉锛屽彲浠ヨ繎浼艰涓?ZMP 鈮?閲嶅績鎶曞奖銆備絾鍦ㄩ珮閫熻繍鍔ㄦ垨澶嶆潅鍔ㄤ綔鏃讹紝闇€瑕佸畬鏁磋绠椼€?/p>
+</div>
+
+<h3>鍏稿瀷姝ユ€佺被鍨?/h3>
+
+<table>
+<tr><th>姝ユ€?/th><th>鐗圭偣</th><th>搴旂敤</th></tr>
+<tr><td>闈欐€佹琛?/td><td>閲嶅績濮嬬粓鍦ㄦ敮鎾戝尯鍐咃紝鎱㈤€熴€佺ǔ瀹?/td><td>鍏ラ棬绾ф満鍣ㄤ汉</td></tr>
+<tr><td>鍔ㄦ€佹琛?/td><td>鍏佽鐭殏涓嶇ǔ瀹氾紝鍒╃敤鎯€у墠杩?/td><td>鎴愪汉褰㈡満鍣ㄤ汉</td></tr>
+<tr><td>璺戣烦</td><td>瀛樺湪鑵剧┖鐩革紙鍙岃剼绂诲湴锛夛紝闇€瑕佷富鍔ㄦ帶鍒?/td><td>楂樻€ц兘鏈哄櫒浜?/td></tr>
+<tr><td>鐖</td><td>涓夎剼浠ヤ笂鍚屾椂鏀拺锛屼綆閫熼珮绋冲畾</td><td>鍥涜冻鏈哄櫒浜?/td></tr>
+</table>
+
+<h3>鍙岃冻姝ヨ鍛ㄦ湡瀹氫箟</h3>
+
+<div class="diagram-box">姝ヨ鍛ㄦ湡锛堝崟姝ワ級锛?
+鏃堕棿杞?鈫?   鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?   鈹?       宸﹁吙鏀拺鏈?       鈹? 鍙宠吙鏀拺鏈? 鈹?   鈹?鈫愨攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?鈹傗啇鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫掆攤
+   鈹?                       鈹?             鈹?   鈹?  鈹屸攢鈹€鈹?     鈹屸攢鈹€鈹?     鈹? 鈹屸攢鈹€鈹? 鈹屸攢鈹€鈹?鈹?   鈹?  鈹傚乏鈹?     鈹傚彸鈹?     鈹? 鈹傚乏鈹? 鈹傚彸鈹?鈹?   鈹?  鈹傝剼鈹?     鈹傝剼鈹?     鈹? 鈹傝剼鈹? 鈹傝剼鈹?鈹?   鈹?  鈹傝笍鈹?     鈹傛姮鈹?     鈹? 鈹傛姮鈹? 鈹傝笍鈹?鈹?   鈹?  鈹傚湴鈹?     鈹傝捣鈹?     鈹? 鈹傝捣鈹? 鈹傚湴鈹?鈹?   鈹?  鈹斺攢鈹€鈹?     鈹斺攢鈹€鈹?     鈹? 鈹斺攢鈹€鈹? 鈹斺攢鈹€鈹?鈹?   鈹?        鈫?鍙屾敮鎾戞湡     鈹?    鈫?鍙屾敮鎾戔攤
+   鈹?      锛堜袱鑴氶兘鍦ㄥ湴锛?   鈹?             鈹?   鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?   
+鍛ㄦ湡T = 宸﹁吙鎽嗗姩鏃堕棿 + 鍙宠吙鎽嗗姩鏃堕棿</div>
+
+<h4>鍏抽敭鍙傛暟</h4>
+
+<ul>
+    <li><strong>姝ラ暱</strong>锛氬崟姝ュ墠杩涜窛绂伙紝閫氬父0.2~0.4m锛堝皬鍨嬫満鍣ㄤ汉锛?/li>
+    <li><strong>姝ラ</strong>锛氭瘡绉掓鏁帮紝鍏稿瀷0.5~2 Hz</li>
+    <li><strong>鎽嗚吙楂樺害</strong>锛氭姮鑴氶珮搴︼紝閬垮厤缁婂€掞紝閫氬父3~8cm</li>
+    <li><strong>鍙屾敮鎾戞椂闂?/strong>锛氫袱鑴氬悓鏃跺湪鍦扮殑杩囨浮鏃堕棿锛屽崰鍛ㄦ湡10~20%</li>
+</ul>
+
+<h3>绠€鍗曟鎬佺敓鎴愭柟娉?/h3>
+
+<h4>杞ㄨ抗瑙勫垝 + 閫嗚繍鍔ㄥ</h4>
+
+<ol>
+    <li>瑙勫垝楂嬪叧鑺傚拰韪濆叧鑺傜殑<span style="color:#00d4ff;">杞ㄨ抗鏇茬嚎</span>锛堝姝ｅ鸡銆佸椤瑰紡锛?/li>
+    <li>鐢ㄩ€嗚繍鍔ㄥ璁＄畻鍚勫叧鑺傝搴?/li>
+    <li>鍏宠妭鎺у埗鍣ㄨ窡韪建杩?/li>
+</ol>
+
+<pre><code>// 绠€鍗曟憜鑵胯建杩圭敓鎴愶紙Arduino浼唬鐮侊級
+void generateWalkTrajectory(float t, float* hip_angle, float* knee_angle, float* ankle_angle) {
+    float T = 1.0;  // 姝ユ€佸懆鏈燂紙绉掞級
+    float phase = fmod(t, T) / T;  // 0~1
+    
+    // 鎽嗗姩鐩革紙0~0.5锛?    if (phase &lt; 0.5) {
+        // 楂嬪叧鑺傚墠杩涙憜鍔?        *hip_angle = 20.0 * sin(phase * 2 * PI);  // 卤20掳
+        // 鑶濆叧鑺傚集鏇叉姮璧?        *knee_angle = -40.0 * sin(phase * 4 * PI);  // 鏈€澶у集鏇?0掳
+        // 韪濆叧鑺傝ˉ鍋?        *ankle_angle = -10.0 * sin(phase * 4 * PI);
+    }
+    // 鏀拺鐩革紙0.5~1锛?    else {
+        float local_phase = (phase - 0.5) * 2;  // 閲嶆柊鏄犲皠鍒?~1
+        // 楂嬪叧鑺傚悗鎽嗭紙璁╄韩浣撳墠杩涳級
+        *hip_angle = -20.0 * sin(local_phase * PI);
+        // 鑶濆叧鑺傚井寮紦鍐?        *knee_angle = -5.0 * sin(local_phase * PI);
+        // 韪濆叧鑺傛敮鎾?        *ankle_angle = 0;
+    }
+}</code></pre>
+
+<div class="tip-box">
+    <h4>馃幆 杩涢樁鏂瑰悜</h4>
+    <ul>
+        <li><strong>鍊掔珛鎽嗘ā鍨?/strong>锛圛nverted Pendulum锛夛細绠€鍖栧姩鍔涘锛岀敓鎴愯嚜鐒舵鎬?/li>
+        <li><strong>妯″瀷棰勬祴鎺у埗</strong>锛圡PC锛夛細鍓嶇灮寮忎紭鍖栨鎬?/li>
+        <li><strong>寮哄寲瀛︿範</strong>锛氳AI鑷富瀛︿範姝ユ€侊紙濡傜壒鎷夋柉鏈哄櫒浜猴級</li>
+    </ul>
+</div>
+
+<h2>3.6 ROS鍏ラ棬</h2>
+
+<h3>浠€涔堟槸ROS锛?/h3>
+
+<p><strong>ROS</strong>锛圧obot Operating System锛屾満鍣ㄤ汉鎿嶄綔绯荤粺锛夋槸涓€涓紑婧愮殑鏈哄櫒浜鸿蒋浠舵鏋讹紝鎻愪緵锛?/p>
+
+<ul>
+    <li><strong>閫氫俊鏈哄埗</strong>锛氳妭鐐归棿鐨勬秷鎭紶閫?/li>
+    <li><strong>宸ュ叿鐢熸€?/strong>锛氫豢鐪燂紙Gazebo锛夈€佸彲瑙嗗寲锛圧Viz锛夈€佽皟璇曞伐鍏?/li>
+    <li><strong>鍔熻兘鍖?/strong>锛氬鑸€丼LAM銆佽瑙夌瓑鐜版垚妯″潡</li>
+    <li><strong>澶氳瑷€鏀寔</strong>锛欳++銆丳ython涓轰富</li>
+</ul>
+
+<div class="info-box">
+    <h4>馃挕 ROS vs 浼犵粺宓屽叆寮?/h4>
+    <p>浼犵粺宓屽叆寮忓紑鍙戯紙Arduino/STM32锛夐€傚悎搴曞眰瀹炴椂鎺у埗锛汻OS閫傚悎楂樺眰浠诲姟瑙勫垝銆佸浼犳劅鍣ㄨ瀺鍚堛€佸鏉傜畻娉曘€備袱鑰呯粨鍚堟槸鏈€浣冲疄璺碉細涓嬪眰MCU鍋氬疄鏃舵帶鍒讹紝涓婂眰ROS鍋氭櫤鑳藉喅绛栥€?/p>
+</div>
+
+<h3>ROS鏍稿績姒傚康</h3>
+
+<table>
+<tr><th>姒傚康</th><th>绫绘瘮</th><th>璇存槑</th></tr>
+<tr><td>鑺傜偣锛圢ode锛?/td><td>鐙珛绋嬪簭</td><td>鎵ц鐗瑰畾鍔熻兘鐨勮繘绋嬶紙濡?"鎽勫儚澶磋妭鐐?锛?/td></tr>
+<tr><td>璇濋锛圱opic锛?/td><td>骞挎挱棰戦亾</td><td>鑺傜偣闂村紓姝ラ€氫俊鐨勯€氶亾锛堝 "/camera/image"锛?/td></tr>
+<tr><td>娑堟伅锛圡essage锛?/td><td>鏁版嵁鍖?/td><td>璇濋涓婁紶杈撶殑鏁版嵁缁撴瀯</td></tr>
+<tr><td>鏈嶅姟锛圫ervice锛?/td><td>鍑芥暟璋冪敤</td><td>鍚屾璇锋眰-鍝嶅簲妯″紡</td></tr>
+<tr><td>鍙傛暟鏈嶅姟鍣?/td><td>閰嶇疆鏂囦欢</td><td>瀛樺偍鍏ㄥ眬閰嶇疆鍙傛暟</td></tr>
+<tr><td>Launch鏂囦欢</td><td>鍚姩鑴氭湰</td><td>鍚屾椂鍚姩澶氫釜鑺傜偣</td></tr>
+</table>
+
+<h3>ROS閫氫俊鏋舵瀯鍥?/h3>
+
+<div class="diagram-box">ROS鑺傜偣閫氫俊绀烘剰锛?
+鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?        鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?鈹?  鎽勫儚澶磋妭鐐?     鈹?        鈹?  澶勭悊鑺傜偣        鈹?鈹?/camera_node     鈹?        鈹?/processor_node  鈹?鈹?                 鈹?        鈹?                 鈹?鈹? 鍙戝竷鍥惧儚 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹尖攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫掆攤 璁㈤槄鍥惧儚         鈹?鈹?                 鈹? Topic: 鈹?                 鈹?鈹?                 鈹? /image  鈹? 鍙戝竷缁撴灉 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹尖攢鈹€鈫?鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?        鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                                       鈹?                                       鈹?Topic: /result
+                                       鈫?                                 鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                                 鈹?  鍐崇瓥鑺傜偣        鈹?                                 鈹?/decision_node  鈹?                                 鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?/div>
+
+<h3>ROS 2 绀轰緥浠ｇ爜</h3>
+
+<h4>Publisher锛堝彂甯冭€咃級</h4>
+
+<pre><code># Python ROS 2 鍙戝竷鑰呯ず渚?
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalPublisher(Node):
+    def __init__(self):
+        super().__init__('minimal_publisher')
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        timer_period = 0.5  # 0.5绉掑彂甯冧竴娆?        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Hello World: %d' % self.i
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.i += 1
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_publisher = MinimalPublisher()
+    rclpy.spin(minimal_publisher)
+    minimal_publisher.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<h4>Subscriber锛堣闃呰€咃級</h4>
+
+<pre><code># Python ROS 2 璁㈤槄鑰呯ず渚?
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalSubscriber(Node):
+    def __init__(self):
+        super().__init__('minimal_subscriber')
+        self.subscription = self.create_subscription(
+            String,
+            'topic',
+            self.listener_callback,
+            10)
+        self.subscription  # 闃叉鏈娇鐢ㄨ鍛?
+    def listener_callback(self, msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_subscriber = MinimalSubscriber()
+    rclpy.spin(minimal_subscriber)
+    minimal_subscriber.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<h3>甯哥敤ROS宸ュ叿</h3>
+
+<h4>RViz 鈥?3D鍙鍖栧伐鍏?/h4>
+<ul>
+    <li>鏄剧ず鏈哄櫒浜烘ā鍨嬶紙URDF锛?/li>
+    <li>鏄剧ず浼犳劅鍣ㄦ暟鎹紙鐐逛簯銆佸浘鍍忥級</li>
+    <li>鏄剧ず瑙勫垝璺緞銆佽建杩?/li>
+    <li>瀹炴椂璋冨弬</li>
+</ul>
+
+<h4>Gazebo 鈥?鐗╃悊浠跨湡鍣?/h4>
+<ul>
+    <li>鐗╃悊寮曟搸锛堥噸鍔涖€佺鎾炪€佹懇鎿︼級</li>
+    <li>浼犳劅鍣ㄤ豢鐪燂紙鎽勫儚澶淬€佹縺鍏夐浄杈俱€両MU锛?/li>
+    <li>鏃犻渶鐗╃悊鏈哄櫒浜哄嵆鍙祴璇曠畻娉?/li>
+    <li>鏀寔ROS闆嗘垚</li>
+</ul>
+
+<h4>rqt 鈥?璋冭瘯宸ュ叿濂椾欢</h4>
+<ul>
+    <li><code>rqt_graph</code>锛氭樉绀鸿妭鐐瑰叧绯诲浘</li>
+    <li><code>rqt_plot</code>锛氬疄鏃剁粯鍒惰瘽棰樻暟鎹?/li>
+    <li><code>rqt_console</code>锛氭煡鐪嬫棩蹇?/li>
+    <li><code>rqt_reconfigure</code>锛氬姩鎬佽皟鍙?/li>
+</ul>
+
+<div class="tip-box">
+    <h4>馃摎 瀛︿範ROS鐨勫缓璁矾寰?/h4>
+    <ol>
+        <li>鍏堟帉鎻″熀鏈殑鍙戝竷/璁㈤槄鏈哄埗</li>
+        <li>瀛︿範URDF鏈哄櫒浜烘ā鍨嬫弿杩?/li>
+        <li>鐢℅azebo浠跨湡涓€涓畝鍗曟満鍣ㄤ汉</li>
+        <li>灏濊瘯瀵艰埅鍔熻兘鍖咃紙Nav2锛?/li>
+        <li>娣卞叆TF鍧愭爣鍙樻崲</li>
+    </ol>
+</div>
+
+<h2>3.7 缂栫▼瀹炶返锛氫粠闆跺疄鐜板叧鑺傛帶鍒?/h2>
+
+<h3>浠诲姟鐩爣</h3>
+
+<p>瀹炵幇涓€涓崟鍏宠妭鐢垫満鐨凱ID浣嶇疆鎺у埗锛岄€氳繃涓插彛鎺ユ敹鐩爣瑙掑害锛岄┍鍔ㄧ數鏈哄埌杈炬寚瀹氫綅缃€?/p>
+
+<h3>纭欢闇€姹?/h3>
+
+<ul>
+    <li>Arduino Uno 鎴?Mega</li>
+    <li>鐩存祦鍑忛€熺數鏈?+ 缂栫爜鍣?/li>
+    <li>L298N 鎴栧叾浠朒妗ラ┍鍔ㄦ澘</li>
+    <li>12V鐢垫簮</li>
+</ul>
+
+<h3>鎺ョ嚎鍥?/h3>
+
+<div class="diagram-box">鐢垫満椹卞姩鎺ョ嚎锛?
+Arduino                L298N椹卞姩鏉?             鐢垫満
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€             鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€           鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+  D5  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?ENA (PWM浣胯兘)
+  D6  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?IN1
+  D7  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?IN2
+      鈹?                     鈹溾攢鈹€鈹€鈹€鈹€鈹€鈫?鐢垫満A(+)
+      鈹?                     鈹溾攢鈹€鈹€鈹€鈹€鈹€鈫?鐢垫満A(-)
+  5V  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?5V
+  GND 鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?GND 鈫愨攢鈹€鈹€鈹€鈹€鈹?                             (鐢垫簮鍦?
+                     鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+                     12V澶栭儴鐢垫簮</div>
+
+<h3>缂栫爜鍣ㄨ鍙?/h3>
+
+<pre><code>// 缂栫爜鍣ㄤ腑鏂鍙栵紙Arduino锛?
+volatile long encoder_count = 0;
+const int ENCODER_A = 2;  // 蹇呴』鏄腑鏂紩鑴?const int ENCODER_B = 3;
+
+void setup() {
+    pinMode(ENCODER_A, INPUT);
+    pinMode(ENCODER_B, INPUT);
+    
+    // 缂栫爜鍣ˋ鐩镐笂鍗囨部瑙﹀彂涓柇
+    attachInterrupt(digitalPinToInterrupt(ENCODER_A), encoderISR, RISING);
+    
+    Serial.begin(115200);
+}
+
+void loop() {
+    Serial.print("Encoder: ");
+    Serial.println(encoder_count);
+    delay(100);
+}
+
+// 涓柇鏈嶅姟鍑芥暟
+void encoderISR() {
+    // 鏍规嵁B鐩哥數骞冲垽鏂柟鍚?    if (digitalRead(ENCODER_B) == HIGH) {
+        encoder_count++;  // 姝ｈ浆
+    } else {
+        encoder_count--;  // 鍙嶈浆
+    }
+}</code></pre>
+
+<h3>瀹屾暣PID鎺у埗浠ｇ爜</h3>
+
+<pre><code>// 鍗曞叧鑺侾ID浣嶇疆鎺у埗锛圓rduino锛?// 纭欢锛欰rduino + 缂栫爜鍣ㄧ數鏈?+ L298N椹卞姩
+
+// 寮曡剼瀹氫箟
+const int ENA = 5;       // PWM杈撳嚭鍙?const int IN1 = 6;
+const int IN2 = 7;
+const int ENCODER_A = 2; // 缂栫爜鍣ㄤ腑鏂紩鑴?const int ENCODER_B = 3;
+
+// 缂栫爜鍣ㄥ弬鏁?volatile long encoder_count = 0;
+const int PPR = 360;     // 缂栫爜鍣ㄦ瘡鍦堣剦鍐叉暟
+const float GEAR_RATIO = 50.0;  // 鍑忛€熸瘮
+
+// PID鍙傛暟
+float Kp = 2.0;
+float Ki = 0.1;
+float Kd = 0.5;
+
+float integral = 0;
+float prev_error = 0;
+
+// 鐩爣瑙掑害锛堜覆鍙ｆ帴鏀讹級
+float target_angle = 0.0;
+
+unsigned long prev_time = 0;
+
+void setup() {
+    pinMode(ENA, OUTPUT);
+    pinMode(IN1, OUTPUT);
+    pinMode(IN2, OUTPUT);
+    pinMode(ENCODER_A, INPUT);
+    pinMode(ENCODER_B, INPUT);
+    
+    attachInterrupt(digitalPinToInterrupt(ENCODER_A), encoderISR, RISING);
+    
+    Serial.begin(115200);
+    Serial.println("Single Joint PID Controller Ready");
+    Serial.println("Send target angle (0-360 degrees)");
+    
+    prev_time = millis();
+}
+
+void loop() {
+    // 涓插彛鎺ユ敹鐩爣瑙掑害
+    if (Serial.available() > 0) {
+        target_angle = Serial.parseFloat();
+        Serial.print("Target set to: ");
+        Serial.print(target_angle);
+        Serial.println(" degrees");
+    }
+    
+    // PID璁＄畻
+    float current_angle = getAngle();
+    float error = target_angle - current_angle;
+    
+    unsigned long now = millis();
+    float dt = (now - prev_time) / 1000.0;
+    prev_time = now;
+    
+    if (dt > 0) {
+        integral += error * dt;
+        integral = constrain(integral, -50, 50);  // 绉垎闄愬箙
+        
+        float derivative = (error - prev_error) / dt;
+        
+        float output = Kp * error + Ki * integral + Kd * derivative;
+        output = constrain(output, -255, 255);
+        
+        // 椹卞姩鐢垫満
+        driveMotor(output);
+        
+        prev_error = error;
+        
+        // 璋冭瘯杈撳嚭锛堟瘡100ms锛?        static unsigned long last_print = 0;
+        if (now - last_print > 100) {
+            Serial.print("Angle: ");
+            Serial.print(current_angle);
+            Serial.print(" Output: ");
+            Serial.println(output);
+            last_print = now;
+        }
+    }
+    
+    delay(1);  // 鎺у埗寰幆鍛ㄦ湡绾?ms
+}
+
+// 缂栫爜鍣ㄤ腑鏂?void encoderISR() {
+    if (digitalRead(ENCODER_B) == HIGH) {
+        encoder_count++;
+    } else {
+        encoder_count--;
+    }
+}
+
+// 灏嗙紪鐮佸櫒璁℃暟杞崲涓鸿搴?float getAngle() {
+    // 鎬诲噺閫熸瘮 = 缂栫爜鍣≒PR 脳 鍑忛€熸瘮
+    float counts_per_rev = PPR * GEAR_RATIO * 4;  // 4鍊嶉
+    return (encoder_count % (long)counts_per_rev) * 360.0 / counts_per_rev;
+}
+
+// 鐢垫満椹卞姩
+void driveMotor(float pwm) {
+    int pwm_int = (int)pwm;
+    
+    if (pwm_int > 0) {
+        // 姝ｈ浆
+        digitalWrite(IN1, HIGH);
+        digitalWrite(IN2, LOW);
+        analogWrite(ENA, abs(pwm_int));
+    } else if (pwm_int < 0) {
+        // 鍙嶈浆
+        digitalWrite(IN1, LOW);
+        digitalWrite(IN2, HIGH);
+        analogWrite(ENA, abs(pwm_int));
+    } else {
+        // 鍋滄
+        digitalWrite(IN1, LOW);
+        digitalWrite(IN2, LOW);
+        analogWrite(ENA, 0);
+    }
+}</code></pre>
+
+<h3>璋冨弬姝ラ</h3>
+
+<ol>
+    <li>涓婄數鍚庯紝閫氳繃涓插彛鍙戦€佽搴︽寚浠わ紙濡?<code>90</code> 琛ㄧず90搴︼級</li>
+    <li>瑙傚療鐢垫満鏄惁鑳藉埌杈剧洰鏍囪搴?/li>
+    <li>濡傛灉鍝嶅簲澶參锛屽澶?Kp</li>
+    <li>濡傛灉鏈夌ǔ鎬佽宸紝澧炲ぇ Ki</li>
+    <li>濡傛灉瓒呰皟涓ラ噸锛屽澶?Kd</li>
+    <li>閲嶅璋冭瘯锛岀洿鍒版弧鎰?/li>
+</ol>
+
+<h2>3.8 鏈珷灏忕粨</h2>
+
+<ul>
+    <li>鉁?鎺屾彙浜嗗潗鏍囩郴涓庡彉鎹㈢殑鍩虹姒傚康</li>
+    <li>鉁?鐞嗚В浜嗘杩愬姩瀛﹀拰閫嗚繍鍔ㄥ鐨勫師鐞嗕笌璁＄畻鏂规硶</li>
+    <li>鉁?娣卞叆瀛︿範浜哖ID鎺у埗鐨勭悊璁轰笌瀹炶返锛屼簡瑙ｄ簡浜斿崄骞村墠姣斾緥鎺у埗鐨勫巻鍙?/li>
+    <li>鉁?浜嗚В浜嗗弻瓒虫鎬佽鍒掔殑鍩烘湰姒傚康</li>
+    <li>鉁?鍏ラ棬浜哛OS妗嗘灦鍜屽父鐢ㄥ伐鍏?/li>
+    <li>鉁?瀹炵幇浜嗕竴涓畬鏁寸殑鍗曞叧鑺侾ID鎺у埗绋嬪簭</li>
+</ul>
+
+<div class="tip-box">
+    <h4>馃摎 涓嬩竴姝?/h4>
+    <p>杩涘叆<a href="chapter4-projects.html">绗洓绔狅細瀹屾暣椤圭洰</a>锛屽姩鎵嬪仛涓変釜瀹炴垬椤圭洰锛氭闈㈡満姊拌噦銆佸弻瓒虫琛屾満鍣ㄤ汉銆佸皬鍨嬩汉褰㈡満鍣ㄤ汉銆?/p>
+</div>
+
+<div class="nav-links">
+    <a href="chapter2-electronics.html">鈫?绗簩绔狅細鐢靛瓙鍩虹</a>
+    <a href="chapter4-projects.html">绗洓绔狅細瀹屾暣椤圭洰 鈫?/a>
+</div>
+
+        </div>
+        <div class="page-footer">
+            <p>漏 2026 鏈哄櫒浜虹煡璇嗗簱 | Robot Knowledge Base</p>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">馃捇 绗笁绔犲畬鎴?鈥?杩愬姩瀛︺€丳ID鎺у埗銆丷OS鍏ラ棬</p>
+        </div>
+    </div>
+</body>
+</html>
