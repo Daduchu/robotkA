@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>绗笁绔狅細杞欢鍩虹 | 鏈哄櫒浜篋IY瀹炶返</title>
-    <meta name="description" content="鏈哄櫒浜鸿蒋浠跺熀纭€锛氳繍鍔ㄥ銆丳ID鎺у埗銆佹鎬佽鍒掋€丷OS鍏ラ棬瀹屾暣鎸囧崡銆?>
-    <meta name="keywords" content="鏈哄櫒浜鸿繍鍔ㄥ,PID鎺у埗,姝ユ€佽鍒?ROS,閫嗚繍鍔ㄥ">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>馃</text></svg>">
+    <title>第三章：软件基础 | 机器人DIY实践</title>
+    <meta name="description" content="机器人DIY软件基础：运动学、PID控制、步态规划、ROS入门。">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
     <link rel="stylesheet" href="../../style.css">
     <style>
         .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.8; }
@@ -35,886 +34,739 @@
         .warning-box h4 { color: #f44336; margin-top: 0; margin-bottom: 8px; }
         .info-box { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 18px; margin: 18px 0; }
         .info-box h4 { color: #00d4ff; margin-top: 0; margin-bottom: 8px; }
-        .formula-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 20px; margin: 18px 0; text-align: center; font-size: 1.1rem; color: #fff; font-family: 'Times New Roman', serif; }
-        .diagram-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 25px; margin: 20px 0; font-family: 'Courier New', monospace; font-size: 12px; color: #888; line-height: 1.5; white-space: pre; overflow-x: auto; }
         .nav-links { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
         .nav-links a { color: #00d4ff; text-decoration: none; font-size: 0.95rem; }
         .nav-links a:hover { text-decoration: underline; }
-        .experience-box { background: linear-gradient(135deg, rgba(123,44,191,0.15) 0%, rgba(0,212,255,0.1) 100%); border: 1px solid rgba(123,44,191,0.3); border-radius: 10px; padding: 20px; margin: 20px 0; }
-        .experience-box h4 { color: #c77dff; margin-top: 0; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="index.html" class="back-link">鈫?杩斿洖DIY瀹炶返棣栭〉</a>
-            <div class="breadcrumb"><a href="../../index.html">馃彔 棣栭〉</a><span>鈥?/span><a href="../index.html">馃И 绉戞櫘涓庢祴璇?/a><span>鈥?/span><a href="index.html">馃敡 DIY瀹炶返</a><span>鈥?/span>绗笁绔狅細杞欢鍩虹</div>
-            <h1>馃捇 绗笁绔狅細杞欢鍩虹</h1>
-            <p class="subtitle">Kinematics, Control, and Software</p>
+            <a href="index.html" class="back-link">← 返回DIY实践首页</a>
+            <div class="breadcrumb"><a href="../../index.html">🏠 首页</a><span>›</span><a href="../index.html">🧪 科普与测评</a><span>›</span><a href="index.html">🔧 DIY实践</a><span>›</span>第三章：软件基础</div>
+            <h1>💻 第三章：软件基础</h1>
+            <p class="subtitle">Software Foundations — 运动学·控制·ROS</p>
         </header>
         <div class="md-content">
 
-<h1>杩愬姩瀛︺€佹帶鍒剁畻娉曚笌缂栫▼妗嗘灦</h1>
+<h1>从机械到智能：软件是大脑</h1>
+
+<p>机械是骨架，电子是神经，软件才是大脑。再好的舵机和传感器，没有软件控制就是一堆废铁。本章从最基础的坐标变换讲起，一直到ROS机器人操作系统，帮你建立完整的机器人软件知识体系。</p>
 
 <blockquote>
-    <p>馃挕 <strong>鏍稿績鎬濇兂</strong>锛氳蒋浠舵槸鏈哄櫒浜虹殑"鐏甸瓊"銆傛満姊板拰鐢靛瓙鎼缓浜嗚函澹筹紝浣嗗彧鏈夐€氳繃杞欢锛屾満鍣ㄤ汉鎵嶈兘"鎬濊€?鈥斺€旇鍒掑姩浣溿€佹劅鐭ョ幆澧冦€佹墽琛屼换鍔°€傛湰绔犱粠杩愬姩瀛﹀紑濮嬶紝閫愭娣卞叆鍒版帶鍒剁畻娉曞拰杞欢妗嗘灦銆?/p>
+<p>软件控制的核心思想只有一条：<strong>感知—决策—执行</strong>的闭环。传感器告诉机器人"我在哪"，控制器告诉它"该往哪走"，执行器让机器人真正动起来。</p>
 </blockquote>
 
-<h2>3.1 鍧愭爣绯讳笌鍙樻崲</h2>
+<h2>坐标系与空间变换</h2>
 
-<h3>涓轰粈涔堥渶瑕佸潗鏍囩郴锛?/h3>
+<p>机器人控制的第一步，是搞清楚"在哪"和"往哪去"。这就需要建立坐标系。</p>
 
-<p>鏈哄櫒浜烘槸涓€涓鏉傜殑绌洪棿绯荤粺銆傝鎻忚堪"鎵嬭噦鏈鍦ㄥ摢閲?銆?鑴氳惤鑴氬湪浠€涔堜綅缃?锛屽繀椤诲缓绔嬬粺涓€鐨勬暟瀛︽弿杩扳€斺€旇繖灏辨槸鍧愭爣绯汇€?/p>
-
-<h4>甯哥敤鍧愭爣绯?/h4>
-
-<table>
-<tr><th>鍧愭爣绯?/th><th>鍘熺偣浣嶇疆</th><th>鐢ㄩ€?/th></tr>
-<tr><td>涓栫晫鍧愭爣绯?/td><td>鍦伴潰鍥哄畾鐐?/td><td>鎻忚堪鏈哄櫒浜哄湪鐜涓殑缁濆浣嶇疆</td></tr>
-<tr><td>鏈轰綋鍧愭爣绯?/td><td>鏈哄櫒浜哄嚑浣曚腑蹇?/td><td>鎻忚堪鏈哄櫒浜哄悇閮ㄤ欢鐩稿鏈鸿韩鐨勪綅缃?/td></tr>
-<tr><td>鍏宠妭鍧愭爣绯?/td><td>鍏宠妭鏃嬭浆涓績</td><td>鎻忚堪鍗曚釜鍏宠妭鐨勮繍鍔?/td></tr>
-<tr><td>鏈鍧愭爣绯?/td><td>鎵嬮儴/鑴氶儴涓績</td><td>鎻忚堪鎿嶄綔浠诲姟锛堟姄鍙栥€佽惤鑴氾級</td></tr>
-</table>
-
-<h3>浜岀淮鏃嬭浆鐭╅樀</h3>
-
-<p>鍦ㄤ簩缁村钩闈紝涓€涓偣缁曞師鐐规棆杞搴ξ稿悗锛屾柊鍧愭爣涓猴細</p>
-
-<div class="formula-box">
-[x']   [cos胃  -sin胃] [x]
-[y'] = [sin胃   cos胃] [y]
-</div>
-
-<p>杩欎釜2脳2鐭╅樀灏辨槸<span style="color:#00d4ff;">鏃嬭浆鐭╅樀</span>锛岃浣淩(胃)銆?/p>
-
-<h3>涓夌淮鏃嬭浆涓庨綈娆″彉鎹?/h3>
-
-<p>鍦ㄤ笁缁寸┖闂达紝鏃嬭浆鍙互缁昘銆乊銆乑杞村垎鍒繘琛岋細</p>
+<h3>常用坐标系</h3>
 
 <ul>
-    <li><strong>缁昘杞存棆杞?/strong>锛堟í婊氳 roll锛夛細R<sub>x</sub>(蠁)</li>
-    <li><strong>缁昚杞存棆杞?/strong>锛堜刊浠拌 pitch锛夛細R<sub>y</sub>(胃)</li>
-    <li><strong>缁昛杞存棆杞?/strong>锛堝亸鑸 yaw锛夛細R<sub>z</sub>(蠄)</li>
+<li><strong>世界坐标系</strong>：固定不动的参考系，机器人的绝对位置用它描述</li>
+<li><strong>基座坐标系</strong>：固定在机器人底座上，随机器人移动</li>
+<li><strong>工具坐标系</strong>：固定在末端执行器上，描述工具的姿态</li>
+<li><strong>目标坐标系</strong>：描述任务目标的位置（如抓取点）</li>
 </ul>
 
-<p>涓轰簡缁熶竴澶勭悊鏃嬭浆鍜屽钩绉伙紝寮曞叆<strong>榻愭鍧愭爣</strong>锛屽皢3脳3鏃嬭浆鐭╅樀鎵╁睍涓?脳4榻愭鍙樻崲鐭╅樀锛?/p>
+<h3>坐标系的右手定则</h3>
 
-<div class="formula-box">
-      [R   p]   [r11 r12 r13 px]
-T =   [     ] = [r21 r22 r23 py]
-      [0   1]   [r31 r32 r33 pz]
-                  [ 0   0   0  1]
+<p>机器人领域统一使用<strong>右手坐标系</strong>：</p>
+
+<div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:25px;margin:16px 0;font-family:monospace;text-align:center;">
+<pre style="color:#aaa;margin:0;">
+        Z (拇指向上)
+        ↑
+        |
+        •————→ X (食指指向右)
+       /
+  Y (中指向外)
+
+  握拳 + 伸出拇指 = Z轴正方向
+</pre>
 </div>
 
-<p>鍏朵腑R鏄?脳3鏃嬭浆鐭╅樀锛宲鏄?脳1骞崇Щ鍚戦噺銆?/p>
+<h3>齐次变换矩阵</h3>
 
-<div class="diagram-box">鍧愭爣绯婚摼绀轰緥锛?
-      涓栫晫鍧愭爣绯?{W}
-           鈹?           鈹?T_WB (鏈轰綋浣嶅Э)
-           鈻?      鏈轰綋鍧愭爣绯?{B}
-          /|\
-         / | \
-        /  |  \
-  T_BH1/   |   \T_BH2 (宸﹀彸楂嬪叧鑺?
-      /    |    \
-     鈻?    鈻?    鈻?  宸﹂珛{H1}  ...  鍙抽珛{H2}
-      鈹?      鈹?T_H1K (鑶濆叧鑺傜浉瀵归珛)
-      鈻?   鑶濆叧鑺倇K}
-      鈹?      鈹?T_KA (韪濆叧鑺?
-      鈻?   韪濆叧鑺倇A}
-      鈹?      鈹?T_AF (瓒崇)
-      鈻?   瓒崇{F}</div>
+<p>刚体在三维空间的状态由<strong>位置</strong>和<strong>姿态</strong>共同描述。用4×4的齐次变换矩阵可以同时表达两者：</p>
 
-<h2>3.2 姝ｈ繍鍔ㄥ锛團orward Kinematics锛?/h2>
+<div style="background:rgba(0,0,0,0.4);border:1px solid rgba(0,212,255,0.15);border-radius:8px;padding:20px;margin:16px 0;text-align:center;font-family:monospace;font-size:1.1rem;color:#a8ff78;">
+<pre style="margin:0;color:#a8ff78;">
+  T = | R  p |    =  | r11 r12 r13 px |
+      | 0  1 |       | r21 r22 r23 py |
+                       | r31 r32 r33 pz |
+                       |  0   0   0  1 |
 
-<h3>瀹氫箟</h3>
-
-<p><strong>姝ｈ繍鍔ㄥ</strong>锛氬凡鐭ュ悇鍏宠妭瑙掑害锛屾眰鏈鎵ц鍣ㄧ殑浣嶇疆鍜屽Э鎬併€?/p>
-
-<div class="formula-box">
-鏈浣嶅Э = f(鍏宠妭瑙掑害)
+  R = 旋转矩阵(3×3)    描述姿态
+  p = 位置向量(3×1)    描述位置
+</pre>
 </div>
 
-<h3>鍗曞叧鑺傜ず渚?/h3>
+<p>齐次变换的乘法可以实现坐标系的链式变换。例如：</p>
 
-<p>鍋囪涓€涓畝鍗曟満姊拌噦锛屽熀搴ч珮搴锛屽ぇ鑷傞暱搴鈧侊紝灏忚噦闀垮害L鈧傦紝鑲樺叧鑺傝搴ξ革細</p>
+<pre><code>// 末端执行器在世界坐标系中的位姿
+// T_world_end = T_world_base × T_base_shoulder × T_shoulder_elbow × T_elbow_end
 
-<div class="diagram-box">鍗曡噦姝ｈ繍鍔ㄥ锛?
-        * 鏈(x,y)
-       /|
-      / |
-   L鈧?  | y
-    /   |
-   /胃鈧? |
-   鈼忊攢鈹€鈹€鈹€鈹€鈹尖攢鈹€鈹€鈹€鈹€*
-   鈹? L鈧?鈹?    鈹?x
-   鈹?    鈹?    鈹?   鈹偽糕倎   鈹?    鈹?鈺愨晲鈺愨棌鈺愨晲鈺愨晲鈺愨棌鈺愨晲鈺愨晲鈺愨棌鈺愨晲鈺愨晲 鍦伴潰
-  鍩哄骇          h
+// 在Arduino中表示（简化3×3旋转矩阵）
+float R[3][3];  // 旋转矩阵
+float p[3];     // 位置
 
-x = L鈧伮穋os(胃鈧? + L鈧偮穋os(胃鈧?胃鈧?
-y = h + L鈧伮穝in(胃鈧? + L鈧偮穝in(胃鈧?胃鈧?</div>
+// 绕Z轴旋转θ角
+void rotZ(float theta, float R[3][3]) {
+    float c = cos(theta);
+    float s = sin(theta);
+    R[0][0] = c;  R[0][1] = -s; R[0][2] = 0;
+    R[1][0] = s;  R[1][1] = c;  R[1][2] = 0;
+    R[2][0] = 0;  R[2][1] = 0;  R[2][2] = 1;
+}</code></pre>
 
-<h3>DH鍙傛暟娉?/h3>
+<h3>坐标变换示例：机械臂正运动学</h3>
 
-<p>瀵逛簬澶嶆潅鐨勫鍏宠妭鏈哄櫒浜猴紝浣跨敤<strong>Denavit-Hartenberg鍙傛暟</strong>锛圖H鍙傛暟锛夌郴缁熷寲鎻忚堪姣忎釜鍏宠妭锛?/p>
+<pre><code>// 3自由度平面机械臂的正运动学
+// 给定各关节角度，计算末端位置
 
-<table>
-<tr><th>DH鍙傛暟</th><th>鍚箟</th><th>绗﹀彿</th></tr>
-<tr><td>鍏宠妭瑙?/td><td>缁晍<sub>i-1</sub>杞存棆杞?/td><td>胃<sub>i</sub></td></tr>
-<tr><td>杩炴潌闀垮害</td><td>娌縳<sub>i</sub>杞村钩绉?/td><td>a<sub>i</sub></td></tr>
-<tr><td>杩炴潌鍋忚窛</td><td>娌縵<sub>i-1</sub>杞村钩绉?/td><td>d<sub>i</sub></td></tr>
-<tr><td>鎵浆瑙?/td><td>缁晉<sub>i</sub>杞存棆杞?/td><td>伪<sub>i</sub></td></tr>
-</table>
+struct Joint { float theta; float L; };
 
-<p>姣忎釜鍏宠妭鐨勫彉鎹㈢煩闃典负锛?/p>
-
-<div class="formula-box">
-      [cos(胃)  -sin(胃)cos(伪)   sin(胃)sin(伪)   a路cos(胃)]
-A岬?=  [sin(胃)   cos(胃)cos(伪)  -cos(胃)sin(伪)   a路sin(胃)]
-      [  0        sin(伪)          cos(伪)         d      ]
-      [  0          0               0            1      ]
-</div>
-
-<p>鏈浣嶅Э = A鈧?脳 A鈧?脳 A鈧?脳 ... 脳 A<sub>n</sub></p>
-
-<div class="info-box">
-    <h4>馃挕 蹇€熺悊瑙?/h4>
-    <p>姝ｈ繍鍔ㄥ鏄?浠庝笅寰€涓?璁＄畻锛氬凡鐭ユ瘡涓叧鑺傝浆浜嗗灏戝害锛岄棶"鎵嬫寚灏栧湪鍝効锛?杩欏湪鏈哄櫒浜轰豢鐪熴€佸彲瑙嗗寲銆佺鎾炴娴嬩腑鏄熀纭€銆?/p>
-</div>
-
-<h2>3.3 閫嗚繍鍔ㄥ锛圛nverse Kinematics锛?/h2>
-
-<h3>瀹氫箟</h3>
-
-<p><strong>閫嗚繍鍔ㄥ</strong>锛氬凡鐭ユ湯绔洰鏍囦綅缃拰濮挎€侊紝姹傚悇鍏宠妭闇€瑕佺殑瑙掑害銆?/p>
-
-<div class="formula-box">
-鍏宠妭瑙掑害 = f鈦宦?鐩爣浣嶅Э)
-</div>
-
-<p>杩欐鏄疄闄呮帶鍒舵椂鐨勯渶姹傦細鎴戞兂璁╂墜鑷傚埌杈炬煇鐐癸紝姣忎釜鍏宠妭璇ヨ浆澶氬皯搴︼紵</p>
-
-<h3>瑙ｆ瀽瑙?vs 鏁板€艰В</h3>
-
-<table>
-<tr><th>鏂规硶</th><th>鐗圭偣</th><th>閫傜敤</th></tr>
-<tr><td>瑙ｆ瀽瑙?/td><td>绮剧‘銆佸揩閫燂紝浣嗛渶瑕佺壒瀹氬嚑浣曟潯浠?/td><td>绠€鍗曠粨鏋勶紙鈮?DOF锛?/td></tr>
-<tr><td>鏁板€艰В</td><td>閫氱敤銆佽凯浠ｆ眰瑙ｏ紝鍙兘鏀舵暃鎱㈡垨闄峰叆灞€閮ㄦ瀬鍊?/td><td>澶嶆潅缁撴瀯</td></tr>
-<tr><td>Jacobian娉?/td><td>鍩轰簬闆呭彲姣旂煩闃佃凯浠ｏ紝鏈€甯哥敤鏁板€兼柟娉?/td><td>閫氱敤</td></tr>
-</table>
-
-<h3>闆呭彲姣旂煩闃垫硶</h3>
-
-<p>闆呭彲姣旂煩闃礘鎻忚堪鏈閫熷害涓庡叧鑺傞€熷害鐨勫叧绯伙細</p>
-
-<div class="formula-box">
-[鏈閫熷害] = J 脳 [鍏宠妭瑙掗€熷害]
-
-鍗筹細岷?= J 路 胃虈
-</div>
-
-<p>鍙嶈繃鏉ワ紝濡傛灉鎴戜滑鎯宠鏈浠ラ€熷害岷嬬Щ鍔紝鍏宠妭搴旇浠ヤ粈涔堥€熷害杩愬姩锛?/p>
-
-<div class="formula-box">
-胃虈 = J鈦?路 岷?</div>
-
-<p>鍏朵腑J鈦烘槸闆呭彲姣旂煩闃电殑浼€嗐€傝凯浠ｆ洿鏂帮細</p>
-
-<div class="formula-box">
-胃鈧栤倞鈧?= 胃鈧?+ J鈦?路 螖x
-</div>
-
-<h4>瀹炵幇姝ラ</h4>
-
-<ol>
-    <li>缁欏畾鐩爣鏈浣嶅Эx<sub>target</sub></li>
-    <li>鐢ㄥ綋鍓嶅叧鑺傝胃璁＄畻褰撳墠鏈浣嶅Эx<sub>current</sub>锛堟杩愬姩瀛︼級</li>
-    <li>璁＄畻璇樊锛毼攛 = x<sub>target</sub> - x<sub>current</sub></li>
-    <li>濡傛灉璇樊瓒冲灏忥紝鍋滄锛涘惁鍒欑户缁?/li>
-    <li>璁＄畻闆呭彲姣旂煩闃礘</li>
-    <li>鏇存柊锛毼?= 胃 + J鈦?路 螖x</li>
-    <li>鍥炲埌姝ラ2锛岃凯浠ｇ洿鍒版敹鏁?/li>
-</ol>
-
-<h4>Python瀹炵幇绀轰緥</h4>
-
-<pre><code>import numpy as np
-
-def jacobian_ik(target_pos, current_angles, L1, L2, max_iter=100, tol=1e-4):
-    """
-    闆呭彲姣旈€嗚繍鍔ㄥ姹傝В锛?DOF骞抽潰鑷傦級
-    target_pos: 鐩爣浣嶇疆 [x, y]
-    current_angles: 褰撳墠瑙掑害 [胃1, 胃2]
-    L1, L2: 澶ц噦銆佸皬鑷傞暱搴?    """
-    theta = np.array(current_angles)
+float forwardKinematics(Joint joints[3], float* x, float* y) {
+    float cumulative_theta = 0;
+    *x = 0; *y = 0;
     
-    for i in range(max_iter):
-        # 姝ｈ繍鍔ㄥ璁＄畻褰撳墠浣嶇疆
-        x = L1 * np.cos(theta[0]) + L2 * np.cos(theta[0] + theta[1])
-        y = L1 * np.sin(theta[0]) + L2 * np.sin(theta[0] + theta[1])
-        current_pos = np.array([x, y])
-        
-        # 璇樊
-        error = target_pos - current_pos
-        if np.linalg.norm(error) &lt; tol:
-            return theta
-        
-        # 闆呭彲姣旂煩闃?        J = np.array([
-            [-L1*np.sin(theta[0]) - L2*np.sin(theta[0]+theta[1]), -L2*np.sin(theta[0]+theta[1])],
-            [ L1*np.cos(theta[0]) + L2*np.cos(theta[0]+theta[1]),  L2*np.cos(theta[0]+theta[1])]
-        ])
-        
-        # 浼€嗘洿鏂?        J_pinv = np.linalg.pinv(J)
-        theta += J_pinv @ error
+    for (int i = 0; i < 3; i++) {
+        cumulative_theta += joints[i].theta;  // 累计角度
+        *x += joints[i].L * cos(cumulative_theta);  // 沿X方向投影
+        *y += joints[i].L * sin(cumulative_theta);  // 沿Y方向投影
+    }
+    return atan2(*y, *x);  // 返回末端姿态角
+}
+
+// 使用示例
+Joint arm[3] = {
+    {PI/4, 80},   // 第一关节：45度，长度80mm
+    {PI/3, 70},   // 第二关节：60度，长度70mm
+    {PI/6, 50}    // 第三关节：30度，长度50mm
+};
+float x, y;
+float end_angle = forwardKinematics(arm, &x, &y);
+Serial.print("末端位置: (");
+Serial.print(x, 1); Serial.print("mm, ");
+Serial.print(y, 1); Serial.print("mm), 姿态角: ");
+Serial.print(end_angle * 180 / PI, 1); Serial.println("度");</code></pre>
+
+<h2>逆运动学</h2>
+
+<p><strong>正运动学</strong>：已知关节角度 → 求末端位置（"我在哪"）</p>
+<p><strong>逆运动学</strong>：已知末端目标位置 → 求关节角度（"我该怎么动"）</p>
+
+<p>逆运动学是机器人控制的核心——我们告诉机器人"去那里"，它自己算出各个关节该转多少。</p>
+
+<h3>解析法：2自由度平面臂</h3>
+
+<pre><code>// 逆运动学：给定目标(x,y)，求关节角度
+// 适用于2自由度平面机械臂
+
+void inverseKinematics2R(float x, float y, float L1, float L2,
+                          float* theta1, float* theta2) {
+    float d = sqrt(x*x + y*y);  // 到目标的距离
     
-    return theta  # 杈惧埌鏈€澶ц凯浠ｆ鏁帮紝杩斿洖褰撳墠鍊?
-# 娴嬭瘯
-target = [0.3, 0.5]  # 鐩爣浣嶇疆
-initial = [0.5, 0.5]  # 鍒濆瑙掑害浼版祴
-result = jacobian_ik(target, initial, L1=0.3, L2=0.25)
-print(f"姹傝В瑙掑害: 胃1={np.degrees(result[0]):.1f}掳, 胃2={np.degrees(result[1]):.1f}掳")</code></pre>
-
-<h2>3.4 PID鎺у埗鍣ㄨ瑙?/h2>
-
-<blockquote>
-    <p>馃幆 PID鎺у埗鏄伐涓氭帶鍒堕鍩熷簲鐢ㄦ渶骞挎硾鐨勭畻娉曘€傚叾鎬濇兂绠€鍗曟湁鏁堬細鏍规嵁<span style="color:#00d4ff;">璇樊</span>鐨勫ぇ灏忋€佺疮绉拰鍙樺寲瓒嬪娍锛屼骇鐢熸帶鍒堕噺銆?/p>
-</blockquote>
-
-<h3>閲嶇幇鍘嗗彶锛氭瘮渚嬫帶鍒?/h3>
-
-<div class="experience-box">
-    <h4>馃暟锔?浜斿崄骞村墠鐨勬瘮渚嬫帶鍒?/h4>
-    <p>浜斿崄骞村墠锛屽湪鑷姩鍖栫爺绌舵墍锛屽伐绋嬪笀浠敤杩愮畻鏀惧ぇ鍣ㄥ拰鐢甸樆鐢靛鎼缓妯℃嫙PID鎺у埗鍣ㄣ€傞偅鏃剁殑"姣斾緥鎺у埗"鏄函纭欢瀹炵幇鈥斺€旇皟鏁寸數浣嶅櫒锛屾敼鍙樻斁澶у€嶆暟锛岃瀵熺郴缁熷搷搴斻€傛病鏈夋暟瀛楁樉绀哄睆锛屾病鏈夎蒋浠惰皟璇曠晫闈紝鍏ㄩ潬绀烘尝鍣ㄥ拰缁忛獙銆?/p>
-    <p>浠婂ぉ鎴戜滑鐢ㄥ嚑琛屼唬鐮佸氨鑳藉疄鐜板綋骞撮渶瑕佷竴鏁村潡鐢佃矾鏉跨殑鍔熻兘銆備絾鏍稿績鍘熺悊鏈彉锛?strong>璇樊澶?鈫?鎺у埗閲忓ぇ锛涜宸皬 鈫?鎺у埗閲忓皬</strong>銆?/p>
-</div>
-
-<h3>PID涓変釜鍒嗛噺</h3>
-
-<table>
-<tr><th>鍒嗛噺</th><th>鍚嶇О</th><th>浣滅敤</th><th>鍏紡</th></tr>
-<tr><td>P</td><td>姣斾緥</td><td>鏍规嵁褰撳墠璇樊浜х敓鎺у埗閲忥紝璇樊瓒婂ぇ浣滅敤瓒婂己</td><td>K<sub>p</sub> 路 e(t)</td></tr>
-<tr><td>I</td><td>绉垎</td><td>娑堥櫎绋虫€佽宸紝绱Н鍘嗗彶璇樊</td><td>K<sub>i</sub> 路 鈭玡(蟿)d蟿</td></tr>
-<tr><td>D</td><td>寰垎</td><td>棰勬祴璇樊鍙樺寲瓒嬪娍锛屽鍔犻樆灏?/td><td>K<sub>d</sub> 路 de(t)/dt</td></tr>
-</table>
-
-<h3>PID鎺у埗鍏紡</h3>
-
-<div class="formula-box" style="font-size: 1.2rem;">
-u(t) = K<sub>p</sub>路e(t) + K<sub>i</sub>路鈭玡(蟿)d蟿 + K<sub>d</sub>路de(t)/dt
-</div>
-
-<p>鍏朵腑锛?/p>
-<ul>
-    <li>e(t) = 鐩爣鍊?- 瀹為檯鍊硷紙璇樊锛?/li>
-    <li>u(t) = 鎺у埗杈撳嚭锛堝鐢垫満PWM鍗犵┖姣旓級</li>
-    <li>K<sub>p</sub>銆並<sub>i</sub>銆並<sub>d</sub> = PID鍙傛暟</li>
-</ul>
-
-<h3>浣嶇疆寮廝ID涓庡閲忓紡PID</h3>
-
-<h4>浣嶇疆寮廝ID</h4>
-<p>鐩存帴璁＄畻鎺у埗閲忕殑缁濆鍊硷細</p>
-<pre><code>u(k) = Kp路e(k) + Ki路鈭慹(i) + Kd路(e(k)-e(k-1))</code></pre>
-
-<h4>澧為噺寮廝ID</h4>
-<p>璁＄畻鎺у埗閲忕殑<strong>澧為噺</strong>锛?/p>
-<pre><code>螖u(k) = Kp路(e(k)-e(k-1)) + Ki路e(k) + Kd路(e(k)-2e(k-1)+e(k-2))
-u(k) = u(k-1) + 螖u(k)</code></pre>
-
-<div class="tip-box">
-    <h4>馃幆 閫夋嫨寤鸿</h4>
-    <ul>
-        <li><strong>浣嶇疆寮?/strong>锛氶€傚悎缁濆浣嶇疆鎺у埗锛堝鑸垫満瑙掑害锛?/li>
-        <li><strong>澧為噺寮?/strong>锛氶€傚悎閫熷害鎺у埗銆佹祦閲忔帶鍒讹紝閬垮厤绉垎楗卞拰</li>
-    </ul>
-</div>
-
-<h3>Arduino PID瀹炵幇</h3>
-
-<pre><code>class PIDController {
-private:
-    float Kp, Ki, Kd;
-    float integral, prev_error;
-    unsigned long prev_time;
-    float output_min, output_max;
-    
-public:
-    PIDController(float p, float i, float d, float min_out, float max_out)
-        : Kp(p), Ki(i), Kd(d), integral(0), prev_error(0),
-          output_min(min_out), output_max(max_out) {
-        prev_time = millis();
+    // 判断是否在可达范围内
+    if (d > L1 + L2) {
+        Serial.println("目标超出工作空间！");
+        d = L1 + L2 - 0.1;  // 限制到最近可达点
+    }
+    if (d < abs(L1 - L2)) {
+        Serial.println("目标太近！");
+        d = abs(L1 - L2) + 0.1;
     }
     
-    float compute(float setpoint, float current) {
+    // 肘部角度（余弦定理）
+    float cos_theta2 = (L1*L1 + L2*L2 - d*d) / (2*L1*L2);
+    cos_theta2 = constrain(cos_theta2, -1.0, 1.0);
+    *theta2 = acos(cos_theta2);  // 肘关节外角
+    
+    // 肩部角度
+    float k1 = L1 + L2 * cos(*theta2);
+    float k2 = L2 * sin(*theta2);
+    float phi = atan2(y, x);           // 总角度
+    float alpha = atan2(k2, k1);       // 修正角
+    *theta1 = phi - alpha;
+    
+    // 转换为度数（舵机常用0-180度）
+    *theta1 = degrees(*theta1);
+    *theta2 = degrees(*theta2);
+}
+
+// 调用示例：目标(100, 80)
+float t1, t2;
+inverseKinematics2R(100, 80, 100, 80, &t1, &t2);
+Serial.print("肩关节: "); Serial.print(t1, 1);
+Serial.print("度, 肘关节: "); Serial.print(t2, 1); Serial.println("度");</code></pre>
+
+<h3>雅可比矩阵：速度与灵巧度</h3>
+
+<p>雅可比矩阵描述关节速度与末端速度的线性映射关系：</p>
+
+<pre><code>// 雅可比矩阵：vx = J(q) × q_dot
+// 用于速度控制和奇异性检测
+
+void computeJacobian2R(float theta1, float theta2, float L1, float L2, float J[2][2]) {
+    // 雅可比矩阵（2R平面臂）
+    J[0][0] = -L1*sin(theta1) - L2*sin(theta1+theta2);
+    J[0][1] = -L2*sin(theta1+theta2);
+    J[1][0] =  L1*cos(theta1) + L2*cos(theta1+theta2);
+    J[1][1] =  L2*cos(theta1+theta2);
+}
+
+// 检测奇异性（关节接近伸展或折叠）
+float determinant(float J[2][2]) {
+    return J[0][0]*J[1][1] - J[0][1]*J[1][0];
+}
+
+void checkSingularity(float theta1, float theta2) {
+    float J[2][2];
+    computeJacobian2R(theta1, theta2, 100, 80, J);
+    float det = determinant(J);
+    
+    if (abs(det) < 10) {  // 阈值
+        Serial.println("警告：接近奇异构型，关节运动受限！");
+    }
+}</code></pre>
+
+<div class="tip-box">
+<h4>💡 奇异性概念</h4>
+<p>当机器人关节伸直或完全折叠时，某些运动方向变得"锁死"——这就是奇异性。接近奇异性时，末端速度会出现异常，需要在控制中规避。</p>
+</div>
+
+<h2>PID控制器：让机器人听话</h2>
+
+<blockquote>
+<p><strong>历史连接</strong>：您五十年前学的比例控制，是PID的"简化版"。PID = 比例(P) + 积分(I) + 微分(D)，是工业控制中应用最广泛的算法，从导弹到机器人，无处不在。</p>
+</blockquote>
+
+<h3>PID三兄弟</h3>
+
+<ul>
+<li><strong>P（比例）</strong>：当前误差越大，输出越强。像拉弹簧——误差大时拉力大，误差小时拉力小。</li>
+<li><strong>I（积分）</strong>：累积过去的误差，消除稳态误差。好比"总账"，不管多小的误差，积累多了也要处理。</li>
+<li><strong>D（微分）</strong>：预判误差变化趋势，提前减速。像开车看前方——看到前方有弯道就提前减速。</li>
+</ul>
+
+<h3>PID公式</h3>
+
+<pre><code>          ┌─────┐
+ setpoint │     │   output    ┌───────┐
+     ────→│ PID ├───┬───────→ │  plant │──→ measured
+          │     │   │          └───────┘
+          └─────┘   │              ↑
+            ↑       │              │
+            │    ┌───┘              │
+            │    │    ┌────────┐   │
+            └────┘    │error   │───┘
+                      └────────┘
+                      
+output = Kp × e(t) + Ki × ∫e(t)dt + Kd × de(t)/dt
+          比例项    积分项       微分项</code></pre>
+
+<h3>Arduino位置式PID实现</h3>
+
+<pre><code>// 位置式PID控制器（适用于舵机位置控制）
+// 特点：输出是绝对位置值，响应直接
+
+class PID {
+public:
+    float kp, ki, kd;
+    float target, current, output;
+    float integral = 0;
+    float prev_error = 0;
+    unsigned long lastTime;
+
+    PID(float p, float i, float d) : kp(p), ki(i), kd(d) {
+        lastTime = millis();
+    }
+
+    void setTarget(float t) { target = t; }
+    float compute(float measured) {
+        current = measured;
         unsigned long now = millis();
-        float dt = (now - prev_time) / 1000.0;  // 绉?        prev_time = now;
-        
-        float error = setpoint - current;
-        
-        // P椤?        float P = Kp * error;
-        
-        // I椤癸紙甯︾Н鍒嗛檺骞咃級
+        float dt = (now - lastTime) / 1000.0;  // 秒
+        lastTime = now;
+
+        float error = target - current;
+
+        // 积分项（带积分限幅，防止震荡）
         integral += error * dt;
-        integral = constrain(integral, -100, 100);  // 闃茬Н鍒嗛ケ鍜?        float I = Ki * integral;
-        
-        // D椤?        float derivative = (error - prev_error) / dt;
-        float D = Kd * derivative;
-        
-        prev_error = error;
-        
-        // 鎬昏緭鍑?+ 闄愬箙
-        float output = P + I + D;
-        output = constrain(output, output_min, output_max);
-        
+        integral = constrain(integral, -100, 100);  // 积分限幅
+
+        // 微分项（加低通滤波减少噪声）
+        float dedt = (error - prev_error) / dt;
+        if (dt > 0) dedt = dedt * 0.3 + prev_error * 0.7;  // 滤波
+        prev_error = dedt;
+
+        // PID公式
+        output = kp * error + ki * integral + kd * dedt;
+        output = constrain(output, -255, 255);  // 输出限幅
+
         return output;
     }
-    
-    void reset() {
-        integral = 0;
-        prev_error = 0;
-    }
+
+    void reset() { integral = 0; prev_error = 0; }
 };
 
-// 浣跨敤绀轰緥
-PIDController pid(2.0, 0.1, 0.5, -255, 255);  // Kp=2, Ki=0.1, Kd=0.5
+// 使用示例：控制舵机跟踪目标角度
+#include &lt;Servo.h&gt;
+Servo myServo;
+PID pid(2.0, 0.5, 0.1);  // Kp=2, Ki=0.5, Kd=0.1
+const int SERVO_PIN = 9;
+const int POT_PIN = A0;
+
+void setup() {
+    myServo.attach(SERVO_PIN);
+    pid.setTarget(90);  // 目标角度90度
+}
 
 void loop() {
-    float target_angle = 90.0;
-    float current_angle = readEncoder();  // 璇诲彇缂栫爜鍣?    
-    float control = pid.compute(target_angle, current_angle);
-    motorWrite(control);  // 杈撳嚭鍒扮數鏈?}</code></pre>
+    int pot = analogRead(POT_PIN);
+    float angle = map(pot, 0, 1023, 0, 180);
 
-<h3>璋冨弬鏂规硶</h3>
-
-<h4>鎵嬪姩璋冨弬锛堢粡鍏告柟娉曪級</h4>
-
-<ol>
-    <li><strong>鍏堝皢Ki銆並d璁句负0</strong>锛屽彧淇濈暀Kp</li>
-    <li>閫愭澧炲ぇKp锛岀洿鍒扮郴缁熷嚭鐜?strong>鎸佺画鎸崱</strong>锛堝垰濂戒笉鍙戞暎锛?/li>
-    <li>璁颁笅姝ゆ椂Kp涓篕<sub>u</sub>锛堜复鐣屽鐩婏級锛屾尟鑽″懆鏈熶负T<sub>u</sub></li>
-    <li>鏍规嵁缁忛獙鍏紡璁剧疆锛?        <ul>
-            <li>Kp = 0.6 路 K<sub>u</sub></li>
-            <li>Ki = 2 路 Kp / T<sub>u</sub></li>
-            <li>Kd = Kp 路 T<sub>u</sub> / 8</li>
-        </ul>
-    </li>
-    <li>寰皟锛氬鏋滃搷搴旀參锛屽澶p锛涘鏋滆秴璋冨ぇ锛屽澶d锛涘鏋滄湁绋虫€佽宸紝澧炲ぇKi</li>
-</ol>
-
-<div class="warning-box">
-    <h4>鈿狅笍 璋冨弬娉ㄦ剰浜嬮」</h4>
-    <ul>
-        <li>K<sub>p</sub>杩囧ぇ锛氱郴缁熸尟鑽°€佸彂鏁?/li>
-        <li>K<sub>i</sub>杩囧ぇ锛氳秴璋冧弗閲嶃€佺Н鍒嗛ケ鍜?/li>
-        <li>K<sub>d</sub>杩囧ぇ锛氬鍣０鏁忔劅銆佹姈鍔?/li>
-        <li>鍏堣皟P锛屽啀璋僆锛屾渶鍚庤皟D锛圥ID涓嶆槸鍞竴椤哄簭锛?/li>
-    </ul>
-</div>
-
-<h4>璇曞噾娉曪紙瀹炵敤鏂规硶锛?/h4>
-
-<ol>
-    <li><strong>Kp浠庡皬寮€濮?/strong>锛氱郴缁熷搷搴旀參銆佽宸ぇ</li>
-    <li><strong>閫愭澧炲ぇKp</strong>锛氬搷搴斿彉蹇紝鐩村埌鍑虹幇杞诲井瓒呰皟</li>
-    <li><strong>鍔犲叆灏忛噺Ki</strong>锛氭秷闄ょǔ鎬佽宸?/li>
-    <li><strong>濡傛灉鎸崱鏄庢樉</strong>锛氬姞鍏d澧炲姞闃诲凹</li>
-    <li><strong>鍙嶅寰皟</strong>锛氭壘鍒版渶浣冲钩琛＄偣</li>
-</ol>
-
-<div class="experience-box">
-    <h4>馃晲 褰撳勾鐨勮皟鍙傜粡楠?/h4>
-    <p>鍦ㄦ病鏈夋暟瀛楁帶鍒跺櫒骞翠唬锛岃皟鍙傚畬鍏ㄩ潬"璇?鍜?鐪?锛?/p>
-    <ul>
-        <li>鐢ㄧず娉㈠櫒瑙傚療绯荤粺鍝嶅簲娉㈠舰</li>
-        <li>璋冩暣鐢典綅鍣ㄦ敼鍙樺鐩婏紝鐪嬫尝褰㈠彉鍖?/li>
-        <li>缁忛獙涓板瘜鐨勫伐绋嬪笀鑳藉揩閫熷垽鏂細涓寸晫鐘舵€併€佺ǔ瀹氳竟鐣?/li>
-        <li>鐜娓╁害鍙樺寲鍚庯紝鍙傛暟闇€瑕侀噸鏂拌皟鏁达紙妯℃嫙鍣ㄤ欢婕傜Щ锛?/li>
-    </ul>
-    <p>浠婂ぉ鐨勬暟瀛桺ID鍙傛暟鏄簿纭殑鏁板瓧锛堝Kp=2.35锛夛紝涓嶅瓨鍦ㄦ紓绉婚棶棰橈紝鍙噸澶嶆€уぇ澶ф彁楂樸€?/p>
-</div>
-
-<h3>甯歌闂涓庤В鍐?/h3>
-
-<table>
-<tr><th>闂</th><th>鍘熷洜</th><th>瑙ｅ喅</th></tr>
-<tr><td>绯荤粺鍙戞暎</td><td>Kp杩囧ぇ</td><td>鍑忓皬Kp</td></tr>
-<tr><td>绋虫€佽宸ぇ</td><td>Ki澶皬鎴栨棤绉垎</td><td>澧炲ぇKi</td></tr>
-<tr><td>鍝嶅簲瓒呰皟涓ラ噸</td><td>Ki杩囧ぇ鎴朘d灏?/td><td>鍑忓皬Ki锛屽澶d</td></tr>
-<tr><td>楂橀鎶栧姩</td><td>Kd杩囧ぇ锛屽鍣０鏁忔劅</td><td>鍑忓皬Kd锛屽姞浣庨€氭护娉?/td></tr>
-<tr><td>鍝嶅簲鎱?/td><td>Kp澶皬</td><td>澧炲ぇKp</td></tr>
-<tr><td>绉垎楗卞拰</td><td>闀挎椂闂村ぇ璇樊</td><td>绉垎闄愬箙鎴栫Н鍒嗗垎绂?/td></tr>
-</table>
-
-<!-- 缁х画涓嬩竴閮ㄥ垎... -->
-
-<h2>3.5 姝ユ€佽鍒掑熀纭€</h2>
-
-<h3>浠€涔堟槸姝ユ€侊紵</h3>
-
-<p><strong>姝ユ€?/strong>锛圙ait锛夋槸鏈哄櫒浜鸿璧扮殑鍛ㄦ湡鎬ц繍鍔ㄦā寮忋€傚浜庡弻瓒虫満鍣ㄤ汉锛屾牳蹇冮棶棰樻槸锛?strong>濡備綍鍗忚皟涓ゆ潯鑵跨殑杩愬姩锛屼繚鎸佸钩琛″苟鍓嶈繘锛?/strong></p>
-
-<h4>鍙岃冻琛岃蛋鐨勫叧閿寫鎴?/h4>
-
-<ul>
-    <li><strong>骞宠　闂</strong>锛氫换浣曟椂鍒婚兘鍙湁涓€鍙剼锛堟垨闆跺彧鑴氾級鏀拺锛屽浣曚繚鎸佺ǔ瀹氾紵</li>
-    <li><strong>鍐插嚮闂</strong>锛氳剼钀藉湴鏃剁殑鍐插嚮濡備綍鍚告敹锛?/li>
-    <li><strong>鍛ㄦ湡鎬?/strong>锛氳璧版槸閲嶅杩愬姩锛岄渶瑕佸畾涔夋竻鏅扮殑鍛ㄦ湡</li>
-    <li><strong>鑳借€楅棶棰?/strong>锛氬浣曢珮鏁堝湴鍒╃敤鑳介噺锛?/li>
-</ul>
-
-<h3>绋冲畾鎬у垽鎹?/h3>
-
-<h4>闈欐€佺ǔ瀹?/h4>
-
-<p>褰撴満鍣ㄤ汉閲嶅績鎶曞奖钀藉湪鏀拺澶氳竟褰紙support polygon锛夊唴閮ㄦ椂锛屾満鍣ㄤ汉闈欐鐘舵€佷笅涓嶄細鍊惧€掋€傝繖鏄渶绠€鍗曠殑绋冲畾鎬ф潯浠躲€?/p>
-
-<div class="diagram-box">鏀拺澶氳竟褰紙淇鍥撅級锛?
-     宸﹁剼 鈼忊攣鈹佲攣鈹佲攣鈹佲棌 鍙宠剼
-      
-      鏀拺鍖哄煙 = 涓よ剼涔嬮棿鐨勫尯鍩?      
-         鈻?閲嶅績鎶曞奖蹇呴』鍦ㄥ尯鍩熷唴
-         鈹?      鈹屸攢鈹€鈼忊攢鈹€鈹?      鈹?    鈹? 瀹夊叏鍖猴紒
-      鈹斺攢鈹€鈹€鈹€鈹€鈹?/div>
-
-<h4>鍔ㄦ€佺ǔ瀹氾細ZMP锛堥浂鍔涚煩鐐癸級</h4>
-
-<p><strong>ZMP</strong>锛圸ero Moment Point锛夋槸 Honda 浜哄舰鏈哄櫒浜虹巼鍏堜娇鐢ㄧ殑鍔ㄦ€佺ǔ瀹氭€ф寚鏍囷細</p>
-
-<ul>
-    <li>ZMP钀藉湪鏀拺澶氳竟褰㈠唴 鈫?绋冲畾</li>
-    <li>ZMP鍗冲皢绂诲紑鏀拺澶氳竟褰?鈫?鍙兘鍊惧€?/li>
-</ul>
-
-<p>ZMP鑰冭檻浜嗘満鍣ㄤ汉鐨勫姩鍔涘锛堟儻鎬у姏銆侀噸鍔涳級锛屾瘮闈欐€侀噸蹇冩洿鍔犵簿纭€?/p>
-
-<div class="formula-box" style="font-size: 0.95rem;">
-p<sub>x</sub> = 危(m<sub>i</sub>(岷?sub>i</sub>路z<sub>i</sub> - z虉<sub>i</sub>路x<sub>i</sub> + g路x<sub>i</sub>)) / 危(m<sub>i</sub>(z虉<sub>i</sub> + g))
-</div>
-
-<div class="info-box">
-    <h4>馃挕 瀹炵敤绠€鍖?/h4>
-    <p>瀵逛簬閫熷害杈冩參鐨勫弻瓒虫満鍣ㄤ汉锛屽彲浠ヨ繎浼艰涓?ZMP 鈮?閲嶅績鎶曞奖銆備絾鍦ㄩ珮閫熻繍鍔ㄦ垨澶嶆潅鍔ㄤ綔鏃讹紝闇€瑕佸畬鏁磋绠椼€?/p>
-</div>
-
-<h3>鍏稿瀷姝ユ€佺被鍨?/h3>
-
-<table>
-<tr><th>姝ユ€?/th><th>鐗圭偣</th><th>搴旂敤</th></tr>
-<tr><td>闈欐€佹琛?/td><td>閲嶅績濮嬬粓鍦ㄦ敮鎾戝尯鍐咃紝鎱㈤€熴€佺ǔ瀹?/td><td>鍏ラ棬绾ф満鍣ㄤ汉</td></tr>
-<tr><td>鍔ㄦ€佹琛?/td><td>鍏佽鐭殏涓嶇ǔ瀹氾紝鍒╃敤鎯€у墠杩?/td><td>鎴愪汉褰㈡満鍣ㄤ汉</td></tr>
-<tr><td>璺戣烦</td><td>瀛樺湪鑵剧┖鐩革紙鍙岃剼绂诲湴锛夛紝闇€瑕佷富鍔ㄦ帶鍒?/td><td>楂樻€ц兘鏈哄櫒浜?/td></tr>
-<tr><td>鐖</td><td>涓夎剼浠ヤ笂鍚屾椂鏀拺锛屼綆閫熼珮绋冲畾</td><td>鍥涜冻鏈哄櫒浜?/td></tr>
-</table>
-
-<h3>鍙岃冻姝ヨ鍛ㄦ湡瀹氫箟</h3>
-
-<div class="diagram-box">姝ヨ鍛ㄦ湡锛堝崟姝ワ級锛?
-鏃堕棿杞?鈫?   鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?   鈹?       宸﹁吙鏀拺鏈?       鈹? 鍙宠吙鏀拺鏈? 鈹?   鈹?鈫愨攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?鈹傗啇鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫掆攤
-   鈹?                       鈹?             鈹?   鈹?  鈹屸攢鈹€鈹?     鈹屸攢鈹€鈹?     鈹? 鈹屸攢鈹€鈹? 鈹屸攢鈹€鈹?鈹?   鈹?  鈹傚乏鈹?     鈹傚彸鈹?     鈹? 鈹傚乏鈹? 鈹傚彸鈹?鈹?   鈹?  鈹傝剼鈹?     鈹傝剼鈹?     鈹? 鈹傝剼鈹? 鈹傝剼鈹?鈹?   鈹?  鈹傝笍鈹?     鈹傛姮鈹?     鈹? 鈹傛姮鈹? 鈹傝笍鈹?鈹?   鈹?  鈹傚湴鈹?     鈹傝捣鈹?     鈹? 鈹傝捣鈹? 鈹傚湴鈹?鈹?   鈹?  鈹斺攢鈹€鈹?     鈹斺攢鈹€鈹?     鈹? 鈹斺攢鈹€鈹? 鈹斺攢鈹€鈹?鈹?   鈹?        鈫?鍙屾敮鎾戞湡     鈹?    鈫?鍙屾敮鎾戔攤
-   鈹?      锛堜袱鑴氶兘鍦ㄥ湴锛?   鈹?             鈹?   鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?   
-鍛ㄦ湡T = 宸﹁吙鎽嗗姩鏃堕棿 + 鍙宠吙鎽嗗姩鏃堕棿</div>
-
-<h4>鍏抽敭鍙傛暟</h4>
-
-<ul>
-    <li><strong>姝ラ暱</strong>锛氬崟姝ュ墠杩涜窛绂伙紝閫氬父0.2~0.4m锛堝皬鍨嬫満鍣ㄤ汉锛?/li>
-    <li><strong>姝ラ</strong>锛氭瘡绉掓鏁帮紝鍏稿瀷0.5~2 Hz</li>
-    <li><strong>鎽嗚吙楂樺害</strong>锛氭姮鑴氶珮搴︼紝閬垮厤缁婂€掞紝閫氬父3~8cm</li>
-    <li><strong>鍙屾敮鎾戞椂闂?/strong>锛氫袱鑴氬悓鏃跺湪鍦扮殑杩囨浮鏃堕棿锛屽崰鍛ㄦ湡10~20%</li>
-</ul>
-
-<h3>绠€鍗曟鎬佺敓鎴愭柟娉?/h3>
-
-<h4>杞ㄨ抗瑙勫垝 + 閫嗚繍鍔ㄥ</h4>
-
-<ol>
-    <li>瑙勫垝楂嬪叧鑺傚拰韪濆叧鑺傜殑<span style="color:#00d4ff;">杞ㄨ抗鏇茬嚎</span>锛堝姝ｅ鸡銆佸椤瑰紡锛?/li>
-    <li>鐢ㄩ€嗚繍鍔ㄥ璁＄畻鍚勫叧鑺傝搴?/li>
-    <li>鍏宠妭鎺у埗鍣ㄨ窡韪建杩?/li>
-</ol>
-
-<pre><code>// 绠€鍗曟憜鑵胯建杩圭敓鎴愶紙Arduino浼唬鐮侊級
-void generateWalkTrajectory(float t, float* hip_angle, float* knee_angle, float* ankle_angle) {
-    float T = 1.0;  // 姝ユ€佸懆鏈燂紙绉掞級
-    float phase = fmod(t, T) / T;  // 0~1
-    
-    // 鎽嗗姩鐩革紙0~0.5锛?    if (phase &lt; 0.5) {
-        // 楂嬪叧鑺傚墠杩涙憜鍔?        *hip_angle = 20.0 * sin(phase * 2 * PI);  // 卤20掳
-        // 鑶濆叧鑺傚集鏇叉姮璧?        *knee_angle = -40.0 * sin(phase * 4 * PI);  // 鏈€澶у集鏇?0掳
-        // 韪濆叧鑺傝ˉ鍋?        *ankle_angle = -10.0 * sin(phase * 4 * PI);
-    }
-    // 鏀拺鐩革紙0.5~1锛?    else {
-        float local_phase = (phase - 0.5) * 2;  // 閲嶆柊鏄犲皠鍒?~1
-        // 楂嬪叧鑺傚悗鎽嗭紙璁╄韩浣撳墠杩涳級
-        *hip_angle = -20.0 * sin(local_phase * PI);
-        // 鑶濆叧鑺傚井寮紦鍐?        *knee_angle = -5.0 * sin(local_phase * PI);
-        // 韪濆叧鑺傛敮鎾?        *ankle_angle = 0;
-    }
+    float control = pid.compute(angle);
+    int pwm = map(90 + control, 0, 180, 1000, 2000);
+    myServo.writeMicroseconds(pwm);
+    delay(20);
 }</code></pre>
 
+<h3>增量式PID实现</h3>
+
+<pre><code>// 增量式PID（更适合步进电机和气缸）
+// 特点：输出是控制量的变化值，不是绝对值
+
+class IncrementalPID {
+public:
+    float kp, ki, kd;
+    float target, current;
+    float prev_error = 0, prev2_error = 0;
+    float output = 0;
+
+    IncrementalPID(float p, float i, float d)
+        : kp(p), ki(i), kd(d) {}
+
+    float compute(float measured, float tgt) {
+        current = measured;
+        target = tgt;
+
+        float error = target - current;
+
+        // 增量计算
+        float delta_u = kp * (error - prev_error)
+                      + ki * error
+                      + kd * (error - 2*prev_error + prev2_error);
+
+        output += delta_u;  // 累积输出
+        output = constrain(output, 0, 255);
+
+        prev2_error = prev_error;
+        prev_error = error;
+        return output;
+    }
+};</code></pre>
+
+<h3>PID调参实战</h3>
+
 <div class="tip-box">
-    <h4>馃幆 杩涢樁鏂瑰悜</h4>
-    <ul>
-        <li><strong>鍊掔珛鎽嗘ā鍨?/strong>锛圛nverted Pendulum锛夛細绠€鍖栧姩鍔涘锛岀敓鎴愯嚜鐒舵鎬?/li>
-        <li><strong>妯″瀷棰勬祴鎺у埗</strong>锛圡PC锛夛細鍓嶇灮寮忎紭鍖栨鎬?/li>
-        <li><strong>寮哄寲瀛︿範</strong>锛氳AI鑷富瀛︿範姝ユ€侊紙濡傜壒鎷夋柉鏈哄櫒浜猴級</li>
-    </ul>
+<h4>🎛️ 调参口诀</h4>
+<p>先P后D，最后I。P管响应速度，D管超调振荡，I管稳态精度。</p>
 </div>
-
-<h2>3.6 ROS鍏ラ棬</h2>
-
-<h3>浠€涔堟槸ROS锛?/h3>
-
-<p><strong>ROS</strong>锛圧obot Operating System锛屾満鍣ㄤ汉鎿嶄綔绯荤粺锛夋槸涓€涓紑婧愮殑鏈哄櫒浜鸿蒋浠舵鏋讹紝鎻愪緵锛?/p>
-
-<ul>
-    <li><strong>閫氫俊鏈哄埗</strong>锛氳妭鐐归棿鐨勬秷鎭紶閫?/li>
-    <li><strong>宸ュ叿鐢熸€?/strong>锛氫豢鐪燂紙Gazebo锛夈€佸彲瑙嗗寲锛圧Viz锛夈€佽皟璇曞伐鍏?/li>
-    <li><strong>鍔熻兘鍖?/strong>锛氬鑸€丼LAM銆佽瑙夌瓑鐜版垚妯″潡</li>
-    <li><strong>澶氳瑷€鏀寔</strong>锛欳++銆丳ython涓轰富</li>
-</ul>
-
-<div class="info-box">
-    <h4>馃挕 ROS vs 浼犵粺宓屽叆寮?/h4>
-    <p>浼犵粺宓屽叆寮忓紑鍙戯紙Arduino/STM32锛夐€傚悎搴曞眰瀹炴椂鎺у埗锛汻OS閫傚悎楂樺眰浠诲姟瑙勫垝銆佸浼犳劅鍣ㄨ瀺鍚堛€佸鏉傜畻娉曘€備袱鑰呯粨鍚堟槸鏈€浣冲疄璺碉細涓嬪眰MCU鍋氬疄鏃舵帶鍒讹紝涓婂眰ROS鍋氭櫤鑳藉喅绛栥€?/p>
-</div>
-
-<h3>ROS鏍稿績姒傚康</h3>
 
 <table>
-<tr><th>姒傚康</th><th>绫绘瘮</th><th>璇存槑</th></tr>
-<tr><td>鑺傜偣锛圢ode锛?/td><td>鐙珛绋嬪簭</td><td>鎵ц鐗瑰畾鍔熻兘鐨勮繘绋嬶紙濡?"鎽勫儚澶磋妭鐐?锛?/td></tr>
-<tr><td>璇濋锛圱opic锛?/td><td>骞挎挱棰戦亾</td><td>鑺傜偣闂村紓姝ラ€氫俊鐨勯€氶亾锛堝 "/camera/image"锛?/td></tr>
-<tr><td>娑堟伅锛圡essage锛?/td><td>鏁版嵁鍖?/td><td>璇濋涓婁紶杈撶殑鏁版嵁缁撴瀯</td></tr>
-<tr><td>鏈嶅姟锛圫ervice锛?/td><td>鍑芥暟璋冪敤</td><td>鍚屾璇锋眰-鍝嶅簲妯″紡</td></tr>
-<tr><td>鍙傛暟鏈嶅姟鍣?/td><td>閰嶇疆鏂囦欢</td><td>瀛樺偍鍏ㄥ眬閰嶇疆鍙傛暟</td></tr>
-<tr><td>Launch鏂囦欢</td><td>鍚姩鑴氭湰</td><td>鍚屾椂鍚姩澶氫釜鑺傜偣</td></tr>
+<tr><th>现象</th><th>参数问题</th><th>调整方向</th></tr>
+<tr><td>响应太慢</td><td>P太小</td><td>增大Kp</td></tr>
+<tr><td>剧烈振荡</td><td>P太大或D太小</td><td>减小Kp，增 D</td></tr>
+<tr><td>超调过大</td><td>D太小</td><td>增大Kd</td></tr>
+<tr><td>稳态误差</td><td>I太小</td><td>增大Ki（或用积分限幅改善）</td></tr>
+<tr><td>始终有小幅振荡</td><td>I太大</td><td>减小Ki</td></tr>
 </table>
 
-<h3>ROS閫氫俊鏋舵瀯鍥?/h3>
+<h3>串级PID：双环控制</h3>
 
-<div class="diagram-box">ROS鑺傜偣閫氫俊绀烘剰锛?
-鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?        鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?鈹?  鎽勫儚澶磋妭鐐?     鈹?        鈹?  澶勭悊鑺傜偣        鈹?鈹?/camera_node     鈹?        鈹?/processor_node  鈹?鈹?                 鈹?        鈹?                 鈹?鈹? 鍙戝竷鍥惧儚 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹尖攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫掆攤 璁㈤槄鍥惧儚         鈹?鈹?                 鈹? Topic: 鈹?                 鈹?鈹?                 鈹? /image  鈹? 鍙戝竷缁撴灉 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹尖攢鈹€鈫?鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?        鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                                       鈹?                                       鈹?Topic: /result
-                                       鈫?                                 鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?                                 鈹?  鍐崇瓥鑺傜偣        鈹?                                 鈹?/decision_node  鈹?                                 鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?/div>
+<pre><code>// 串级PID：外环位置环 + 内环速度环
+// 适合需要精确轨迹跟踪的场景
 
-<h3>ROS 2 绀轰緥浠ｇ爜</h3>
+class CascadePID {
+public:
+    // 外环：位置PID
+    PID posPID;
+    // 内环：速度PID
+    PID velPID;
 
-<h4>Publisher锛堝彂甯冭€咃級</h4>
+    float prevVelocity = 0;
 
-<pre><code># Python ROS 2 鍙戝竷鑰呯ず渚?
+    CascadePID(float Kp_pos, float Ki_pos, float Kd_pos,
+              float Kp_vel, float Ki_vel, float Kd_vel)
+        : posPID(Kp_pos, Ki_pos, Kd_pos),
+          velPID(Kp_vel, Ki_vel, Kd_vel) {}
+
+    float compute(float targetPos, float currentPos, float currentVel) {
+        // 外环：位置误差 → 目标速度
+        posPID.setTarget(targetPos);
+        float targetVel = posPID.compute(currentPos);
+
+        // 内环：速度误差 → 控制输出
+        return velPID.compute(currentVel, targetVel);
+    }
+};</code></pre>
+
+<h2>步态规划基础</h2>
+
+<p>让双足机器人走路，是机器人学中最具挑战性的问题之一。核心挑战是<strong>如何在只有两个支撑点的情况下保持平衡</strong>。</p>
+
+<h3>双足步行的周期</h3>
+
+<p>一个完整的步行周期分为两个阶段：</p>
+
+<ul>
+<li><strong>摆动相（SWING）</strong>：脚抬起，在空中移动，占周期约40%</li>
+<li><strong>支撑相（STANCE）</strong>：脚着地，支撑体重，推动身体前进，占周期约60%</li>
+</ul>
+
+<div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:25px;margin:16px 0;text-align:center;">
+<pre style="color:#aaa;font-family:monospace;margin:0;">
+步行周期时序图：
+
+  左腿   ████████████████▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+  右腿   ▒▒▒▒▒▒▒▒▒▒▒███████████████▌▒▒▒▒▒▒
+
+  图例：██ 支撑相  ▒▒ 摆动相
+
+  周期 = 支撑相(60%) + 摆动相(40%)
+</pre>
+</div>
+
+<h3>简化步态生成</h3>
+
+<pre><code>// 双足机器人简化步态生成
+// 生成周期性步态的髋关节和膝关节角度
+
+#define PI 3.1415926535
+
+// 步态参数
+const float STEP_HEIGHT = 25.0;    // 抬脚高度(mm)
+const float STEP_LENGTH = 50.0;     // 步长(mm)
+const float GAIT_PERIOD = 1.0;      // 周期(秒)
+const float LEG_LENGTH = 80.0;       // 腿长(mm)
+
+// 正弦插值（平滑过渡）
+float sineEase(float t) {
+    return 0.5 - 0.5 * cos(t * PI);
+}
+
+// 摆动相轨迹（摆线插值）
+float swingPhase(float t, float L) {
+    // 摆线：x = L*(t - sin(2πt)/2π)
+    return L * (t - sin(2*PI*t) / (2*PI));
+}
+
+// 生成左腿角度
+void leftLegGait(float phase, float* hip, float* knee) {
+    if (phase < 0.5) {
+        // 摆动相：抬腿前进
+        float swing_t = phase * 2;  // 0~1
+        float x = swingPhase(swing_t, STEP_LENGTH);
+        float y = STEP_HEIGHT * sin(swing_t * PI);  // 抛物线
+
+        // 简化的逆运动学（只考虑高度）
+        *hip = map(y, 0, STEP_HEIGHT, 0, 45);  // 髋关节
+        *knee = map(y, 0, STEP_HEIGHT, 0, 60); // 膝关节
+    } else {
+        // 支撑相：着地
+        *hip = 0;
+        *knee = 0;
+    }
+}
+
+// 生成右腿角度（相位相差0.5）
+void rightLegGait(float phase, float* hip, float* knee) {
+    leftLegGait(fmod(phase + 0.5, 1.0), hip, knee);
+}</code></pre>
+
+<h3>ZMP：零力矩点</h3>
+
+<p>ZMP（Zero Moment Point）是双足步行稳定性分析的核心概念：</p>
+
+<blockquote>
+<p><strong>定义</strong>：地面反作用力的合力矩在水平方向为零的点。<br>
+<strong>意义</strong>：只要ZMP在支撑多边形内，机器人就不会倒。</p>
+</blockquote>
+
+<pre><code>// 简化ZMP计算
+// ZMP在支撑脚组成的凸多边形内 = 稳定
+
+struct Vec2 { float x, y; };
+
+// 检查ZMP是否在支撑多边形内（凸多边形顶点数）
+bool isZMPStable(Vec2 zmp, Vec2 supportPoly[], int n) {
+    for (int i = 0; i < n; i++) {
+        Vec2 v1 = supportPoly[i];
+        Vec2 v2 = supportPoly[(i+1) % n];
+
+        // 边的外向法向量
+        Vec2 edge = {v2.y - v1.y, -(v2.x - v1.x)};
+
+        // ZMP到边的投影
+        Vec2 toZMP = {zmp.x - v1.x, zmp.y - v1.y};
+        float dot = edge.x * toZMP.x + edge.y * toZMP.y;
+
+        if (dot < 0) return false;  // ZMP在多边形外
+    }
+    return true;  // ZMP在多边形内
+}</code></pre>
+
+<h2>ROS机器人操作系统入门</h2>
+
+<blockquote>
+<p><strong>ROS不是操作系统</strong>，而是一套机器人软件"中间件"框架。它提供了节点通信、工具库、仿真环境等，让不同功能的机器人软件可以方便地组合在一起工作。</p>
+</blockquote>
+
+<h3>ROS 2核心概念</h3>
+
+<ul>
+<li><strong>节点（Node）</strong>：独立运行的程序模块，如"雷达节点"、"控制节点"</li>
+<li><strong>话题（Topic）</strong>：单向数据流，如/scan（雷达数据）、/cmd_vel（速度命令）</li>
+<li><strong>服务（Service）</strong>：请求-应答模式，如/spawn（生成地图点）</li>
+<li><strong>动作（Action）</strong>：长时间任务，如/navigation（导航任务）</li>
+<li><strong>参数（Parameter）</strong>：配置数据，如最大速度、传感器参数</li>
+</ul>
+
+<h3>ROS 2安装（Ubuntu）</h3>
+
+<pre><code># Ubuntu 22.04 + ROS 2 Humble
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt install curl
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list'
+
+sudo apt update
+sudo apt install ros-humble-ros-base
+sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers
+sudo apt install ros-humble-xacro  # 机器人模型工具
+
+# 环境变量（每次开终端都要source）
+source /opt/ros/humble/setup.bash
+
+# 创建工作空间
+mkdir -p ~/robot_ws/src
+cd ~/robot_ws
+colcon build
+source install/setup.bash</code></pre>
+
+<h3>第一个ROS 2节点（Python）</h3>
+
+<pre><code># robot_node.py - 发布关节角度话题
+
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
+from sensor_msgs.msg import JointState
+import math
 
-class MinimalPublisher(Node):
+class RobotJointPublisher(Node):
     def __init__(self):
-        super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 0.5  # 0.5绉掑彂甯冧竴娆?        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
+        super().__init__('robot_joint_publisher')
+
+        # 发布关节状态话题
+        self.joint_pub = self.create_publisher(
+            JointState,
+            '/joint_states',
+            10)
+
+        # 定时器：50Hz
+        self.timer = self.create_timer(0.02, self.timer_callback)
+        self.t = 0.0
+
+        self.get_logger().info('关节状态发布节点已启动')
 
     def timer_callback(self):
-        msg = String()
-        msg.data = 'Hello World: %d' % self.i
-        self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
+        msg = JointState()
+        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.name = ['joint1', 'joint2', 'joint3', 'joint4']
+        msg.position = [
+            90.0 + 10.0 * math.sin(self.t),     # 关节1
+            90.0 + 20.0 * math.sin(self.t*1.3), # 关节2
+            90.0 + 15.0 * math.sin(self.t*0.7), # 关节3
+            30.0 + 30.0 * math.sin(self.t*1.1)   # 夹爪
+        ]
+        self.joint_pub.publish(msg)
+        self.t += 0.02
 
 def main(args=None):
     rclpy.init(args=args)
-    minimal_publisher = MinimalPublisher()
-    rclpy.spin(minimal_publisher)
-    minimal_publisher.destroy_node()
-    rclpy.shutdown()
+    node = RobotJointPublisher()
+
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()</code></pre>
 
-<h4>Subscriber锛堣闃呰€咃級</h4>
+<h3>订阅关节命令（Arduino）</h3>
 
-<pre><code># Python ROS 2 璁㈤槄鑰呯ず渚?
+<pre><code>// ROS 2串口接收节点（Arduino端）
+// 订阅/joint_command话题，通过串口发送给下位机
+
+#include &lt;Arduino.h&gt;
+#include &lt;SoftwareSerial.h&gt;
+
+SoftwareSerial rosSerial(10, 11);  // RX, TX
+
+void setup() {
+    Serial.begin(115200);      // 调试串口
+    rosSerial.begin(115200);   // ROS串口
+}
+
+void loop() {
+    // 接收ROS命令
+    if (rosSerial.available()) {
+        String cmd = rosSerial.readStringUntil('\n');
+        cmd.trim();
+
+        if (cmd.startsWith("JOINTS:")) {
+            // 解析: JOINTS:j1:90.0,j2:45.0,j3:120.0,j4:30.0
+            parseJoints(cmd);
+        } else if (cmd.startsWith("HOME")) {
+            // 回中位
+            goHome();
+        }
+    }
+}
+
+void parseJoints(String cmd) {
+    // 解析各关节角度
+    // 实现舵机控制
+}</code></pre>
+
+<h3>手机控制ROS机器人（Web界面）</h3>
+
+<pre><code># 手机控制网页服务（Flask + ROS 2）
+# 监听手机滑块和按键，通过ROS发送命令
+
+from flask import Flask, render_template
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+import threading
 
-class MinimalSubscriber(Node):
-    def __init__(self):
-        super().__init__('minimal_subscriber')
-        self.subscription = self.create_subscription(
-            String,
-            'topic',
-            self.listener_callback,
-            10)
-        self.subscription  # 闃叉鏈娇鐢ㄨ鍛?
-    def listener_callback(self, msg):
-        self.get_logger().info('I heard: "%s"' % msg.data)
+app = Flask(__name__)
+rclpy.init()
+node = Node('web_controller')
+pub = node.create_publisher(String, '/robot_command', 10)
 
-def main(args=None):
-    rclpy.init(args=args)
-    minimal_subscriber = MinimalSubscriber()
-    rclpy.spin(minimal_subscriber)
-    minimal_subscriber.destroy_node()
-    rclpy.shutdown()
+@app.route('/')
+def index():
+    return render_template('control.html')
 
-if __name__ == '__main__':
-    main()</code></pre>
+@app.route('/cmd')
+def cmd():
+    direction = request.args.get('dir', 'stop')
+    msg = String()
+    msg.data = direction
+    pub.publish(msg)
+    return {'status': 'ok', 'cmd': direction}
 
-<h3>甯哥敤ROS宸ュ叿</h3>
+# 在后台线程运行ROS
+def spin_ros():
+    rclpy.spin(node)
 
-<h4>RViz 鈥?3D鍙鍖栧伐鍏?/h4>
-<ul>
-    <li>鏄剧ず鏈哄櫒浜烘ā鍨嬶紙URDF锛?/li>
-    <li>鏄剧ず浼犳劅鍣ㄦ暟鎹紙鐐逛簯銆佸浘鍍忥級</li>
-    <li>鏄剧ず瑙勫垝璺緞銆佽建杩?/li>
-    <li>瀹炴椂璋冨弬</li>
-</ul>
+threading.Thread(target=spin_ros, daemon=True).start()
+app.run(host='0.0.0.0', port=5000)  # 手机浏览器访问 http://机器人IP:5000</code></pre>
 
-<h4>Gazebo 鈥?鐗╃悊浠跨湡鍣?/h4>
-<ul>
-    <li>鐗╃悊寮曟搸锛堥噸鍔涖€佺鎾炪€佹懇鎿︼級</li>
-    <li>浼犳劅鍣ㄤ豢鐪燂紙鎽勫儚澶淬€佹縺鍏夐浄杈俱€両MU锛?/li>
-    <li>鏃犻渶鐗╃悊鏈哄櫒浜哄嵆鍙祴璇曠畻娉?/li>
-    <li>鏀寔ROS闆嗘垚</li>
-</ul>
+<pre><code>&lt;!-- control.html 滑块控制界面 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+    &lt;title&gt;机器人控制&lt;/title&gt;
+    &lt;style&gt;
+        body { background: #1a1a2e; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .slider-group { margin: 20px auto; max-width: 300px; }
+        label { display: block; margin: 10px 0 5px; color: #00d4ff; }
+        input[type=range] { width: 100%; height: 10px; accent-color: #7b2cbf; }
+        .btn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 250px; margin: 20px auto; }
+        .btn { background: #7b2cbf; color: #fff; border: none; padding: 15px; border-radius: 8px; font-size: 1.2rem; cursor: pointer; }
+        .btn:active { background: #00d4ff; }
+        .btn-stop { background: #f44336; }
+        .status { margin-top: 20px; color: #888; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;🤖 机器人控制台&lt;/h2&gt;
 
-<h4>rqt 鈥?璋冭瘯宸ュ叿濂椾欢</h4>
-<ul>
-    <li><code>rqt_graph</code>锛氭樉绀鸿妭鐐瑰叧绯诲浘</li>
-    <li><code>rqt_plot</code>锛氬疄鏃剁粯鍒惰瘽棰樻暟鎹?/li>
-    <li><code>rqt_console</code>锛氭煡鐪嬫棩蹇?/li>
-    <li><code>rqt_reconfigure</code>锛氬姩鎬佽皟鍙?/li>
-</ul>
+    &lt;div class="slider-group"&gt;
+        &lt;label&gt;关节1 (基座): &lt;span id="v1"&gt;90&lt;/span&gt;°&lt;/label&gt;
+        &lt;input type="range" min="0" max="180" value="90" id="s1" oninput="sendJoints()"&gt;
+    &lt;/div&gt;
+    &lt;div class="slider-group"&gt;
+        &lt;label&gt;关节2 (肩部): &lt;span id="v2"&gt;90&lt;/span&gt;°&lt;/label&gt;
+        &lt;input type="range" min="0" max="180" value="90" id="s2" oninput="sendJoints()"&gt;
+    &lt;/div&gt;
 
-<div class="tip-box">
-    <h4>馃摎 瀛︿範ROS鐨勫缓璁矾寰?/h4>
-    <ol>
-        <li>鍏堟帉鎻″熀鏈殑鍙戝竷/璁㈤槄鏈哄埗</li>
-        <li>瀛︿範URDF鏈哄櫒浜烘ā鍨嬫弿杩?/li>
-        <li>鐢℅azebo浠跨湡涓€涓畝鍗曟満鍣ㄤ汉</li>
-        <li>灏濊瘯瀵艰埅鍔熻兘鍖咃紙Nav2锛?/li>
-        <li>娣卞叆TF鍧愭爣鍙樻崲</li>
-    </ol>
-</div>
+    &lt;div class="btn-grid"&gt;
+        &lt;button class="btn" onclick="cmd('forward')"&gt;↑前&lt;/button&gt;
+        &lt;button class="btn" onclick="cmd('home')"&gt;⌂中&lt;/button&gt;
+        &lt;button class="btn" onclick="cmd('back')"&gt;↓后&lt;/button&gt;
+    &lt;/div&gt;
 
-<h2>3.7 缂栫▼瀹炶返锛氫粠闆跺疄鐜板叧鑺傛帶鍒?/h2>
-
-<h3>浠诲姟鐩爣</h3>
-
-<p>瀹炵幇涓€涓崟鍏宠妭鐢垫満鐨凱ID浣嶇疆鎺у埗锛岄€氳繃涓插彛鎺ユ敹鐩爣瑙掑害锛岄┍鍔ㄧ數鏈哄埌杈炬寚瀹氫綅缃€?/p>
-
-<h3>纭欢闇€姹?/h3>
-
-<ul>
-    <li>Arduino Uno 鎴?Mega</li>
-    <li>鐩存祦鍑忛€熺數鏈?+ 缂栫爜鍣?/li>
-    <li>L298N 鎴栧叾浠朒妗ラ┍鍔ㄦ澘</li>
-    <li>12V鐢垫簮</li>
-</ul>
-
-<h3>鎺ョ嚎鍥?/h3>
-
-<div class="diagram-box">鐢垫満椹卞姩鎺ョ嚎锛?
-Arduino                L298N椹卞姩鏉?             鐢垫満
-鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€             鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€           鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-  D5  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?ENA (PWM浣胯兘)
-  D6  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?IN1
-  D7  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?IN2
-      鈹?                     鈹溾攢鈹€鈹€鈹€鈹€鈹€鈫?鐢垫満A(+)
-      鈹?                     鈹溾攢鈹€鈹€鈹€鈹€鈹€鈫?鐢垫満A(-)
-  5V  鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?5V
-  GND 鈹溾攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈫?GND 鈫愨攢鈹€鈹€鈹€鈹€鈹?                             (鐢垫簮鍦?
-                     鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-                     12V澶栭儴鐢垫簮</div>
-
-<h3>缂栫爜鍣ㄨ鍙?/h3>
-
-<pre><code>// 缂栫爜鍣ㄤ腑鏂鍙栵紙Arduino锛?
-volatile long encoder_count = 0;
-const int ENCODER_A = 2;  // 蹇呴』鏄腑鏂紩鑴?const int ENCODER_B = 3;
-
-void setup() {
-    pinMode(ENCODER_A, INPUT);
-    pinMode(ENCODER_B, INPUT);
-    
-    // 缂栫爜鍣ˋ鐩镐笂鍗囨部瑙﹀彂涓柇
-    attachInterrupt(digitalPinToInterrupt(ENCODER_A), encoderISR, RISING);
-    
-    Serial.begin(115200);
-}
-
-void loop() {
-    Serial.print("Encoder: ");
-    Serial.println(encoder_count);
-    delay(100);
-}
-
-// 涓柇鏈嶅姟鍑芥暟
-void encoderISR() {
-    // 鏍规嵁B鐩哥數骞冲垽鏂柟鍚?    if (digitalRead(ENCODER_B) == HIGH) {
-        encoder_count++;  // 姝ｈ浆
-    } else {
-        encoder_count--;  // 鍙嶈浆
-    }
-}</code></pre>
-
-<h3>瀹屾暣PID鎺у埗浠ｇ爜</h3>
-
-<pre><code>// 鍗曞叧鑺侾ID浣嶇疆鎺у埗锛圓rduino锛?// 纭欢锛欰rduino + 缂栫爜鍣ㄧ數鏈?+ L298N椹卞姩
-
-// 寮曡剼瀹氫箟
-const int ENA = 5;       // PWM杈撳嚭鍙?const int IN1 = 6;
-const int IN2 = 7;
-const int ENCODER_A = 2; // 缂栫爜鍣ㄤ腑鏂紩鑴?const int ENCODER_B = 3;
-
-// 缂栫爜鍣ㄥ弬鏁?volatile long encoder_count = 0;
-const int PPR = 360;     // 缂栫爜鍣ㄦ瘡鍦堣剦鍐叉暟
-const float GEAR_RATIO = 50.0;  // 鍑忛€熸瘮
-
-// PID鍙傛暟
-float Kp = 2.0;
-float Ki = 0.1;
-float Kd = 0.5;
-
-float integral = 0;
-float prev_error = 0;
-
-// 鐩爣瑙掑害锛堜覆鍙ｆ帴鏀讹級
-float target_angle = 0.0;
-
-unsigned long prev_time = 0;
-
-void setup() {
-    pinMode(ENA, OUTPUT);
-    pinMode(IN1, OUTPUT);
-    pinMode(IN2, OUTPUT);
-    pinMode(ENCODER_A, INPUT);
-    pinMode(ENCODER_B, INPUT);
-    
-    attachInterrupt(digitalPinToInterrupt(ENCODER_A), encoderISR, RISING);
-    
-    Serial.begin(115200);
-    Serial.println("Single Joint PID Controller Ready");
-    Serial.println("Send target angle (0-360 degrees)");
-    
-    prev_time = millis();
-}
-
-void loop() {
-    // 涓插彛鎺ユ敹鐩爣瑙掑害
-    if (Serial.available() > 0) {
-        target_angle = Serial.parseFloat();
-        Serial.print("Target set to: ");
-        Serial.print(target_angle);
-        Serial.println(" degrees");
-    }
-    
-    // PID璁＄畻
-    float current_angle = getAngle();
-    float error = target_angle - current_angle;
-    
-    unsigned long now = millis();
-    float dt = (now - prev_time) / 1000.0;
-    prev_time = now;
-    
-    if (dt > 0) {
-        integral += error * dt;
-        integral = constrain(integral, -50, 50);  // 绉垎闄愬箙
-        
-        float derivative = (error - prev_error) / dt;
-        
-        float output = Kp * error + Ki * integral + Kd * derivative;
-        output = constrain(output, -255, 255);
-        
-        // 椹卞姩鐢垫満
-        driveMotor(output);
-        
-        prev_error = error;
-        
-        // 璋冭瘯杈撳嚭锛堟瘡100ms锛?        static unsigned long last_print = 0;
-        if (now - last_print > 100) {
-            Serial.print("Angle: ");
-            Serial.print(current_angle);
-            Serial.print(" Output: ");
-            Serial.println(output);
-            last_print = now;
+    &lt;script&gt;
+        function sendJoints() {
+            const v1 = document.getElementById('s1').value;
+            const v2 = document.getElementById('s2').value;
+            document.getElementById('v1').textContent = v1;
+            document.getElementById('v2').textContent = v2;
+            fetch(`/cmd?dir=J1:${v1},J2:${v2}`);
         }
-    }
-    
-    delay(1);  // 鎺у埗寰幆鍛ㄦ湡绾?ms
-}
+        function cmd(c) { fetch(`/cmd?dir=${c}`); }
+    &lt;/script&gt;
+    &lt;p class="status"&gt;手机浏览器即可控制，无需安装App&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
-// 缂栫爜鍣ㄤ腑鏂?void encoderISR() {
-    if (digitalRead(ENCODER_B) == HIGH) {
-        encoder_count++;
-    } else {
-        encoder_count--;
-    }
-}
-
-// 灏嗙紪鐮佸櫒璁℃暟杞崲涓鸿搴?float getAngle() {
-    // 鎬诲噺閫熸瘮 = 缂栫爜鍣≒PR 脳 鍑忛€熸瘮
-    float counts_per_rev = PPR * GEAR_RATIO * 4;  // 4鍊嶉
-    return (encoder_count % (long)counts_per_rev) * 360.0 / counts_per_rev;
-}
-
-// 鐢垫満椹卞姩
-void driveMotor(float pwm) {
-    int pwm_int = (int)pwm;
-    
-    if (pwm_int > 0) {
-        // 姝ｈ浆
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW);
-        analogWrite(ENA, abs(pwm_int));
-    } else if (pwm_int < 0) {
-        // 鍙嶈浆
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, HIGH);
-        analogWrite(ENA, abs(pwm_int));
-    } else {
-        // 鍋滄
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, LOW);
-        analogWrite(ENA, 0);
-    }
-}</code></pre>
-
-<h3>璋冨弬姝ラ</h3>
-
-<ol>
-    <li>涓婄數鍚庯紝閫氳繃涓插彛鍙戦€佽搴︽寚浠わ紙濡?<code>90</code> 琛ㄧず90搴︼級</li>
-    <li>瑙傚療鐢垫満鏄惁鑳藉埌杈剧洰鏍囪搴?/li>
-    <li>濡傛灉鍝嶅簲澶參锛屽澶?Kp</li>
-    <li>濡傛灉鏈夌ǔ鎬佽宸紝澧炲ぇ Ki</li>
-    <li>濡傛灉瓒呰皟涓ラ噸锛屽澶?Kd</li>
-    <li>閲嶅璋冭瘯锛岀洿鍒版弧鎰?/li>
-</ol>
-
-<h2>3.8 鏈珷灏忕粨</h2>
+<h2>本章小结</h2>
 
 <ul>
-    <li>鉁?鎺屾彙浜嗗潗鏍囩郴涓庡彉鎹㈢殑鍩虹姒傚康</li>
-    <li>鉁?鐞嗚В浜嗘杩愬姩瀛﹀拰閫嗚繍鍔ㄥ鐨勫師鐞嗕笌璁＄畻鏂规硶</li>
-    <li>鉁?娣卞叆瀛︿範浜哖ID鎺у埗鐨勭悊璁轰笌瀹炶返锛屼簡瑙ｄ簡浜斿崄骞村墠姣斾緥鎺у埗鐨勫巻鍙?/li>
-    <li>鉁?浜嗚В浜嗗弻瓒虫鎬佽鍒掔殑鍩烘湰姒傚康</li>
-    <li>鉁?鍏ラ棬浜哛OS妗嗘灦鍜屽父鐢ㄥ伐鍏?/li>
-    <li>鉁?瀹炵幇浜嗕竴涓畬鏁寸殑鍗曞叧鑺侾ID鎺у埗绋嬪簭</li>
+<li>✅ 掌握坐标系和齐次变换，理解机器人"在哪"的问题</li>
+<li>✅ 学会正运动学和逆运动学，能根据角度算位置，也能根据位置算角度</li>
+<li>✅ 理解PID控制器的原理和调参方法，融入您五十年前的比例控制经验</li>
+<li>✅ 了解步态规划基础和ZMP稳定性判据</li>
+<li>✅ 入门ROS 2，能编写发布/订阅节点，实现手机Web控制</li>
 </ul>
 
-<div class="tip-box">
-    <h4>馃摎 涓嬩竴姝?/h4>
-    <p>杩涘叆<a href="chapter4-projects.html">绗洓绔狅細瀹屾暣椤圭洰</a>锛屽姩鎵嬪仛涓変釜瀹炴垬椤圭洰锛氭闈㈡満姊拌噦銆佸弻瓒虫琛屾満鍣ㄤ汉銆佸皬鍨嬩汉褰㈡満鍣ㄤ汉銆?/p>
+<div class="info-box">
+<h4>🎯 关键技能清单</h4>
+<ul>
+<li>能够根据BOM表选购零部件</li>
+<li>能够用Arduino实现PID控制</li>
+<li>能够编写逆运动学函数</li>
+<li>能够建立ROS 2节点通信</li>
+<li>能够用手机网页控制机器人</li>
+</ul>
 </div>
+
+<blockquote>
+<p>"控制是机器人技术的灵魂，PID是控制技术的基石。"</p>
+</blockquote>
 
 <div class="nav-links">
-    <a href="chapter2-electronics.html">鈫?绗簩绔狅細鐢靛瓙鍩虹</a>
-    <a href="chapter4-projects.html">绗洓绔狅細瀹屾暣椤圭洰 鈫?/a>
+    <a href="chapter2-electronics.html">← 第二章：电子基础</a>
+    <a href="chapter4-projects.html">第四章：完整项目 →</a>
 </div>
 
         </div>
         <div class="page-footer">
-            <p>漏 2026 鏈哄櫒浜虹煡璇嗗簱 | Robot Knowledge Base</p>
-            <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">馃捇 绗笁绔犲畬鎴?鈥?杩愬姩瀛︺€丳ID鎺у埗銆丷OS鍏ラ棬</p>
+            <p>© 2026 机器人知识库 | Robot Knowledge Base</p>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">💻 第三章完成 — 软件基础</p>
         </div>
     </div>
 </body>
