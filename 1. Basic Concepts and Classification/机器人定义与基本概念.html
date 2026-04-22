@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器人定义与基本概念 | 机器人知识库</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.9; }
+        .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
+        .md-content h2 { font-size: 1.4rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 12px; border-left: 4px solid #7b2cbf; }
+        .md-content h3 { font-size: 1.15rem; color: #00d4ff; margin-top: 22px; margin-bottom: 12px; }
+        .md-content p { margin-bottom: 15px; color: #c8cdd8; }
+        .md-content ul, .md-content ol { margin-left: 25px; margin-bottom: 16px; color: #ccc; }
+        .md-content li { margin-bottom: 8px; }
+        .md-content strong { color: #fff; }
+        .md-content a { color: #00d4ff; text-decoration: none; border-bottom: 1px dotted #00d4ff; }
+        .md-content a:hover { border-bottom-style: solid; }
+        .definition-box { background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(123,44,191,0.08) 100%); border: 1px solid rgba(0,212,255,0.25); border-radius: 12px; padding: 25px; margin: 25px 0; }
+        .definition-box h3 { margin-top: 0; color: #00d4ff; }
+        .highlight { background: rgba(0,212,255,0.15); color: #00d4ff; padding: 2px 8px; border-radius: 4px; font-size: 0.95em; }
+        .law-box { background: rgba(123,44,191,0.1); border: 1px solid rgba(123,44,191,0.3); border-radius: 10px; padding: 20px 25px; margin: 20px 0; }
+        .law-box h3 { color: #c77dff; margin-top: 0; }
+        .law-item { display: flex; align-items: flex-start; gap: 15px; margin: 15px 0; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; }
+        .law-num { background: #7b2cbf; color: #fff; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; font-size: 0.9rem; }
+        .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 15px; margin: 20px 0; }
+        .component-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 18px; transition: all 0.3s; }
+        .component-card:hover { border-color: #00d4ff; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,212,255,0.15); }
+        .component-card h4 { color: #00d4ff; margin: 0 0 8px 0; font-size: 1rem; }
+        .component-card p { color: #999; font-size: 0.88rem; margin: 0; line-height: 1.5; }
+        .level-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+        .level-table th { background: rgba(0,212,255,0.15); color: #00d4ff; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.1); text-align: left; }
+        .level-table td { padding: 11px 14px; border: 1px solid rgba(255,255,255,0.07); color: #ccc; vertical-align: top; }
+        .level-table tr:hover td { background: rgba(255,255,255,0.03); }
+        .level-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; white-space: nowrap; }
+        .badge-1 { background: rgba(120,120,120,0.3); color: #aaa; }
+        .badge-2 { background: rgba(0,212,255,0.2); color: #00d4ff; }
+        .badge-3 { background: rgba(123,44,191,0.3); color: #c77dff; }
+        .badge-4 { background: rgba(0,255,136,0.2); color: #00ff88; }
+        .note-box { background: rgba(255,200,0,0.07); border-left: 3px solid #ffc800; padding: 15px 18px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .note-box p { color: #ffd700; margin: 0; font-size: 0.9rem; line-height: 1.7; }
+        .summary-list { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.15); border-radius: 10px; padding: 20px 25px; margin: 20px 0; }
+        .summary-list li { color: #c8cdd8; margin-bottom: 10px; }
+        hr.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 40px 0; }
+        .page-footer { text-align: center; color: #555; font-size: 0.88rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-link">← 返回首页</a>
+            <a href="index.html" class="back-link" style="margin-left:15px;">← 返回分类首页</a>
+            <h1>🤖 机器人定义与基本概念</h1>
+            <p class="subtitle">Robot Definition and Basic Concepts</p>
+        </header>
+        <div class="md-content">
+
+<h1>机器人定义与基本概念</h1>
+
+<h2>一、什么是机器人？——从科幻到现实</h2>
+
+<p>「机器人」这个词，让不同的人联想到完全不同的画面。有人想到工厂里银光闪闪的机械臂，有人想到《星球大战》里的C-3PO，有人想到家里勤勤恳恳扫地的圆盘，还有人想到波士顿动力那个后空翻的Atlas。这些都是机器人，但它们的样子、工作方式、复杂程度天差地别。</p>
+
+<p>那么，究竟什么是机器人？回答这个问题并不像看起来那么简单。从词源学角度看，「Robot（机器人）」这个词诞生于1920年——捷克剧作家卡雷尔·恰佩克（Karel Čapek）在戏剧《罗萨姆的万能机器人》（R.U.R.）中创造了它，词根来自捷克语「robota」，意思是「苦力」「被迫劳动」。恰佩克用这个词描述那些被人类制造出来、替人类干活的「人造工人」。</p>
+
+<p>近一个世纪后的今天，「机器人」的内涵已经远远超出了恰佩克的想象。现代机器人不仅是任劳任怨的体力劳动者，更是具备感知、思考、决策能力的智能体。要给机器人下一个准确的定义，我们需要从多个维度来理解。</p>
+
+<div class="definition-box">
+    <h3>📖 如何定义机器人？——不同组织的观点</h3>
+    <p><strong>国际标准化组织（ISO 8373:2021）</strong>：机器人是「一种能够自动定位或移动、能够感知环境、具备一定智能行为、可编程的多功能操作机，可以借助于可编程动作来完成各种任务」。</p>
+    <p><strong>美国机器人研究所（RIA）</strong>：机器人是「一种用于移动材料、零件、工具或专用装置的可重复编程的多功能操作机，通过可变的编程动作来完成各种任务」。</p>
+    <p><strong>日本机器人协会（JRA）</strong>：机器人是「一种具有移动功能、能够通过自动或半自动方式执行作业任务、具备感知和判断能力的机电一体化系统」。</p>
+    <p><strong>中国国家标准（GB/T 12643-2013）</strong>：机器人是「一种能够自动执行工作的机器装置，它既可以接受人类指挥，又可以运行预先编排的程序，还可以根据以人工智能技术制定的原则纲领行动」。</p>
+</div>
+
+<p>这些定义有一个共同点：<span class="highlight">可编程</span>、<span class="highlight">可移动或操作</span>、<span class="highlight">能感知</span>、<span class="highlight">可执行任务</span>。这四个要素构成了现代机器人的核心特征。</p>
+
+<h2>二、机器人的关键特征</h2>
+
+<p>根据上述定义，我们可以提炼出机器人的几个关键特征：</p>
+
+<h3>2.1 可编程性（Programmability）</h3>
+<p>机器人之所以区别于其他机械设备，根本在于它的「可编程性」。一台传统机床按照固定的机械结构工作，动作是固定死的；而机器人可以通过改变程序来执行完全不同的任务。今天让它焊接汽车外壳，明天可以让它搬运箱子，后天甚至可以让它去种菜。<strong>软件定义功能</strong>，这是机器人最大的革命性特征。</p>
+
+<h3>2.2 机械运动能力（Mechanical Actuation）</h3>
+<p>机器人必须具备执行物理动作的能力——要么是整个身体的移动（如轮式、足式、履带式机器人），要么是末端执行器的操作（如机械臂的抓取、旋转、焊接等）。这种能力来自驱动系统，可能是电机驱动、气压驱动、液压驱动，或者是新兴的软体机器人技术。</p>
+
+<h3>2.3 感知能力（Sensing）</h3>
+<p>现代机器人通过各类传感器感知世界。视觉传感器让机器人「看见」，听觉传感器让它「听见」，力觉传感器让它感知接触力，温度、湿度、气体传感器让它感知环境状态。没有感知，机器人就无法适应复杂环境，只能在固定场景中重复固定动作。</p>
+
+<h3>2.4 智能行为（Intelligent Behavior）</h3>
+<p>这是当代机器人区别于上世纪机械臂的关键。当我们谈论「机器人」时，很大程度上是在谈论它的智能——能否自主决策、能否学习新技能、能否理解人类意图、能否与人类自然交互。从简单的「示教再现」到复杂的「自主学习」，智能程度的不同决定了机器人的能力边界。</p>
+
+<h2>三、机器人三大定律——阿西莫夫的遗产</h2>
+
+<p>谈到机器人，就不能不提阿西莫夫（Isaac Asimov）。1942年，这位科幻大师在短篇小说《转圈圈》（Runaround）中提出了著名的「机器人三大定律」：</p>
+
+<div class="law-box">
+    <h3>⚖️ 机器人三大定律（阿西莫夫，1942）</h3>
+    <div class="law-item">
+        <span class="law-num">1</span>
+        <div><strong>第一定律（安全律）</strong>：机器人不得伤害人类，或坐视人类受到伤害而袖手旁观。</div>
+    </div>
+    <div class="law-item">
+        <span class="law-num">2</span>
+        <div><strong>第二定律（服从律）</strong>：机器人必须服从人类的命令，除非该命令与第一定律相冲突。</div>
+    </div>
+    <div class="law-item">
+        <span class="law-num">3</span>
+        <div><strong>第三定律（自保律）</strong>：机器人必须保护自身存在，但不得与第一、第二定律相冲突。</div>
+    </div>
+    <div class="law-item" style="background: rgba(123,44,191,0.15);">
+        <span class="law-num" style="background:#5a189a;">0</span>
+        <div><strong>第零定律（后补）</strong>：机器人不得伤害人类整体，或坐视人类整体受到伤害。（优先于前三条）</div>
+    </div>
+</div>
+
+<p>这些定律听起来简单明确，但细细品味就会发现大量哲学困境：如果必须在两个受伤的人之间选择救谁怎么办？如果人类命令机器人伤害另一个人怎么办？机器人能否「说服」人类收回可能伤害人类的命令？</p>
+
+<p>更有趣的是，阿西莫夫写这些定律的初衷恰恰是展示它们的漏洞——几乎所有故事都是在定律看似完美却引发意想不到后果时展开的。这告诉我们：<strong>把伦理准则编码成可执行规则，比写科幻小说困难得多。</strong></p>
+
+<div class="note-box">
+    <p>💡 <strong>现实中的机器人伦理</strong>：今天，真实的机器人伦理问题已经不再是科幻。自动驾驶汽车面临「电车难题」：当事故不可避免时，应该优先保护乘客还是行人？医疗机器人诊断失误谁来负责？军用无人机是否超越了「人类决定开火」的底线？这些问题需要技术、法律、伦理多学科共同回答。</p>
+</div>
+
+<h2>四、机器人的基本组成部分</h2>
+
+<p>一个完整的机器人系统通常由以下八大子系统组成。理解这些组成部分，就是理解机器人工作原理的第一步：</p>
+
+<div class="component-grid">
+    <div class="component-card">
+        <h4>🦴 机械结构</h4>
+        <p>机身、关节、连杆、末端执行器等物理部件。相当于人类的骨骼，决定机器人的运动范围和承载能力。</p>
+    </div>
+    <div class="component-card">
+        <h4>⚡ 驱动系统</h4>
+        <p>伺服电机、步进电机、液压缸、气缸、人工肌肉等。为机器人提供动力，决定运动速度和力量。</p>
+    </div>
+    <div class="component-card">
+        <h4>👁️ 传感系统</h4>
+        <p>摄像头、激光雷达（LiDAR）、IMU、力矩传感器、编码器等。让机器人感知自身状态和外部环境。</p>
+    </div>
+    <div class="component-card">
+        <h4>🎛️ 控制系统</h4>
+        <p>控制器、PLC、嵌入式系统。负责运动规划、指令执行、实时反馈控制和安全监控。</p>
+    </div>
+    <div class="component-card">
+        <h4>🧠 决策系统</h4>
+        <p>算法软件、AI芯片、规划与导航模块。赋予机器人智能决策能力，是机器人的「大脑」。</p>
+    </div>
+    <div class="component-card">
+        <h4>🔗 通信系统</h4>
+        <p>工业总线（CAN、EtherCAT）、无线通信（WiFi、5G）、接口协议。实现内部各模块互联和外部远程控制。</p>
+    </div>
+    <div class="component-card">
+        <h4>🔋 电源系统</h4>
+        <p>锂电池、燃料电池、稳压电路、电源管理模块。提供稳定可靠的能量供应，决定续航时间。</p>
+    </div>
+    <div class="component-card">
+        <h4>🛡️ 安全系统</h4>
+        <p>急停装置、碰撞检测、区域监控、安全围栏、力矩限制。保障人机协作安全，防止意外伤害。</p>
+    </div>
+</div>
+
+<p>这八个子系统相互配合，形成完整的「感知—决策—执行」闭环：传感系统采集数据 → 决策系统处理信息并规划动作 → 控制系统发出指令 → 驱动系统执行动作 → 机械结构完成物理运动 → 安全系统全程保驾护航。</p>
+
+<h2>五、机器人自主性分级</h2>
+
+<p>并非所有机器人都一样「聪明」。根据自主程度的不同，机器人可以分为不同的等级：</p>
+
+<h3>5.1 按智能程度分级（工业标准视角）</h3>
+
+<table class="level-table">
+<tr><th>等级</th><th>名称</th><th>核心特征</th><th>典型应用</th></tr>
+<tr>
+    <td><span class="level-badge badge-1">Level 1</span></td>
+    <td>示教再现型</td>
+    <td>通过人工示教记录轨迹，重复执行固定程序，无感知能力</td>
+    <td>传统焊接机器人、简单搬运</td>
+</tr>
+<tr>
+    <td><span class="level-badge badge-2">Level 2</span></td>
+    <td>感知适应型</td>
+    <td>配备传感器，可感知工件位置、环境变化并自适应调整</td>
+    <td>视觉引导装配、力控打磨</td>
+</tr>
+<tr>
+    <td><span class="level-badge badge-3">Level 3</span></td>
+    <td>自主规划型</td>
+    <td>可根据任务目标自主规划路径和行为策略，处理未知情况</td>
+    <td>协作机器人、自主移动机器人（AMR）</td>
+</tr>
+<tr>
+    <td><span class="level-badge badge-4">Level 4</span></td>
+    <td>智能学习型</td>
+    <td>具备自主学习、推理、决策能力，可在开放环境中持续进化</td>
+    <td>人形机器人、具身智能机器人</td>
+</tr>
+</table>
+
+<h3>5.2 按人机协作程度分级</h3>
+
+<p>从人机协作的角度，也可以这样理解机器人的自主程度：</p>
+
+<ul>
+    <li><strong>全手动遥控</strong>：人操作机器，机器完全按照人的动作运动（如排爆机器人遥控操作）</li>
+    <li><strong>半自动辅助</strong>：人发出高层指令，机器自主完成细节（如告诉机器人「去A点抓取零件」，它自己规划路径）</li>
+    <li><strong>监督自主</strong>：机器自主工作，人只在异常时介入（如自动驾驶时的随时接管）</li>
+    <li><strong>完全自主</strong>：机器完全独立完成任务，无需人介入（如自主扫地机器人、深空探测器）</li>
+</ul>
+
+<h2>六、机器人与工具的本质区别</h2>
+
+<p>一个有趣的问题：所有这些特征加起来，足以定义机器人吗？或者我们可以问一个更根本的问题——<strong>机器人和我们日常用的工具，到底有什么区别？</strong></p>
+
+<p>有人认为，核心区别在于「自主性」——工具是被人直接操作的，而机器人可以自主行动。但这个界限正在变得模糊：一把智能电钻可以自动调节力度算是机器人吗？一条自动化生产线算不算巨大的机器人？</p>
+
+<p>也有人说区别在于「通用性」——传统机器（如车床）只擅长某一件事，而机器人应该是多功能的、可编程的。但工业机器人其实也很专一，协作机器人也正在向专一场景深耕。</p>
+
+<p>或许，我们可以接受一个宽泛的定义：<strong>机器人是一个融合了机械、电子、软件、算法的复合智能系统，它能够感知环境、自主决策、执行动作，并且可以通过编程来适应不同任务。</strong>这个定义足够宽广，可以涵盖从Roomba扫地机到Atlas双足机器人，从达芬奇手术机器人到SpaceX的机械臂。</p>
+
+<div class="note-box">
+    <p>💡 <strong>前沿思考</strong>：当AI大模型可以「指挥」机器人执行复杂任务时，机器人定义的重心正在从「硬件」向「软硬一体」转移。未来，智能手机可能就是机器人的「大脑」，而各种硬件设备是它的「身体」——这正是具身智能（Embodied AI）的前沿方向：让AI不只是在屏幕里思考，而是在物理世界中行动。</p>
+</div>
+
+<h2>七、本章小结</h2>
+
+<div class="summary-list">
+    <ul>
+        <li>机器人是<span class="highlight">可编程</span>、<span class="highlight">可运动</span>、<span class="highlight">能感知</span>、<span class="highlight">能执行任务</span>的机电一体化系统</li>
+        <li>机器人具有<strong>可编程性、机械运动能力、感知能力、智能行为</strong>四大关键特征</li>
+        <li>「Robot」一词由捷克剧作家恰佩克于1920年创造，词根意为「苦力」</li>
+        <li>阿西莫夫的机器人三大定律是机器人伦理的奠基之作，但实践远比理论复杂</li>
+        <li>机器人由<strong>机械结构、驱动、传感、控制、决策、通信、电源、安全</strong>八大子系统组成</li>
+        <li>机器人按自主程度分为<strong>示教再现、感知适应、自主规划、智能学习</strong>四个等级</li>
+        <li>具身智能（Embodied AI）是当前最前沿的方向：让AI在物理世界中感知和行动</li>
+    </ul>
+</div>
+
+<p>理解这些基本概念，是深入学习机器人技术的起点。在接下来的章节中，我们将逐一探讨机器人的分类体系、核心技术、应用领域，以及如何亲自动手DIY一个机器人。</p>
+
+<hr class="section-divider">
+<p class="page-footer">© 2026 机器人知识库 | Robot Knowledge Base</p>
+
+        </div>
+    </div>
+</body>
+</html>
