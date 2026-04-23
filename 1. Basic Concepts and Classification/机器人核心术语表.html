@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器人核心术语表 | 机器人知识库</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .md-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; line-height: 1.9; }
+        .md-content h1 { font-size: 2rem; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
+        .md-content h2 { font-size: 1.4rem; color: #fff; margin-top: 35px; margin-bottom: 15px; padding-left: 12px; border-left: 4px solid #7b2cbf; }
+        .search-bar { width: 100%; padding: 12px 18px; background: rgba(255,255,255,0.08); border: 1px solid rgba(0,212,255,0.3); border-radius: 8px; color: #fff; font-size: 1rem; margin-bottom: 25px; outline: none; }
+        .search-bar::placeholder { color: #666; }
+        .search-bar:focus { border-color: #00d4ff; background: rgba(0,212,255,0.05); }
+        .term-table { width: 100%; border-collapse: collapse; margin: 10px 0 30px 0; font-size: 0.91rem; }
+        .term-table th { background: rgba(0,212,255,0.15); color: #00d4ff; padding: 11px 14px; border: 1px solid rgba(255,255,255,0.1); text-align: left; }
+        .term-table td { padding: 10px 14px; border: 1px solid rgba(255,255,255,0.07); color: #ccc; vertical-align: top; }
+        .term-table tr:hover td { background: rgba(255,255,255,0.04); }
+        .term-zh { color: #fff; font-weight: 600; white-space: nowrap; }
+        .term-en { color: #00d4ff; font-size: 0.85rem; white-space: nowrap; }
+        .term-abbr { color: #c77dff; font-size: 0.82rem; }
+        .term-def { color: #bbb; line-height: 1.6; }
+        .hidden { display: none; }
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.72rem; margin-left: 6px; vertical-align: middle; }
+        .tag-core { background: rgba(0,212,255,0.15); color: #00d4ff; }
+        .tag-ai { background: rgba(123,44,191,0.2); color: #c77dff; }
+        .tag-hw { background: rgba(255,100,0,0.15); color: #ff9966; }
+        .tag-sw { background: rgba(0,200,100,0.15); color: #00cc66; }
+        .count-info { color: #666; font-size: 0.88rem; margin-bottom: 15px; }
+        hr.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 40px 0; }
+        .page-footer { text-align: center; color: #555; font-size: 0.88rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-link">← 返回首页</a>
+            <a href="index.html" class="back-link" style="margin-left:15px;">← 返回分类首页</a>
+            <h1>📖 机器人核心术语表</h1>
+            <p class="subtitle">Robot Core Glossary — 中英对照</p>
+        </header>
+        <div class="md-content">
+
+<h1>机器人核心术语表</h1>
+<p style="color:#888;">收录机器人领域120+核心术语，含中英文对照、缩写及简明释义。支持实时搜索。</p>
+
+<input class="search-bar" type="text" id="termSearch" placeholder="🔍 搜索术语（中文/英文/缩写均可）..." oninput="filterTerms()">
+<div class="count-info" id="countInfo">共 <span id="termCount">0</span> 条术语</div>
+
+<h2>一、基础概念</h2>
+<table class="term-table" id="table-basic">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">机器人</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Robot</span></td><td class="term-def">能够自动执行任务的可编程机电一体化系统，具备感知、决策、执行能力。词源来自捷克语"robota"（苦力）。</td></tr>
+<tr><td><span class="term-zh">机器人学</span></td><td><span class="term-en">Robotics</span></td><td class="term-def">研究机器人设计、制造、控制和应用的综合性学科，涵盖机械工程、电子工程、计算机科学、人工智能等多个领域。</td></tr>
+<tr><td><span class="term-zh">自由度</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Degrees of Freedom</span><br><span class="term-abbr">DOF / DoF</span></td><td class="term-def">机器人在空间中独立运动的数量。6自由度机器人可以在三维空间中以任意位置和姿态到达工作范围内的任意点。</td></tr>
+<tr><td><span class="term-zh">末端执行器</span></td><td><span class="term-en">End Effector</span></td><td class="term-def">安装在机械臂末端、直接与工件或环境交互的装置，如夹爪、焊枪、吸盘、喷嘴等。</td></tr>
+<tr><td><span class="term-zh">工作空间</span></td><td><span class="term-en">Workspace / Work Envelope</span></td><td class="term-def">机器人末端执行器能够到达的所有点构成的空间范围，由机器人的结构和关节限位决定。</td></tr>
+<tr><td><span class="term-zh">重复定位精度</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Repeatability</span></td><td class="term-def">机器人多次运动到同一目标位置时，实际到达位置的一致性。工业机器人典型值为±0.02~0.1mm。</td></tr>
+<tr><td><span class="term-zh">有效载荷</span></td><td><span class="term-en">Payload</span></td><td class="term-def">机器人末端执行器能够承载的最大重量，包括工具和工件的总重量。</td></tr>
+<tr><td><span class="term-zh">协作机器人</span></td><td><span class="term-en">Collaborative Robot</span><br><span class="term-abbr">Cobot</span></td><td class="term-def">设计用于与人类在共享空间中安全协作的机器人，具备力矩限制、碰撞检测等安全功能，无需安全围栏。</td></tr>
+<tr><td><span class="term-zh">人形机器人</span></td><td><span class="term-en">Humanoid Robot</span></td><td class="term-def">外形和运动方式模仿人类的机器人，通常具备双足行走、双臂操作、头部感知等能力。</td></tr>
+<tr><td><span class="term-zh">具身智能</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Embodied Intelligence / Embodied AI</span></td><td class="term-def">让AI系统拥有物理身体，通过与真实世界的交互来感知、学习和行动的研究方向。是当前机器人AI的核心范式。</td></tr>
+</table>
+
+<h2>二、机械与结构</h2>
+<table class="term-table" id="table-mech">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">关节</span><span class="tag tag-hw">硬件</span></td><td><span class="term-en">Joint</span></td><td class="term-def">连接相邻连杆、允许相对运动的机构。分为旋转关节（Revolute）和移动关节（Prismatic）两种基本类型。</td></tr>
+<tr><td><span class="term-zh">连杆</span></td><td><span class="term-en">Link</span></td><td class="term-def">连接两个关节的刚性构件，是机器人机械结构的基本单元。</td></tr>
+<tr><td><span class="term-zh">串联机器人</span></td><td><span class="term-en">Serial Robot</span></td><td class="term-def">各关节依次串联连接的机器人结构，灵活性强但刚性相对较低。工业机器人最常见的结构形式。</td></tr>
+<tr><td><span class="term-zh">并联机器人</span></td><td><span class="term-en">Parallel Robot</span></td><td class="term-def">多个运动链并联连接末端平台的机器人结构，刚性强、速度快，但工作空间较小。Delta机器人是典型代表。</td></tr>
+<tr><td><span class="term-zh">SCARA机器人</span></td><td><span class="term-en">SCARA Robot</span><br><span class="term-abbr">Selective Compliance Assembly Robot Arm</span></td><td class="term-def">水平方向柔顺、垂直方向刚性的4轴机器人，特别适合电子装配、点胶等平面作业。</td></tr>
+<tr><td><span class="term-zh">谐波减速器</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Harmonic Drive</span></td><td class="term-def">利用弹性变形原理实现大减速比的精密传动装置，体积小、精度高、回差小，是机器人关节的核心零部件。日本哈默纳科占全球主要市场份额。</td></tr>
+<tr><td><span class="term-zh">RV减速器</span><span class="tag tag-core">核心</span></td><td><span class="term-en">RV Reducer</span></td><td class="term-def">摆线针轮减速器，刚性强、承载能力大，常用于机器人腰部、肩部等大负载关节。日本纳博特斯克是主要供应商。</td></tr>
+<tr><td><span class="term-zh">伺服电机</span><span class="tag tag-hw">硬件</span></td><td><span class="term-en">Servo Motor</span></td><td class="term-def">配合编码器实现精确位置、速度、力矩控制的电机，是机器人关节驱动的核心元件。</td></tr>
+<tr><td><span class="term-zh">力矩传感器</span></td><td><span class="term-en">Torque Sensor / Force-Torque Sensor</span><br><span class="term-abbr">F/T Sensor</span></td><td class="term-def">测量关节或末端执行器受力和力矩的传感器，是协作机器人实现安全碰撞检测的关键。</td></tr>
+<tr><td><span class="term-zh">编码器</span></td><td><span class="term-en">Encoder</span></td><td class="term-def">将关节角度或位移转换为电信号的传感器，分为增量式和绝对式，是机器人位置反馈的基础。</td></tr>
+</table>
+
+<h2>三、感知与传感</h2>
+<table class="term-table" id="table-sensor">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">激光雷达</span><span class="tag tag-core">核心</span></td><td><span class="term-en">LiDAR</span><br><span class="term-abbr">Light Detection and Ranging</span></td><td class="term-def">通过发射激光束并测量反射时间来获取环境三维点云数据的传感器，是自主导航机器人的核心感知设备。</td></tr>
+<tr><td><span class="term-zh">深度相机</span></td><td><span class="term-en">Depth Camera / RGB-D Camera</span></td><td class="term-def">同时获取彩色图像和深度信息的相机，常用技术包括结构光（如Intel RealSense）和ToF（飞行时间）。</td></tr>
+<tr><td><span class="term-zh">惯性测量单元</span><span class="tag tag-hw">硬件</span></td><td><span class="term-en">Inertial Measurement Unit</span><br><span class="term-abbr">IMU</span></td><td class="term-def">集成加速度计和陀螺仪（有时含磁力计）的传感器模块，用于测量机器人的加速度、角速度和姿态。</td></tr>
+<tr><td><span class="term-zh">点云</span></td><td><span class="term-en">Point Cloud</span></td><td class="term-def">由大量三维坐标点组成的数据集，是LiDAR等传感器对环境的三维表示方式。</td></tr>
+<tr><td><span class="term-zh">机器视觉</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Machine Vision / Computer Vision</span></td><td class="term-def">使机器人能够从图像或视频中理解环境的技术，包括目标检测、位姿估计、语义分割等。</td></tr>
+<tr><td><span class="term-zh">触觉传感器</span></td><td><span class="term-en">Tactile Sensor</span></td><td class="term-def">感知接触力、压力分布、滑动等触觉信息的传感器，是机器人灵巧手操作的关键。</td></tr>
+<tr><td><span class="term-zh">本体感知</span></td><td><span class="term-en">Proprioception</span></td><td class="term-def">机器人感知自身关节角度、速度、力矩等内部状态的能力，类比人类的本体感觉。</td></tr>
+</table>
+
+<h2>四、运动控制与规划</h2>
+<table class="term-table" id="table-control">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">正运动学</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Forward Kinematics</span><br><span class="term-abbr">FK</span></td><td class="term-def">已知各关节角度，计算末端执行器位置和姿态的过程。计算简单，有唯一解。</td></tr>
+<tr><td><span class="term-zh">逆运动学</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Inverse Kinematics</span><br><span class="term-abbr">IK</span></td><td class="term-def">已知末端执行器目标位置和姿态，求解各关节角度的过程。计算复杂，可能有多解或无解。</td></tr>
+<tr><td><span class="term-zh">轨迹规划</span></td><td><span class="term-en">Trajectory Planning</span></td><td class="term-def">规划机器人从起点到终点的运动路径，同时考虑速度、加速度、时间等约束条件。</td></tr>
+<tr><td><span class="term-zh">PID控制</span><span class="tag tag-core">核心</span></td><td><span class="term-en">PID Control</span><br><span class="term-abbr">Proportional-Integral-Derivative</span></td><td class="term-def">比例-积分-微分控制器，是最经典的反馈控制算法。通过调节P（比例）、I（积分）、D（微分）三个参数实现精确控制。</td></tr>
+<tr><td><span class="term-zh">力控制</span></td><td><span class="term-en">Force Control</span></td><td class="term-def">控制机器人末端执行器与环境之间接触力的控制方式，用于打磨、装配等需要精确力控的任务。</td></tr>
+<tr><td><span class="term-zh">阻抗控制</span></td><td><span class="term-en">Impedance Control</span></td><td class="term-def">通过调节机器人的虚拟刚度、阻尼和惯量来控制力与位移关系的控制方法，适合人机交互场景。</td></tr>
+<tr><td><span class="term-zh">零力矩点</span></td><td><span class="term-en">Zero Moment Point</span><br><span class="term-abbr">ZMP</span></td><td class="term-def">双足机器人步态稳定性的核心概念，指地面支撑力矩为零的点。ZMP在支撑多边形内时机器人保持稳定。</td></tr>
+<tr><td><span class="term-zh">步态规划</span></td><td><span class="term-en">Gait Planning</span></td><td class="term-def">规划足式机器人腿部运动序列和时序的技术，包括静态步态（重心始终在支撑多边形内）和动态步态。</td></tr>
+<tr><td><span class="term-zh">模型预测控制</span></td><td><span class="term-en">Model Predictive Control</span><br><span class="term-abbr">MPC</span></td><td class="term-def">基于系统模型预测未来状态，在线求解优化问题的控制方法，广泛用于人形机器人运动控制。</td></tr>
+</table>
+
+<h2>五、导航与定位</h2>
+<table class="term-table" id="table-nav">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">同步定位与建图</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Simultaneous Localization and Mapping</span><br><span class="term-abbr">SLAM</span></td><td class="term-def">机器人在未知环境中同时构建地图并确定自身位置的技术，是自主导航的核心。分为激光SLAM和视觉SLAM两大流派。</td></tr>
+<tr><td><span class="term-zh">路径规划</span></td><td><span class="term-en">Path Planning</span></td><td class="term-def">在已知或未知环境中为机器人规划从起点到终点的无碰撞路径的技术。常用算法：A*、Dijkstra、RRT、D*。</td></tr>
+<tr><td><span class="term-zh">避障</span></td><td><span class="term-en">Obstacle Avoidance</span></td><td class="term-def">机器人在运动过程中实时检测并绕过障碍物的能力，分为全局避障（基于地图）和局部避障（实时感知）。</td></tr>
+<tr><td><span class="term-zh">里程计</span></td><td><span class="term-en">Odometry</span></td><td class="term-def">通过累积车轮转动或关节运动来估计机器人位移的方法，简单但存在累积误差。</td></tr>
+<tr><td><span class="term-zh">自主移动机器人</span></td><td><span class="term-en">Autonomous Mobile Robot</span><br><span class="term-abbr">AMR</span></td><td class="term-def">能够自主感知环境、规划路径、避障导航的移动机器人，区别于需要固定轨道的AGV。</td></tr>
+<tr><td><span class="term-zh">自动导引车</span></td><td><span class="term-en">Automated Guided Vehicle</span><br><span class="term-abbr">AGV</span></td><td class="term-def">沿预设路径（磁条、二维码、激光反射板等）行驶的自动化搬运车辆，广泛用于工厂和仓库。</td></tr>
+<tr><td><span class="term-zh">位姿</span></td><td><span class="term-en">Pose</span></td><td class="term-def">机器人或物体在空间中的完整状态描述，包括位置（x, y, z）和姿态（roll, pitch, yaw）共6个参数。</td></tr>
+</table>
+
+<h2>六、人工智能与学习</h2>
+<table class="term-table" id="table-ai">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">强化学习</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Reinforcement Learning</span><br><span class="term-abbr">RL</span></td><td class="term-def">通过与环境交互、获取奖励信号来学习最优策略的机器学习方法。是机器人运动技能学习的主流方法。</td></tr>
+<tr><td><span class="term-zh">模仿学习</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Imitation Learning</span><br><span class="term-abbr">IL</span></td><td class="term-def">机器人通过观察人类示范来学习技能的方法，包括行为克隆（BC）和逆强化学习（IRL）。</td></tr>
+<tr><td><span class="term-zh">端到端学习</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">End-to-End Learning</span></td><td class="term-def">直接从原始传感器输入（如图像）映射到控制输出（如关节力矩）的学习方式，无需手工设计中间模块。</td></tr>
+<tr><td><span class="term-zh">迁移学习</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Transfer Learning</span></td><td class="term-def">将在一个任务或环境中学到的知识迁移到新任务或环境的技术，解决机器人训练数据不足的问题。</td></tr>
+<tr><td><span class="term-zh">仿真到现实迁移</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Sim-to-Real Transfer</span></td><td class="term-def">在仿真环境中训练机器人策略，然后迁移到真实机器人的技术。关键挑战是弥合仿真与现实的差距（Reality Gap）。</td></tr>
+<tr><td><span class="term-zh">大语言模型</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Large Language Model</span><br><span class="term-abbr">LLM</span></td><td class="term-def">基于Transformer架构、在海量文本上训练的大规模语言模型。正被用于机器人任务规划和人机交互。</td></tr>
+<tr><td><span class="term-zh">视觉语言模型</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Vision-Language Model</span><br><span class="term-abbr">VLM</span></td><td class="term-def">同时理解图像和文本的多模态模型，使机器人能够理解自然语言指令并结合视觉信息执行任务。</td></tr>
+<tr><td><span class="term-zh">基础模型</span><span class="tag tag-ai">AI</span></td><td><span class="term-en">Foundation Model</span></td><td class="term-def">在大规模数据上预训练、可迁移到多种下游任务的大型模型。机器人基础模型（如RT-2、π0）是当前研究热点。</td></tr>
+</table>
+
+<h2>七、软件与系统</h2>
+<table class="term-table" id="table-sw">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">机器人操作系统</span><span class="tag tag-sw">软件</span></td><td><span class="term-en">Robot Operating System</span><br><span class="term-abbr">ROS / ROS 2</span></td><td class="term-def">开源机器人软件框架，提供硬件抽象、消息传递、工具集等基础设施。ROS 2是当前主流版本，支持实时控制和安全关键应用。</td></tr>
+<tr><td><span class="term-zh">数字孪生</span><span class="tag tag-sw">软件</span></td><td><span class="term-en">Digital Twin</span></td><td class="term-def">物理机器人或系统的实时数字镜像，用于仿真、监控、预测性维护和优化。</td></tr>
+<tr><td><span class="term-zh">机器人仿真</span><span class="tag tag-sw">软件</span></td><td><span class="term-en">Robot Simulation</span></td><td class="term-def">在计算机中模拟机器人运动和环境交互的技术。常用平台：Gazebo、Isaac Sim（NVIDIA）、MuJoCo、PyBullet。</td></tr>
+<tr><td><span class="term-zh">运动规划库</span><span class="tag tag-sw">软件</span></td><td><span class="term-en">Motion Planning Library</span><br><span class="term-abbr">MoveIt</span></td><td class="term-def">ROS生态中最广泛使用的运动规划框架，提供逆运动学求解、碰撞检测、轨迹规划等功能。</td></tr>
+<tr><td><span class="term-zh">实时操作系统</span><span class="tag tag-sw">软件</span></td><td><span class="term-en">Real-Time Operating System</span><br><span class="term-abbr">RTOS</span></td><td class="term-def">能够在确定时间内响应外部事件的操作系统，机器人控制系统通常需要RTOS保证控制周期的实时性。</td></tr>
+<tr><td><span class="term-zh">EtherCAT</span><span class="tag tag-sw">软件</span></td><td><span class="term-en">EtherCAT</span><br><span class="term-abbr">Ethernet for Control Automation Technology</span></td><td class="term-def">高性能工业以太网通信协议，支持微秒级同步控制，是机器人关节控制总线的主流选择。</td></tr>
+</table>
+
+<h2>八、产业与标准</h2>
+<table class="term-table" id="table-industry">
+<tr><th style="width:18%">中文</th><th style="width:22%">英文 / 缩写</th><th>释义</th></tr>
+<tr><td><span class="term-zh">机器人密度</span></td><td><span class="term-en">Robot Density</span></td><td class="term-def">每万名制造业工人对应的工业机器人数量，是衡量一个国家/地区自动化程度的核心指标。韩国以1012台/万人位居全球第一（2023）。</td></tr>
+<tr><td><span class="term-zh">系统集成商</span></td><td><span class="term-en">System Integrator</span><br><span class="term-abbr">SI</span></td><td class="term-def">将机器人本体、末端执行器、传感器、软件等集成为完整自动化解决方案的企业，是机器人产业链的重要环节。</td></tr>
+<tr><td><span class="term-zh">ISO 10218</span></td><td><span class="term-en">ISO 10218</span></td><td class="term-def">工业机器人安全要求国际标准，分为两部分：机器人本体安全要求（Part 1）和机器人系统集成安全要求（Part 2）。</td></tr>
+<tr><td><span class="term-zh">ISO/TS 15066</span></td><td><span class="term-en">ISO/TS 15066</span></td><td class="term-def">协作机器人安全技术规范，定义了人机协作的四种模式：安全监控停止、手动引导、速度与间距监控、功率与力限制。</td></tr>
+<tr><td><span class="term-zh">四大家族</span></td><td><span class="term-en">Big Four Robot Manufacturers</span></td><td class="term-def">工业机器人领域的四大国际巨头：ABB（瑞士）、FANUC（日本）、KUKA（德国/中国美的）、安川电机（日本），合计占全球工业机器人市场约50%。</td></tr>
+<tr><td><span class="term-zh">三大核心零部件</span><span class="tag tag-core">核心</span></td><td><span class="term-en">Three Core Components</span></td><td class="term-def">工业机器人的三大核心零部件：减速器（占成本约35%）、伺服系统（约25%）、控制器（约15%）。长期被日本、德国企业垄断，国产化是中国机器人产业的核心课题。</td></tr>
+</table>
+
+<hr class="section-divider">
+<p style="color:#666; font-size:0.88rem; text-align:center;">术语持续更新中 · 如有补充建议欢迎反馈</p>
+<p class="page-footer">© 2026 机器人知识库 | Robot Knowledge Base</p>
+
+        </div>
+    </div>
+
+<script>
+function filterTerms() {
+    const q = document.getElementById('termSearch').value.toLowerCase().trim();
+    const rows = document.querySelectorAll('.term-table tbody tr, .term-table tr:not(:first-child)');
+    let visible = 0;
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+            row.classList.remove('hidden');
+            visible++;
+        } else {
+            row.classList.add('hidden');
+        }
+    });
+    // Count all term rows
+    const allRows = document.querySelectorAll('.term-table tr:not(:first-child)');
+    document.getElementById('termCount').textContent = q ? visible : allRows.length;
+}
+// Init count
+window.onload = function() {
+    const allRows = document.querySelectorAll('.term-table tr:not(:first-child)');
+    document.getElementById('termCount').textContent = allRows.length;
+};
+</script>
+</body>
+</html>
