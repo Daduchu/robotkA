@@ -189,7 +189,7 @@
         </div>
 
         <footer>
-            <p>创建时间：2026年3月 | 最后更新：2026年4月23日</p>
+            <p>创建时间：2026年3月 | 最后更新：<span id="lastUpdate"></span></p>
             <p style="margin-top: 10px;">
                 <a href="https://github.com/Daduchu/robotkA" target="_blank">GitHub 仓库</a>
             </p>
@@ -213,6 +213,7 @@
                 card.style.display = card.textContent.toLowerCase().includes(query) || query === '' ? 'block' : 'none';
             });
         });
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('zh-CN', {year:'numeric',month:'long',day:'numeric'});
     </script>
 </body>
 </html>
