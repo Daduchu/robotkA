@@ -1,179 +1,149 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>机器人知识库 | Robot Knowledge Base</title>
     <meta name="description" content="机器人知识库 — 从基础概念到前沿技术，全方位机器人知识体系。涵盖工业机器人、人形机器人、具身智能、核心技术、产业生态等。">
     <meta name="keywords" content="机器人,人形机器人,具身智能,工业机器人,服务机器人,机器人技术,机器人知识库,协作机器人,SLAM,ROS">
+    <link rel="canonical" href="https://daduchu.github.io/robotkA/">
+    <meta name="theme-color" content="#16213e">
     <!-- 百度站长验证 - 注册后替换你的验证ID -->
     <meta name="baidu-site-verification" content="codeva-XXXXXXXXXX" />
     <!-- Google Search Console验证 - 注册后替换你的验证ID -->
     <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXX" />
+
+    <!-- Open Graph（微信/微博/QQ 等社交分享卡片） -->
+    <meta property="og:title" content="机器人知识库 | Robot Knowledge Base">
+    <meta property="og:description" content="从基础概念到前沿技术，全方位机器人知识体系。涵盖工业机器人、人形机器人、具身智能、核心技术、产业生态等。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://daduchu.github.io/robotkA/">
+    <meta property="og:site_name" content="机器人知识库">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="机器人知识库 | Robot Knowledge Base">
+    <meta name="twitter:description" content="从基础概念到前沿技术，全方位机器人知识体系。">
+
+    <!-- 结构化数据（JSON-LD） -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "机器人知识库",
+      "alternateName": "Robot Knowledge Base",
+      "url": "https://daduchu.github.io/robotkA/",
+      "description": "从基础概念到前沿技术，全方位机器人知识体系。涵盖工业机器人、人形机器人、具身智能、核心技术、产业生态等。",
+      "inLanguage": "zh-CN",
+      "keywords": ["机器人", "人形机器人", "具身智能", "工业机器人", "ROS", "SLAM"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://daduchu.github.io/robotkA/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #fff;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; margin-bottom: 50px; }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .subtitle { font-size: 1.2rem; color: #a0a0a0; margin-bottom: 10px; }
-        .tagline { font-size: 1rem; color: #00d4ff; }
-        .search-box { max-width: 500px; margin: 30px auto; }
-        .search-box input {
-            width: 100%; padding: 15px 20px;
-            border: 2px solid #333; border-radius: 30px;
-            background: rgba(255,255,255,0.1); color: #fff;
-            font-size: 1rem; outline: none; transition: all 0.3s;
-        }
-        .search-box input:focus { border-color: #00d4ff; background: rgba(255,255,255,0.15); }
-        .search-box input::placeholder { color: #888; }
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; margin-top: 40px;
-        }
-        .category-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px; padding: 25px;
-            transition: all 0.3s ease;
-            text-decoration: none; color: inherit; display: block;
-            position: relative; overflow: hidden;
-        }
-        .category-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            opacity: 0; transition: opacity 0.3s;
-        }
-        .category-card:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%);
-            border-color: #00d4ff;
-            box-shadow: 0 10px 40px rgba(0,212,255,0.2);
-        }
-        .category-card:hover::before { opacity: 1; }
-        .category-number { font-size: 0.9rem; color: #00d4ff; margin-bottom: 10px; font-weight: bold; }
-        .category-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; color: #fff; }
-        .category-title-cn { font-size: 1rem; color: #a0a0a0; margin-bottom: 15px; }
-        .category-desc { font-size: 0.9rem; color: #888; line-height: 1.5; }
-        .stats {
-            display: flex; justify-content: center; gap: 50px;
-            margin-top: 60px; padding: 30px;
-            background: rgba(255,255,255,0.03); border-radius: 15px;
-        }
-        .stat-item { text-align: center; }
-        .stat-number { font-size: 2.5rem; font-weight: bold; color: #00d4ff; }
-        .stat-label { font-size: 0.9rem; color: #888; margin-top: 5px; }
-        footer { text-align: center; margin-top: 60px; padding: 20px; color: #666; font-size: 0.9rem; }
-        footer a { color: #00d4ff; text-decoration: none; }
-        .visitor-counter { margin-top: 15px; color: #888; font-size: 0.85rem; }
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .stats { flex-direction: column; gap: 20px; }
-            .stat-number { font-size: 2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="theme.js"></script>
 </head>
-<body>
+<body class="home">
+    <a href="#categories" class="skip-link">跳转到主内容</a>
     <div class="container">
         <header>
             <h1>🤖 机器人知识库</h1>
             <p class="subtitle">Robot Knowledge Base</p>
             <p class="tagline">从基础概念到前沿技术，全方位机器人知识体系</p>
-            <div class="search-box">
-                <input type="text" placeholder="搜索知识库内容..." id="searchInput">
+            <div class="search-box" role="search">
+                <label for="searchInput" class="sr-only">搜索知识库内容</label>
+                <input type="text" placeholder="搜索知识库内容（支持全文检索）..." id="searchInput"
+                       aria-label="搜索知识库内容" aria-describedby="searchHint" autocomplete="off">
+                <div id="searchResults" class="search-results" role="listbox" aria-label="搜索结果"></div>
+                <span id="searchHint" class="sr-only">输入关键词即可搜索全部文档内容</span>
             </div>
         </header>
 
+        <main>
+        <nav aria-label="知识分类导航">
         <div class="categories" id="categories">
-            <a href="0.%20Knowledge%20Base%20Management/" class="category-card">
+            <a href="0.%20Knowledge%20Base%20Management/" class="category-card" aria-label="进入知识库管理模块：使用指南、内容模板、运营计划、权威资源目录">
                 <div class="category-number">00</div>
                 <div class="category-title">📚 知识库管理</div>
                 <div class="category-title-cn">Knowledge Base Management</div>
                 <div class="category-desc">使用指南、内容模板、运营计划、权威资源目录</div>
             </a>
-            <a href="1.%20Basic%20Concepts%20and%20Classification/" class="category-card">
+            <a href="1.%20Basic%20Concepts%20and%20Classification/" class="category-card" aria-label="进入基础概念与分类模块：机器人定义、分类体系、基础概念解析">
                 <div class="category-number">01</div>
                 <div class="category-title">📖 基础概念与分类</div>
                 <div class="category-title-cn">Basic Concepts and Classification</div>
                 <div class="category-desc">机器人定义、分类体系、基础概念解析</div>
             </a>
-            <a href="2.%20Core%20Technologies/" class="category-card">
+            <a href="2.%20Core%20Technologies/" class="category-card" aria-label="进入核心技术模块：感知技术、控制算法、驱动系统、人工智能">
                 <div class="category-number">02</div>
                 <div class="category-title">⚙️ 核心技术</div>
                 <div class="category-title-cn">Core Technologies</div>
                 <div class="category-desc">感知技术、控制算法、驱动系统、人工智能</div>
             </a>
-            <a href="3.%20Application%20Areas/" class="category-card">
+            <a href="3.%20Application%20Areas/" class="category-card" aria-label="进入应用领域模块：工业机器人、服务机器人、特种机器人、人形机器人">
                 <div class="category-number">03</div>
                 <div class="category-title">🏭 应用领域</div>
                 <div class="category-title-cn">Application Areas</div>
                 <div class="category-desc">工业机器人、服务机器人、特种机器人、人形机器人</div>
             </a>
-            <a href="4.%20Development%20History%20and%20Trends/" class="category-card">
+            <a href="4.%20Development%20History%20and%20Trends/" class="category-card" aria-label="进入发展历史与趋势模块：机器人发展历程、未来趋势、技术演进">
                 <div class="category-number">04</div>
                 <div class="category-title">📈 发展历史与趋势</div>
                 <div class="category-title-cn">Development History and Trends</div>
                 <div class="category-desc">机器人发展历程、未来趋势、技术演进</div>
             </a>
-            <a href="5.%20Laws%2C%20Regulations%20and%20Ethics/" class="category-card">
+            <a href="5.%20Laws%2C%20Regulations%20and%20Ethics/" class="category-card" aria-label="进入法律法规与伦理模块：机器人法律法规、伦理规范、安全标准">
                 <div class="category-number">05</div>
                 <div class="category-title">⚖️ 法律法规与伦理</div>
                 <div class="category-title-cn">Laws, Regulations and Ethics</div>
                 <div class="category-desc">机器人法律法规、伦理规范、安全标准</div>
             </a>
-            <a href="6.%20Companies%20and%20Products/" class="category-card">
+            <a href="6.%20Companies%20and%20Products/" class="category-card" aria-label="进入公司与产品模块：全球机器人企业、产品分析、市场动态">
                 <div class="category-number">06</div>
                 <div class="category-title">🏢 公司与产品</div>
                 <div class="category-title-cn">Companies and Products</div>
                 <div class="category-desc">全球机器人企业、产品分析、市场动态</div>
             </a>
-            <a href="7.%20Education%20and%20Learning%20Resources/" class="category-card">
+            <a href="7.%20Education%20and%20Learning%20Resources/" class="category-card" aria-label="进入教育与学习资源模块：学习路径、培训课程、认证体系、教材推荐">
                 <div class="category-number">07</div>
                 <div class="category-title">🎓 教育与学习资源</div>
                 <div class="category-title-cn">Education and Learning Resources</div>
                 <div class="category-desc">学习路径、培训课程、认证体系、教材推荐</div>
             </a>
-            <a href="8.%20Technical%20Standards%20and%20Specifications/" class="category-card">
+            <a href="8.%20Technical%20Standards%20and%20Specifications/" class="category-card" aria-label="进入技术标准与规范模块：ISO/IEC国际标准、国家标准、行业规范">
                 <div class="category-number">08</div>
                 <div class="category-title">📋 技术标准与规范</div>
                 <div class="category-title-cn">Technical Standards and Specifications</div>
                 <div class="category-desc">ISO/IEC国际标准、国家标准、行业规范</div>
             </a>
-            <a href="9.%20Industrial%20Ecosystem/" class="category-card">
+            <a href="9.%20Industrial%20Ecosystem/" class="category-card" aria-label="进入产业生态模块：产业链分析、市场规模、投资机会、发展趋势">
                 <div class="category-number">09</div>
                 <div class="category-title">🌐 产业生态</div>
                 <div class="category-title-cn">Industrial Ecosystem</div>
                 <div class="category-desc">产业链分析、市场规模、投资机会、发展趋势</div>
             </a>
-            <a href="10.%20Cutting-edge%20Technologies%20and%20Research/" class="category-card">
+            <a href="10.%20Cutting-edge%20Technologies%20and%20Research/" class="category-card" aria-label="进入前沿技术与研究模块：具身智能、大模型、仿生机器人、最新研究成果">
                 <div class="category-number">10</div>
                 <div class="category-title">🚀 前沿技术与研究</div>
                 <div class="category-title-cn">Cutting-edge Technologies and Research</div>
                 <div class="category-desc">具身智能、大模型、仿生机器人、最新研究成果</div>
             </a>
-            <a href="11.%20Science%20Education%20and%20Assessments/" class="category-card">
+            <a href="11.%20Science%20Education%20and%20Assessments/" class="category-card" aria-label="进入科普与测评模块：机器人科普与分级测评试卷，涵盖幼儿园至大学全学段">
                 <div class="category-number">11</div>
                 <div class="category-title">🧪 科普与测评</div>
-                <div class="category-title-cn">Science Education & Assessments</div>
+                <div class="category-title-cn">Science Education &amp; Assessments</div>
                 <div class="category-desc">机器人科普与分级测评试卷，涵盖幼儿园至大学全学段</div>
             </a>
         </div>
+        </nav>
 
-        <div class="stats">
+        <section class="stats" aria-label="知识库统计信息">
             <div class="stat-item">
                 <div class="stat-number">12</div>
                 <div class="stat-label">知识分类</div>
@@ -186,34 +156,131 @@
                 <div class="stat-number">持续</div>
                 <div class="stat-label">更新中</div>
             </div>
-        </div>
+        </section>
+        </main>
 
         <footer>
-            <p>创建时间：2026年3月 | 最后更新：<span id="lastUpdate"></span></p>
+            <p>创建时间：2026年3月 | 最后更新：<span id="lastUpdate">2026年8月</span></p>
             <p style="margin-top: 10px;">
-                <a href="https://github.com/Daduchu/robotkA" target="_blank">GitHub 仓库</a>
+                <a href="https://github.com/Daduchu/robotkA" target="_blank" rel="noopener">GitHub 仓库</a>
             </p>
             <div class="visitor-counter">
-                <span>👥 访客 <span id="busuanzi_value_site_uv"></span></span>
-                <span style="margin-left: 20px;">👁️ 浏览 <span id="busuanzi_value_site_pv"></span></span>
+                <span aria-label="访客数">👥 访客 <span id="busuanzi_value_site_uv"></span></span>
+                <span style="margin-left: 20px;" aria-label="浏览量">👁️ 浏览 <span id="busuanzi_value_site_pv"></span></span>
             </div>
-            <div class="feedback-hint" style="margin-top: 20px; padding: 15px; background: rgba(123,44,191,0.1); border-radius: 10px; border-left: 3px solid #7b2cbf;">
-                <p style="margin: 0; color: #a0a0a0; font-size: 0.85rem;">
-                    💬 <strong style="color:#fff;">有意见或建议？</strong> 
-                    欢迎在 <a href="https://github.com/Daduchu/robotkA/discussions" target="_blank" style="color: #00d4ff;">GitHub Discussions</a> 参与讨论
+            <div class="feedback-hint">
+                <p>
+                    💬 <strong>有意见或建议？</strong>
+                    欢迎在 <a href="https://github.com/Daduchu/robotkA/discussions" target="_blank" rel="noopener">GitHub Discussions</a> 参与讨论
                 </p>
             </div>
         </footer>
     </div>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.style.display = card.textContent.toLowerCase().includes(query) || query === '' ? 'block' : 'none';
+    (function () {
+        'use strict';
+
+        /* ============ 全文搜索 ============ */
+        var searchData = null;
+        var searchInput = document.getElementById('searchInput');
+        var resultsDiv = document.getElementById('searchResults');
+
+        fetch('search-index.json')
+            .then(function (r) { return r.json(); })
+            .then(function (d) { searchData = d; })
+            .catch(function () { /* 索引加载失败时退化为卡片过滤 */ });
+
+        function escapeHtml(s) {
+            return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function makeSnippet(content, query, len) {
+            var idx = content.toLowerCase().indexOf(query.toLowerCase());
+            if (idx === -1) return escapeHtml(content.slice(0, len)) + '…';
+            var start = Math.max(0, idx - 20);
+            var end = Math.min(content.length, idx + query.length + len - 20);
+            var prefix = start > 0 ? '…' : '';
+            var suffix = end < content.length ? '…' : '';
+            var raw = content.slice(start, idx) + '\u0001' + content.slice(idx, idx + query.length) + '\u0002' + content.slice(idx + query.length, end);
+            return prefix + escapeHtml(raw).replace('\u0001', '<mark>').replace('\u0002', '</mark>') + suffix;
+        }
+
+        function searchDocs(query) {
+            if (!searchData) return [];
+            var q = query.toLowerCase();
+            var scored = [];
+            for (var i = 0; i < searchData.length; i++) {
+                var doc = searchData[i];
+                var score = 0;
+                var title = (doc.title || '').toLowerCase();
+                var cat = (doc.category || '').toLowerCase();
+                var content = (doc.content || '').toLowerCase();
+                if (title.indexOf(q) !== -1) score += 100 + (title.indexOf(q) === 0 ? 50 : 0);
+                if (cat.indexOf(q) !== -1) score += 30;
+                var count = 0, pos = content.indexOf(q);
+                while (pos !== -1 && count < 10) { count++; pos = content.indexOf(q, pos + q.length); }
+                score += count * 5;
+                if (score > 0) scored.push({ doc: doc, score: score, snippetSource: count > 0 ? doc.content : doc.title });
+            }
+            scored.sort(function (a, b) { return b.score - a.score; });
+            return scored.slice(0, 8);
+        }
+
+        function hideResults() { resultsDiv.classList.remove('show'); }
+
+        searchInput.addEventListener('input', function () {
+            var query = this.value.trim();
+
+            /* 卡片过滤（原有行为保留） */
+            document.querySelectorAll('.category-card').forEach(function (card) {
+                card.style.display = card.textContent.toLowerCase().indexOf(query.toLowerCase()) !== -1 || query === '' ? 'block' : 'none';
             });
+
+            /* 全文搜索下拉 */
+            if (query.length < 1 || !searchData) { hideResults(); return; }
+            var results = searchDocs(query);
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<div class="search-empty">未找到与「' + escapeHtml(query) + '」相关的内容，换个关键词试试？</div>';
+            } else {
+                resultsDiv.innerHTML = results.map(function (r) {
+                    return '<a href="' + escapeHtml(r.doc.url) + '" class="search-result-item" role="option">' +
+                        '<span class="result-title">' + escapeHtml(r.doc.title) + '</span>' +
+                        '<span class="result-category">' + escapeHtml(r.doc.category) + '</span>' +
+                        '<span class="result-snippet">' + makeSnippet(r.snippetSource, query, 60) + '</span>' +
+                        '</a>';
+                }).join('');
+            }
+            resultsDiv.classList.add('show');
         });
-        document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('zh-CN', {year:'numeric',month:'long',day:'numeric'});
+
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { this.value = ''; this.dispatchEvent(new Event('input')); this.blur(); }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.search-box')) hideResults();
+        });
+
+        /* 支持 ?q=关键词 直达搜索（配合结构化数据 SearchAction） */
+        var urlQuery = new URLSearchParams(location.search).get('q');
+        if (urlQuery) { searchInput.value = urlQuery; searchInput.dispatchEvent(new Event('input')); }
+
+        /* ============ 最后更新时间（真实 Git 提交日期） ============ */
+        var fallbackDate = '2026年8月';
+        fetch('https://api.github.com/repos/Daduchu/robotkA/commits?per_page=1')
+            .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+            .then(function (data) {
+                if (data && data[0]) {
+                    var d = new Date(data[0].commit.committer.date);
+                    document.getElementById('lastUpdate').textContent =
+                        d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+                }
+            })
+            .catch(function () {
+                document.getElementById('lastUpdate').textContent = fallbackDate;
+            });
+    })();
     </script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daduchu.github.io/robotkA/sitemap.xml
