@@ -10,8 +10,14 @@
  *   - 连续识别模式：可以一直说，说完点麦克风（此时是停止按钮）手动结束
  *   - 录音中按钮红色脉动 + 白色弧线转圈 + 停止图标，placeholder 实时提示状态
  *
+ * v3 升级（兼容性检测）：
+ *   - 不同浏览器的语音识别走不同后端：Edge → 微软 Azure（国内畅通）；
+ *     Chrome → Google 服务（国内不可达）；UC/华为等国产浏览器多数无可用服务
+ *   - 新增"服务不可用"看门狗：录音 8 秒无任何识别结果自动停止，
+ *     并弹气泡提示用户改用 Edge 浏览器，避免对着麦克风干等
+ *
  * 技术：浏览器原生 Web Speech API（SpeechRecognition），
- *       零服务器、零依赖、零成本；Chrome / Edge 支持最佳。
+ *       零服务器、零依赖、零成本；Edge（电脑/手机）支持最佳。
  * 降级：不支持的浏览器（如 Firefox）自动隐藏麦克风按钮，不影响原功能。
  */
 (function () {
@@ -47,7 +53,16 @@
         + '.rk-mic-inner{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;}'
         + '.rk-mic-lang-inner{position:absolute;right:50px;top:50%;transform:translateY(-50%);height:28px;min-width:30px;'
         + 'padding:0 7px;font-size:11px;border-radius:14px;}'
-        + '@media print{.rk-mic,.rk-mic-lang{display:none !important;}}';
+        + '@media print{.rk-mic,.rk-mic-lang{display:none !important;}}'
+        /* 语音服务不可用提示气泡 */
+        + '.rk-mic-toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);z-index:99999;'
+        + 'max-width:320px;padding:10px 16px;border-radius:10px;'
+        + 'background:var(--surface,#fff);color:var(--text-primary,#333);'
+        + 'border:1px solid var(--input-border,#dcdcdc);box-shadow:0 4px 16px rgba(0,0,0,.15);'
+        + 'font-size:13px;line-height:1.6;text-align:center;'
+        + 'animation:rk-toast-in .25s ease;}'
+        + '@keyframes rk-toast-in{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}'
+        + '.rk-mic-toast.rk-toast-hide{opacity:0;transition:opacity .4s;}';
 
     var MIC_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>';
     var STOP_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>';
@@ -106,6 +121,40 @@
     var userStopped = false;  /* 用户主动停止（否则静音断线自动重启） */
     var langSwitching = false;/* 语言切换中（停止后立即以新语言重启） */
     var restartTimer = null;
+    var watchdogTimer = null; /* 服务不可用检测：超时无识别结果 */
+    var gotResult = false;    /* 本次录音是否收到过任何识别结果 */
+
+    /* 顶部气泡提示（语音服务不可用等） */
+    var toastEl = null, toastTimer = null;
+    function showToast(msg, ms) {
+        if (toastEl) toastEl.remove();
+        if (toastTimer) clearTimeout(toastTimer);
+        toastEl = document.createElement('div');
+        toastEl.className = 'rk-mic-toast';
+        toastEl.setAttribute('role', 'alert');
+        toastEl.textContent = msg;
+        document.body.appendChild(toastEl);
+        toastTimer = setTimeout(function () {
+            toastEl.classList.add('rk-toast-hide');
+            setTimeout(function () { if (toastEl) { toastEl.remove(); toastEl = null; } }, 400);
+        }, ms || 4500);
+    }
+
+    /* 服务连不上（Google 服务不可达 / 国产浏览器无可用服务）：
+       停止录音并给出明确指引，避免用户对着麦克风干等 */
+    function failNoService(reason) {
+        var btn = activeBtn, inp = activeInput;
+        userStopped = true;
+        if (restartTimer) { clearTimeout(restartTimer); restartTimer = null; }
+        if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
+        if (rec) { try { rec.stop(); } catch (e) { /* ignore */ } }
+        rec = null; activeBtn = null; activeInput = null; sessionFinal = '';
+        if (btn) setBtnState(btn, false);
+        if (inp) inp.placeholder = inp.dataset.ph || inp.placeholder;
+        for (var i = 0; i < langBtns.length; i++) langBtns[i].classList.remove('on');
+        showToast('当前浏览器连不上语音识别服务（' + reason + '）。' +
+            '建议改用 Edge 浏览器（电脑和手机都支持），或换个网络环境再试。', 6000);
+    }
 
     function stopRec() {
         userStopped = true;
@@ -129,6 +178,7 @@
         for (var i = 0; i < langBtns.length; i++) langBtns[i].classList.remove('on');
         rec = null; activeBtn = null; activeInput = null; sessionFinal = '';
         if (restartTimer) { clearTimeout(restartTimer); restartTimer = null; }
+        if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
     }
 
     function startRec(btn, input) {
@@ -153,6 +203,8 @@
         rec.maxAlternatives = 1;
 
         rec.onresult = function (e) {
+            gotResult = true; /* 收到识别结果，服务可用 */
+            if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
             var interim = '', fin = '';
             for (var i = e.resultIndex; i < e.results.length; i++) {
                 var r = e.results[i];
@@ -167,14 +219,17 @@
 
         rec.onerror = function (e) {
             var msg = '语音识别出错，请重试';
-            if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
-                msg = '麦克风权限被拒绝，请在浏览器地址栏允许麦克风后重试';
+            if (e.error === 'not-allowed') {
                 userStopped = true; /* 权限问题不重启 */
+                showToast('麦克风权限被拒绝。请点击浏览器地址栏的锁/麦克风图标，允许麦克风后重试。', 6000);
+                return;
             } else if (e.error === 'no-speech') {
+                gotResult = true; /* 收到 no-speech 说明服务在正常响应，不算失败 */
                 return; /* 静音不算错误，交给 onend 自动重启 */
-            } else if (e.error === 'network') {
-                msg = '网络异常，语音服务不可用';
-                userStopped = true;
+            } else if (e.error === 'network' || e.error === 'service-not-allowed') {
+                /* Chrome 在国内连不上 Google 识别服务时会走到这里 */
+                failNoService(e.error === 'network' ? '网络错误' : '语音服务被拒');
+                return;
             } else if (e.error === 'aborted') {
                 return; /* 语言切换/切换目标时的正常中断 */
             }
@@ -215,6 +270,15 @@
             langBtns[i].textContent = LANGS[lang];
         }
         input.placeholder = '正在聆听（' + (lang === 'zh-CN' ? '中文' : 'English') + '）· 说完点红色按钮结束';
+        /* 看门狗：8 秒内没收到任何识别结果，判定服务不可用（如 Chrome 连不上 Google 服务）。
+           部分浏览器不触发 onerror、只是无声失败，靠这个兜底提示用户 */
+        gotResult = false;
+        if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
+        watchdogTimer = setTimeout(function () {
+            if (activeBtn === btn && activeInput === input && !gotResult && !langSwitching) {
+                failNoService('超时无识别结果');
+            }
+        }, 8000);
         try { rec.start(); } catch (e) { clearUI(); }
     }
 
