@@ -173,6 +173,59 @@
     </div>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
+    /* ============ 把换域名前的累计访问数加回来 ============
+       不蒜子是按「域名」统计的。站点从 daduchu.github.io/robotkA/
+       迁到 www.robotknow.com.cn 之后，等于换了个新站，计数从零开始。
+       下面两个数字是旧域名在迁移当时的累计值（2026-08-31 查得），
+       作为基数加到新统计上。这两个数以后不要改。 */
+    (function () {
+        'use strict';
+        var BASE_UV = 280;   /* 旧站累计访客数 */
+        var BASE_PV = 374;   /* 旧站累计浏览量 */
+        var IDS = [['busuanzi_value_site_uv', BASE_UV],
+                   ['busuanzi_value_site_pv', BASE_PV]];
+
+        function bump(el, base) {
+            if (!el || el.dataset.baseAdded) return;
+            var t = (el.textContent || '').trim();
+            if (!/^\d+$/.test(t)) return;          /* 还没填值，等下次 */
+            el.textContent = String(parseInt(t, 10) + base);
+            el.dataset.baseAdded = '1';
+        }
+        function run() {
+            IDS.forEach(function (p) { bump(document.getElementById(p[0]), p[1]); });
+        }
+        /* 万一不蒜子挂了或太慢，至少把冻结的累计值显示出来，不留空白 */
+        function fallback() {
+            IDS.forEach(function (p) {
+                var el = document.getElementById(p[0]);
+                if (el && !el.dataset.baseAdded && !(el.textContent || '').trim()) {
+                    el.textContent = String(p[1]);
+                    el.dataset.baseAdded = '1';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.MutationObserver) {
+                IDS.forEach(function (p) {
+                    var el = document.getElementById(p[0]);
+                    if (el) {
+                        new MutationObserver(run).observe(el, {
+                            childList: true, characterData: true, subtree: true
+                        });
+                    }
+                });
+            }
+            run();
+            var n = 0, tmr = setInterval(function () {
+                run();
+                if (++n > 50) { clearInterval(tmr); fallback(); }
+            }, 200);
+        });
+    })();
+    </script>
+    <script>
     (function () {
         'use strict';
 
